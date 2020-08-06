@@ -1,4 +1,5 @@
 ﻿using medExpert.Models;
+using medExpert.Views.Audits;
 using medExpert.Views.Mock;
 using Rg.Plugins.Popup.Services;
 using System;
@@ -14,6 +15,7 @@ namespace medExpert.ViewModels.Audits
 {
     class AuditListViewModel : INotifyPropertyChanged
     {
+        public INavigation Navigation { get; set; }
         private ObservableCollection<Audit> audits;
         public ObservableCollection<Audit> Audits
         {
@@ -37,6 +39,14 @@ namespace medExpert.ViewModels.Audits
         public ICommand SelectToolbar => new Command(async () =>
         {
             //await PopupNavigation.Instance.PushAsync(new BlablablaView(), false);
+        });
+
+        /// <summary>
+        /// Команда открытия отдельной проверки
+        /// </summary>
+        public ICommand OpenCheckListGroupCommand => new Command(async () =>
+        {
+            await Navigation.PushAsync(new CheckListGroupsView());
         });
 
         public event PropertyChangedEventHandler PropertyChanged;

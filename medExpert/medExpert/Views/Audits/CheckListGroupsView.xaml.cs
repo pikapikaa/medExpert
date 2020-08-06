@@ -1,5 +1,4 @@
-﻿using medExpert.ViewModels.Audits;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,15 +10,11 @@ using Xamarin.Forms.Xaml;
 namespace medExpert.Views.Audits
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AuditListView : ContentPage
+    public partial class CheckListGroupsView : ContentPage
     {
-        public AuditListView()
+        public CheckListGroupsView()
         {
             InitializeComponent();
-            this.BindingContext = new AuditListViewModel()
-            {
-                Navigation = this.Navigation
-            };
         }
     }
 }
