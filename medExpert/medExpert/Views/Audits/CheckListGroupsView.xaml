@@ -3,13 +3,141 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:syncfusion="clr-namespace:Syncfusion.XForms.TreeView;assembly=Syncfusion.SfTreeView.XForms" 
+             xmlns:local="clr-namespace:medExpert.Helpers"
              mc:Ignorable="d"
              x:Class="medExpert.Views.Audits.CheckListGroupsView">
+
+    <!-- Шапка -->
+    <NavigationPage.TitleView>
+        <Label Margin="70,0,0,0"
+               FontFamily="{StaticResource SemiBoldFont}"
+               FontSize="20"
+               Text="Проверки"
+               TextColor="Black"
+               VerticalOptions="Center"/>
+    </NavigationPage.TitleView>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <!-- Верстка для 1-го уровня -->
+            <DataTemplate x:Key="HeaderTemplate">
+                <ViewCell>
+                    <ViewCell.View>
+                        <Grid x:Name="grid"
+                              VerticalOptions="Center"
+                              Margin="0,5,0,5"
+                              BackgroundColor="Transparent">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <Label Text="{Binding Name}"
+                                   Style="{StaticResource BoldText}"/>
+                            <Label Grid.Column="1"
+                                   VerticalTextAlignment="Start"
+                                   Style="{StaticResource BoldText}"
+                                   Text="3/1/4"/>
+                        </Grid>
+                    </ViewCell.View>
+                </ViewCell>
+            </DataTemplate>
+
+            <!-- Верстка для уровня с дочерними узлами-->
+            <DataTemplate x:Key="ChildTemplate">
+                <ViewCell>
+                    <ViewCell.View>
+
+                        <Grid x:Name="grid"
+                              BackgroundColor="Transparent"
+                              Margin="0,5,0,5">
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <Label Text="{Binding Name}"
+                                   Style="{StaticResource Text}"
+                                   VerticalTextAlignment="Center"/>
+
+                            <Label Grid.Column="1"
+                                   Style="{StaticResource Text}"
+                                   VerticalTextAlignment="Center"
+                                   Text="7/4/6"/>
+                        </Grid>
+
+
+                    </ViewCell.View>
+                </ViewCell>
+            </DataTemplate>
+
+            <!-- Верстка для уровня с вопросом -->
+            <DataTemplate x:Key="ChildCheckBoxTemplate">
+                <ViewCell>
+                    <ViewCell.View>
+                        <Grid x:Name="grid"
+                              RowSpacing="0"
+                              ColumnSpacing="20"
+                              BackgroundColor="#E3E3E3"
+                              Padding="5"
+                              Margin="0,5,0,5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <Label Text="{Binding Name}"
+                                   VerticalTextAlignment="Center"
+                                   Style="{StaticResource Text}"/>
+                            <Image Grid.Column="1"
+                                   Margin="5"
+                                   Source="{Binding AnswerType, Converter={StaticResource CheckBoxToImageConverter}}">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer CommandParameter="{Binding .}"
+                                                          Command="{Binding Path=BindingContext.GiveQuickAnswerCommand, Source={x:Reference treeView}}"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+
+                        </Grid>
+                    </ViewCell.View>
+                </ViewCell>
+            </DataTemplate>
+
+            <local:TemplateSelector x:Key="Template"
+                                    HeaderTemplate="{StaticResource HeaderTemplate}"
+                                    ChildTemplate="{StaticResource ChildTemplate}"
+                                    ChildCheckBoxTemplate="{StaticResource ChildCheckBoxTemplate}"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to CheckListGroupsView!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+
+        <StackLayout Padding="10">
+            <syncfusion:SfTreeView x:Name="treeView"
+                                   QueryNodeSize="treeView_QueryNodeSize"
+                                   Indentation="5"
+                                   ExpanderWidth="0"
+                                   SelectionMode="None"
+                                   ChildPropertyName="SubCheckLists"
+                                   ItemsSource="{Binding CheckListNodeInfo}"
+                                   ItemTemplate="{StaticResource Template}"
+                                   AutoExpandMode="AllNodesExpanded"
+                                   ExpandActionTarget="Node">
+            </syncfusion:SfTreeView>
         </StackLayout>
+
     </ContentPage.Content>
 </ContentPage>

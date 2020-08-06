@@ -1,18 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace medExpert.Models
 {
-    public class CheckList : INotifyPropertyChanged
+    public class Indicator : INotifyPropertyChanged
     {
-        private AnswerType answerType;
-        private ObservableCollection<CheckList> subCheckLists;
-
         public int Id { get; set; }
+
         public string Name { get; set; }
         private Employee auditor;
 
@@ -29,32 +26,6 @@ namespace medExpert.Models
                     auditor = value;
                     NotifyPropertyChanged();
                 }
-            }
-        }
-
-        /// <summary>
-        /// Коллекция вложенных чек-листов
-        /// </summary>
-        public ObservableCollection<CheckList> SubCheckLists
-        {
-            get { return subCheckLists; }
-            set
-            {
-                subCheckLists = value;
-                NotifyPropertyChanged();
-            }
-        }
-
-        /// <summary>
-        /// Тип ответа
-        /// </summary>
-        public AnswerType AnswerType
-        {
-            get { return answerType; }
-            set
-            {
-                answerType = value;
-                NotifyPropertyChanged();
             }
         }
 

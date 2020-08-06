@@ -1,4 +1,5 @@
-﻿using System;
+﻿using medExpert.ViewModels.Audits;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,16 @@ namespace medExpert.Views.Audits
         public CheckListGroupsView()
         {
             InitializeComponent();
+            BindingContext = new CheckListGroupsViewModel()
+            {
+                Navigation = this.Navigation
+            };
+        }
+
+        private void treeView_QueryNodeSize(object sender, Syncfusion.XForms.TreeView.QueryNodeSizeEventArgs e)
+        {
+            e.Height = e.GetActualNodeHeight();
+            e.Handled = true;
         }
     }
 }

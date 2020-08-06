@@ -79,8 +79,8 @@
 
                     <CollectionView Grid.Row="3"
                                     Grid.ColumnSpan="2"
-                                    HeightRequest="{Binding CheckListHeight}"
-                                    ItemsSource="{Binding CheckLists}">
+                                    HeightRequest="{Binding IndicatorListHeight}"
+                                    ItemsSource="{Binding IndicatorLists}">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Grid Margin="0,0,0,10">

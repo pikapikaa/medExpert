@@ -44,7 +44,7 @@ namespace medExpert.ViewModels.Audits
         /// <summary>
         /// Команда открытия отдельной проверки
         /// </summary>
-        public ICommand OpenCheckListGroupCommand => new Command(async () =>
+        public ICommand OpenCheckListGroupCommand => new Command<object>(async (object list) =>
         {
             await Navigation.PushAsync(new CheckListGroupsView());
         });
@@ -68,22 +68,22 @@ namespace medExpert.ViewModels.Audits
                     PeriodDateIn=new DateTime(2020,7,5),
                     PeriodDateOut=new DateTime(2020,7,10),
                     Status = AuditOperationStatus.Created,
-                    CheckLists = new List<CheckList>{
-                          new CheckList()
+                    IndicatorLists = new List<Indicator>{
+                          new Indicator()
                         {
                             Id=1,
                             Auditor=null,
                             IsChecked=false,
                             Name="Соблюдение прав граждан"
                         },
-                        new CheckList()
+                        new Indicator()
                         {
                             Id=2,
                             Auditor=null,
                             IsChecked=false,
                             Name="Проверка кабинетов, в том числе соблюдение условий хранения ЛС и МИ"
                         },
-                        new CheckList()
+                        new Indicator()
                         {
                             Id=3,
                             Auditor=null,
@@ -98,15 +98,15 @@ namespace medExpert.ViewModels.Audits
                     PeriodDateIn=new DateTime(2020,5,5),
                     PeriodDateOut=new DateTime(2020,5,8),
                     Status = AuditOperationStatus.Executed,
-                    CheckLists = new List<CheckList>{
-                        new CheckList()
+                    IndicatorLists = new List<Indicator>{
+                        new Indicator()
                         {
                             Id=1,
                             Auditor=null,
                             IsChecked=false,
                             Name="Соблюдение прав граждан"
                         },
-                        new CheckList()
+                        new Indicator()
                         {
                             Id=2,
                             Auditor=null,
@@ -121,22 +121,22 @@ namespace medExpert.ViewModels.Audits
                     PeriodDateIn=new DateTime(2020,7,1),
                     PeriodDateOut=new DateTime(2020,7,5),
                     Status = AuditOperationStatus.Running,
-                    CheckLists = new List<CheckList>{
-                        new CheckList()
+                    IndicatorLists = new List<Indicator>{
+                        new Indicator()
                         {
                             Id=1,
                             Auditor=null,
                             IsChecked=false,
                             Name="Соблюдение прав граждан"
                         },
-                        new CheckList()
+                        new Indicator()
                         {
                             Id=2,
                             Auditor=null,
                             IsChecked=false,
                             Name="Проверка кабинетов, в том числе соблюдение условий хранения ЛС и МИ"
                         },
-                        new CheckList()
+                        new Indicator()
                         {
                             Id=3,
                             Auditor=null,
@@ -151,15 +151,15 @@ namespace medExpert.ViewModels.Audits
                     PeriodDateIn=new DateTime(2020,7,16),
                     PeriodDateOut=new DateTime(2020,7,27),
                     Status = AuditOperationStatus.Signed,
-                    CheckLists = new List<CheckList>{
-                        new CheckList()
+                    IndicatorLists = new List<Indicator>{
+                        new Indicator()
                         {
                             Id=1,
                             Auditor=null,
                             IsChecked=false,
                             Name="Соблюдение прав граждан"
                         },
-                        new CheckList()
+                        new Indicator()
                         {
                             Id=2,
                             Auditor=null,
@@ -174,22 +174,22 @@ namespace medExpert.ViewModels.Audits
                     PeriodDateIn=new DateTime(2020,6,5),
                     PeriodDateOut=new DateTime(2020,6,15),
                     Status = AuditOperationStatus.Signing,
-                    CheckLists = new List<CheckList>{
-                         new CheckList()
+                    IndicatorLists = new List<Indicator>{
+                         new Indicator()
                         {
                             Id=1,
                             Auditor=null,
                             IsChecked=false,
                             Name="Соблюдение прав граждан"
                         },
-                        new CheckList()
+                        new Indicator()
                         {
                             Id=2,
                             Auditor=null,
                             IsChecked=false,
                             Name="Проверка кабинетов, в том числе соблюдение условий хранения ЛС и МИ"
                         },
-                        new CheckList()
+                        new Indicator()
                         {
                             Id=3,
                             Auditor=null,

@@ -11,7 +11,7 @@ namespace medExpert.Models
     /// </summary>
     public class Audit : INotifyPropertyChanged
     {
-        private List<CheckList> _checkLists = new List<CheckList>();
+        private List<Indicator> _indicatorLists = new List<Indicator>();
 
         public int Id { get; set; }
 
@@ -44,20 +44,20 @@ namespace medExpert.Models
             get { return $"{PeriodDateOut:dd.MM.yyyy} г."; }
         }
 
-        public List<CheckList> CheckLists
+        public List<Indicator> IndicatorLists
         {
-            get { return _checkLists; }
+            get { return _indicatorLists; }
             set
             {
-                _checkLists = value;
-                OnChanged(nameof(CheckLists));
-                OnChanged(nameof(CheckListHeight));
+                _indicatorLists = value;
+                OnChanged(nameof(IndicatorLists));
+                OnChanged(nameof(IndicatorListHeight));
             }
         }
 
-        public double CheckListHeight
+        public double IndicatorListHeight
         {
-            get { return CheckLists.Count * 50; }
+            get { return IndicatorLists.Count * 50; }
         }
 
         public AuditOperationStatus Status { get; set; }

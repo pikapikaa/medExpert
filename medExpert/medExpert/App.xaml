@@ -11,8 +11,8 @@
         <!-- CONVERTERS -->
         <converters:StatusToColorConverter x:Key="StatusToColorConverter"/>
         <converters:StatusToImageConverter x:Key="StatusToImageConverter"/>
+        <converters:CheckBoxToImageConverter x:Key="CheckBoxToImageConverter"/>
 
-        
         <!--  Шрифты  -->
         <OnPlatform x:Key="BoldFont" x:TypeArguments="x:String">
             <On Platform="Android" Value="Gilroy-Bold.ttf#Gilroy" />
