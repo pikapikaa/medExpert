@@ -1,28 +1,61 @@
 ﻿using medExpert.Models;
+using medExpert.Views.Audits;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace medExpert.ViewModels.Audits
 {
     public class CheckListGroupsViewModel
     {
-        public INavigation Navigation { get; set; }
         private ObservableCollection<CheckList> checkListNodeInfo;
-
         public ObservableCollection<CheckList> CheckListNodeInfo
         {
             get { return checkListNodeInfo; }
             set { this.checkListNodeInfo = value; }
         }
 
+        public INavigation Navigation { get; set; }
+
         public CheckListGroupsViewModel()
         {
             GenerateSource();
         }
+
+        /// <summary>
+        /// Команда открытия детального представления чек-листа
+        /// </summary>
+        public ICommand OpenCheckListDetailViewCommand => new Command<object>((object obj) =>
+        {
+            if (!(obj as Syncfusion.TreeView.Engine.TreeViewNode).HasChildNodes)
+            {
+                Navigation.PushAsync(new CheckListDetailView());
+            }
+        });
+
+        /// <summary>
+        /// Команда быстрого ответа на чек-лист
+        /// </summary>
+        public ICommand GiveQuickAnswerCommand => new Command<object>((object obj) =>
+        {
+            var res = (obj as CheckList).Name;
+            var result = CheckListNodeInfo.Where(i => i.Name.Contains(res));
+        });
+
+        /// <summary>
+        /// Команда открытия модального окна для одинакового выбора ответа
+        /// </summary>
+        public ICommand OpenSameAnswerPopup => new Command<object>(async (object obj) =>
+        {
+            //await PopupNavigation.Instance.PushAsync(new SameAnswerPopupView(), false);
+        });
+
 
         private void GenerateSource()
         {

@@ -134,6 +134,8 @@
                                    ChildPropertyName="SubCheckLists"
                                    ItemsSource="{Binding CheckListNodeInfo}"
                                    ItemTemplate="{StaticResource Template}"
+                                   TapCommand="{Binding OpenCheckListDetailViewCommand}"
+                                   HoldCommand="{Binding OpenSameAnswerPopup}"
                                    AutoExpandMode="AllNodesExpanded"
                                    ExpandActionTarget="Node">
             </syncfusion:SfTreeView>
