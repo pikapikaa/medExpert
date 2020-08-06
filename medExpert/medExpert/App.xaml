@@ -2,11 +2,17 @@
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:converters="clr-namespace:medExpert.Converters"
              mc:Ignorable="d"
              x:Class="medExpert.App">
     <Application.Resources>
 
+        <!-- CONVERTERS -->
+        <converters:StatusToColorConverter x:Key="StatusToColorConverter"/>
+        <converters:StatusToImageConverter x:Key="StatusToImageConverter"/>
+
+        
         <!--  Шрифты  -->
         <OnPlatform x:Key="BoldFont" x:TypeArguments="x:String">
             <On Platform="Android" Value="Gilroy-Bold.ttf#Gilroy" />
