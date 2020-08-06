@@ -15,11 +15,17 @@ namespace medExpert.ViewModels.Audits
     public class CheckListGroupsViewModel
     {
         private ObservableCollection<CheckList> checkListNodeInfo;
+        
         public ObservableCollection<CheckList> CheckListNodeInfo
         {
             get { return checkListNodeInfo; }
             set { this.checkListNodeInfo = value; }
         }
+
+        public string Num { get; set; }
+        public string CompanyName { get; set; }
+        public string Address { get; set; }
+        public string TitleIndicator { get; set; }
 
         public INavigation Navigation { get; set; }
 
@@ -212,6 +218,10 @@ namespace medExpert.ViewModels.Audits
             nodeImageInfo.Add(check2);
 
             checkListNodeInfo = nodeImageInfo;
+            Num = "1";
+            CompanyName = "ГБУЗ «Городская поликлиника № 1»";
+            Address = "г. Улан-Удэ, ул. Каландарашвили, 27";
+            TitleIndicator = "Отпуск и реализация лекарственных препаратов для медицинского применения в аптеке производственной (Приложение 23)";
         }
     }
 }

@@ -4,7 +4,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:syncfusion="clr-namespace:Syncfusion.XForms.TreeView;assembly=Syncfusion.SfTreeView.XForms" 
-             xmlns:local="clr-namespace:medExpert.Helpers"
+             xmlns:local="clr-namespace:medExpert.Helpers" 
+             xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              mc:Ignorable="d"
              x:Class="medExpert.Views.Audits.CheckListGroupsView">
 
@@ -124,22 +125,138 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
+        <ScrollView>
 
-        <StackLayout Padding="10">
-            <syncfusion:SfTreeView x:Name="treeView"
-                                   QueryNodeSize="treeView_QueryNodeSize"
-                                   Indentation="5"
-                                   ExpanderWidth="0"
-                                   SelectionMode="None"
-                                   ChildPropertyName="SubCheckLists"
-                                   ItemsSource="{Binding CheckListNodeInfo}"
-                                   ItemTemplate="{StaticResource Template}"
-                                   TapCommand="{Binding OpenCheckListDetailViewCommand}"
-                                   HoldCommand="{Binding OpenSameAnswerPopup}"
-                                   AutoExpandMode="AllNodesExpanded"
-                                   ExpandActionTarget="Node">
-            </syncfusion:SfTreeView>
-        </StackLayout>
+            <Grid Padding="20"
+                  RowSpacing="15">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
 
+                <Label x:Name="checkListTitle"
+                   LineBreakMode="NoWrap"
+                   MaxLines="3"
+                   HorizontalOptions="FillAndExpand"
+                   Style="{StaticResource BoldText}">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Проверка №"/>
+                            <Span Text="{Binding Num}"/>
+                            <Span Text=" "/>
+                            <Span Text="{Binding CompanyName}"/>
+                            <Span Text=", "/>
+                            <Span Text="{Binding Address}"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Label Grid.Row="1"
+                       Text="{Binding TitleIndicator}"
+                       Style="{StaticResource GrayText}"/>
+
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackLayout>
+                        <Label Text="Начало проверки"
+                           Style="{StaticResource DarkGrayBoldText}"/>
+                        <Label Text="23.09.2020"
+                           Style="{StaticResource Text}"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="1">
+                        <Label Text="Начало проверки"
+                           Style="{StaticResource DarkGrayBoldText}"/>
+                        <Label Text="23.09.2020"
+                           Style="{StaticResource Text}"/>
+                    </StackLayout>
+                </Grid>
+
+                <Grid Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <pancake:PancakeView HorizontalOptions="Center"
+                                     VerticalOptions="End"
+                                     BackgroundColor="White"
+                                     Elevation="4"
+                                     HasShadow="True"
+                                     CornerRadius="25"
+                                     HeightRequest="50"
+                                     WidthRequest="300"
+                                     Margin="0,0,0,1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label Text="Отозвать"
+                               Style="{StaticResource TitleBlue}"
+                               x:Name="AddAuditBtn"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"/>
+                        </Grid>
+                        <pancake:PancakeView.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OpenAddAuditPageCommand}"/>
+                        </pancake:PancakeView.GestureRecognizers>
+                    </pancake:PancakeView>
+
+                    <pancake:PancakeView Grid.Column="1" 
+                                     HorizontalOptions="Center"
+                                     VerticalOptions="End"
+                                     BackgroundColor="#3960E2"
+                                     Elevation="4"
+                                     HasShadow="True"
+                                     CornerRadius="25"
+                                     HeightRequest="50"
+                                     WidthRequest="300"
+                                     Margin="0,0,0,1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label Text="Завершить"
+                               Style="{StaticResource TitleWhite}"
+                               x:Name="hht"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"/>
+                        </Grid>
+                        <pancake:PancakeView.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OpenAddAuditPageCommand}"/>
+                        </pancake:PancakeView.GestureRecognizers>
+                    </pancake:PancakeView>
+                </Grid>
+
+                <syncfusion:SfTreeView Grid.Row="4" 
+                                       x:Name="treeView"
+                                       QueryNodeSize="treeView_QueryNodeSize"
+                                       Indentation="5"
+                                       ExpanderWidth="0"
+                                       SelectionMode="None"
+                                       ChildPropertyName="SubCheckLists"
+                                       ItemsSource="{Binding CheckListNodeInfo}"
+                                       ItemTemplate="{StaticResource Template}"
+                                       TapCommand="{Binding OpenCheckListDetailViewCommand}"
+                                       HoldCommand="{Binding OpenSameAnswerPopup}"
+                                       AutoExpandMode="AllNodesExpanded"
+                                       ExpandActionTarget="Node">
+                </syncfusion:SfTreeView>
+
+            </Grid>
+
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
