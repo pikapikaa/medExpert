@@ -125,7 +125,7 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        <ScrollView>
+        <AbsoluteLayout>
 
             <Grid Padding="20"
                   RowSpacing="15">
@@ -189,24 +189,24 @@
                     </Grid.ColumnDefinitions>
 
                     <pancake:PancakeView HorizontalOptions="Center"
-                                     VerticalOptions="End"
-                                     BackgroundColor="White"
-                                     Elevation="4"
-                                     HasShadow="True"
-                                     CornerRadius="25"
-                                     HeightRequest="50"
-                                     WidthRequest="300"
-                                     Margin="0,0,0,1">
+                                         VerticalOptions="End"
+                                         BackgroundColor="White"
+                                         Elevation="4"
+                                         HasShadow="True"
+                                         CornerRadius="25"
+                                         HeightRequest="50"
+                                         WidthRequest="300"
+                                         Margin="0,0,0,1">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
 
                             <Label Text="Отозвать"
-                               Style="{StaticResource TitleBlue}"
-                               x:Name="AddAuditBtn"
-                               VerticalOptions="Center"
-                               HorizontalOptions="Center"/>
+                                   Style="{StaticResource TitleBlue}"
+                                   x:Name="AddAuditBtn"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Center"/>
                         </Grid>
                         <pancake:PancakeView.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding OpenAddAuditPageCommand}"/>
@@ -214,25 +214,25 @@
                     </pancake:PancakeView>
 
                     <pancake:PancakeView Grid.Column="1" 
-                                     HorizontalOptions="Center"
-                                     VerticalOptions="End"
-                                     BackgroundColor="#3960E2"
-                                     Elevation="4"
-                                     HasShadow="True"
-                                     CornerRadius="25"
-                                     HeightRequest="50"
-                                     WidthRequest="300"
-                                     Margin="0,0,0,1">
+                                         HorizontalOptions="Center"
+                                         VerticalOptions="End"
+                                         BackgroundColor="#3960E2"
+                                         Elevation="4"
+                                         HasShadow="True"
+                                         CornerRadius="25"
+                                         HeightRequest="50"
+                                         WidthRequest="300"
+                                         Margin="0,0,0,1">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
 
                             <Label Text="Завершить"
-                               Style="{StaticResource TitleWhite}"
-                               x:Name="hht"
-                               VerticalOptions="Center"
-                               HorizontalOptions="Center"/>
+                                   Style="{StaticResource TitleWhite}"
+                                   x:Name="hht"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Center"/>
                         </Grid>
                         <pancake:PancakeView.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding OpenAddAuditPageCommand}"/>
@@ -240,10 +240,11 @@
                     </pancake:PancakeView>
                 </Grid>
 
-                <syncfusion:SfTreeView Grid.Row="4" 
+                <syncfusion:SfTreeView Grid.Row="4"
                                        x:Name="treeView"
                                        QueryNodeSize="treeView_QueryNodeSize"
                                        Indentation="5"
+                                       IsVisible="True"
                                        ExpanderWidth="0"
                                        SelectionMode="None"
                                        ChildPropertyName="SubCheckLists"
@@ -254,9 +255,14 @@
                                        AutoExpandMode="AllNodesExpanded"
                                        ExpandActionTarget="Node">
                 </syncfusion:SfTreeView>
-
+                
             </Grid>
-
-        </ScrollView>
+            
+            <ImageButton Source="FAB_struct" 
+                         BackgroundColor="Transparent"
+                         AbsoluteLayout.LayoutFlags="PositionProportional"
+                         AbsoluteLayout.LayoutBounds=".97,.97,60,60" />
+            
+        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

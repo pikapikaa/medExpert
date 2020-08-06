@@ -611,4 +611,13 @@
   <ItemGroup>
     <BundleResource Include="Resources\type_new_audit%403x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\FAB_struct%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\FAB_struct%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\FAB_struct.png" />
+  </ItemGroup>
 </Project>
