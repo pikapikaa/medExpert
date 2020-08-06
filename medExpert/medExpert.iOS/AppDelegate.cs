@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
+using Syncfusion.SfCalendar.XForms.iOS;
+using Syncfusion.XForms.iOS.TreeView;
 using UIKit;
 
 namespace medExpert.iOS
@@ -22,7 +24,11 @@ namespace medExpert.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            Rg.Plugins.Popup.Popup.Init();
+
             global::Xamarin.Forms.Forms.Init();
+            SfTreeViewRenderer.Init();
+            SfCalendarRenderer.Init();
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
