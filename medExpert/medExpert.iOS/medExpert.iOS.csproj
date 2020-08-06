@@ -68,6 +68,10 @@
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <BundleResource Include="Resources\Gilroy-Bold.ttf" />
+    <BundleResource Include="Resources\Gilroy-Medium.ttf" />
+    <BundleResource Include="Resources\Gilroy-Regular.ttf" />
+    <BundleResource Include="Resources\Gilroy-SemiBold.ttf" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
@@ -141,5 +145,467 @@
       <Project>{1546DDE5-30AE-4186-83E3-00A0151E8EA3}</Project>
       <Name>medExpert</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\add_inspector_new_audit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\add_inspector_new_audit%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\add_inspector_new_audit%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\all_audits.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\all_audits%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\all_audits%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\audit_all.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\audit_all%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\audit_all%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\audit_finished.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\audit_finished%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\audit_finished%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\audit_new.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\audit_new%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\audit_new%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\audit_running.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\audit_running%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\audit_running%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\audit_signed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\audit_signed%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\audit_signed%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\audit_signing.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\audit_signing%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\audit_signing%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\audits_menu_item_active.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\audits_menu_item_active%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\audits_menu_item_active%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\audits_menu_item_inactive.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\audits_menu_item_inactive%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\audits_menu_item_inactive%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\background%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\background%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\check_box_active.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\check_box_active%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\check_box_active%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\check_box_inactive.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\check_box_inactive%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\check_box_inactive%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\check_list.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\check_list%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\check_list%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\circle_checkbox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\circle_checkbox%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\circle_checkbox%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\circle_checkbox_inapplicable.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\circle_checkbox_inapplicable%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\circle_checkbox_inapplicable%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\circle_checkbox_no.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\circle_checkbox_no%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\circle_checkbox_no%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\circle_checkbox_yes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\circle_checkbox_yes%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\circle_checkbox_yes%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\close_page_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\close_page_icon%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\close_page_icon%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\crown_new_audit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\crown_new_audit%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\crown_new_audit%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\delete_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\delete_icon%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\delete_icon%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\delete_red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\delete_red%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\delete_red%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\dot_green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\dot_green%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\dot_green%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\dot_yellow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\dot_yellow%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\dot_yellow%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\download_menu_item_inactive.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\download_menu_item_inactive%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\download_menu_item_inactive%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\dropdown.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\dropdown%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\dropdown%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\exit_menu_item.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\exit_menu_item%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\exit_menu_item%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\finished_audits.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\finished_audits%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\finished_audits%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\foundation_new_audit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\foundation_new_audit%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\foundation_new_audit%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\left_arrow_calendar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\left_arrow_calendar%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\left_arrow_calendar%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\location.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\location%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\location%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\logo_side_menu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\logo_side_menu%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\logo_side_menu%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\logotype.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\members_new_audit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\members_new_audit%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\members_new_audit%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\nav-menu-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\nav-menu-icon%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\nav-menu-icon%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\new_audits.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\new_audits%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\new_audits%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\period_new_audit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\period_new_audit%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\period_new_audit%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\profile_menu_item_inactive.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\profile_menu_item_inactive%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\profile_menu_item_inactive%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\project_menu_item_inactive.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\project_menu_item_inactive%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\project_menu_item_inactive%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\right_arrow_calendar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\right_arrow_calendar%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\right_arrow_calendar%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\round_check_box_active.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\round_check_box_active%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\round_check_box_active%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\round_check_box_inactive.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\round_check_box_inactive%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\round_check_box_inactive%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\running_audits.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\running_audits%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\running_audits%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\search_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\search_icon%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\search_icon%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\setting_menu_item_inactive.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\setting_menu_item_inactive%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\setting_menu_item_inactive%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\structural_unit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\structural_unit%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\structural_unit%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\subject_new_audit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\subject_new_audit%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\subject_new_audit%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sun_new_audit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sun_new_audit%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sun_new_audit%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tasks_menu_item_inactive%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tasks_menu_item_inactive%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tasks_menu_tem_inactive.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\three_dots_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\three_dots_icon%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\three_dots_icon%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\type_new_audit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\type_new_audit%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\type_new_audit%403x.png" />
   </ItemGroup>
 </Project>
