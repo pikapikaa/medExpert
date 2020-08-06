@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             Title="Menu"
+             x:Class="medExpert.Navigation.MenuPage">
+    <ContentPage.Content>
+
+        <ScrollView>
+            <StackLayout Padding="60,70,10,15" 
+                         Spacing="0">
+                <Image Source="logo_side_menu" 
+                       HorizontalOptions="Start" 
+                       Aspect="AspectFit" 
+                       Margin="0,0,0,20"/>
+                <Label Text="Баир Баиров" 
+                       Style="{StaticResource Title}"/>
+                <Label Text="Врач-инфекционист"  
+                       Style="{StaticResource NormalText}"/>
+                <Label Text="ГАУЗ «Городская поликлиника №2»" 
+                       Style="{StaticResource NormalText}"/>
+
+                <Grid Padding="0,40,0,0" RowSpacing="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition  Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackLayout Orientation="Horizontal"
+                             Grid.Row="0"
+                             Grid.Column="0" Spacing="13">
+                        <Image Source="audits_menu_item_inactive" 
+                               Aspect="AspectFit"/>
+                        <Label x:Name="btnAudits"
+                               Text="Проверки"
+                               VerticalTextAlignment="Center"
+                               Style="{StaticResource Text}"/>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal"
+                                 Grid.Row="1"
+                                 Grid.Column="0" Spacing="13">
+                        <Image Source="tasks_menu_item_inactive"/>
+                        <Label x:Name="btnTasks" 
+                               VerticalTextAlignment="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Задачи" 
+                                          Style="{StaticResource Text}"/>
+                                    <Span FontAttributes="Bold"
+                                          Text=" в разработке"
+                                          FontSize="Small"
+                                          TextColor="LightCoral"
+                                          FontFamily="{StaticResource SemiBoldFont}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal"
+                                 Grid.Row="2"
+                                 Grid.Column="0" Spacing="13">
+                        <Image Source="project_menu_item_inactive"/>
+                        <Label x:Name="btnProjects" 
+                               VerticalTextAlignment="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Проекты" 
+                                          Style="{StaticResource Text}"/>
+                                    <Span FontAttributes="Bold"
+                                          Text=" в разработке"
+                                          FontSize="Small"
+                                          TextColor="LightCoral"
+                                          FontFamily="{StaticResource SemiBoldFont}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal"
+                                 Grid.Row="3"
+                                 Grid.Column="0" Spacing="13">
+                        <Image Source="profile_menu_item_inactive"/>
+                        <Label x:Name="btnProfile"
+                               VerticalTextAlignment="Center"
+                               Text="Профиль"
+                               Style="{StaticResource Text}"/>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal"
+                                 Grid.Row="4"
+                                 Grid.Column="0" Spacing="13">
+                        <Image Source="setting_menu_item_inactive"/>
+                        <Label x:Name="btnSettings"
+                               VerticalTextAlignment="Center"
+                               Text="Настройки"
+                               Style="{StaticResource Text}"/>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal"
+                                 Grid.Row="5"
+                                 Grid.Column="0" Spacing="13">
+                        <Image Source="download_menu_item_inactive"/>
+                        <Label x:Name="btnUpdating"
+                               VerticalTextAlignment="Center"
+                               Text="В обновлении"
+                               Style="{StaticResource Text}"/>
+                    </StackLayout>
+
+                    <Label Grid.Row="6"
+                           Grid.Column="0"
+                           x:Name="btnHelp"
+                           Text="Помощь"
+                           Margin="32,0,0,0"
+                           Style="{StaticResource Text}"/>
+                </Grid>
+
+                <StackLayout HorizontalOptions="FillAndExpand"
+                             VerticalOptions="EndAndExpand"
+                             Orientation="Horizontal"
+                             Spacing="13">
+                    <Image Source="exit_menu_item"/>
+                    <Label x:Name="btnExit"
+                           Text="Выйти из аккаунта"
+                           Style="{StaticResource Text}"/>
+                </StackLayout>
+
+            </StackLayout>
+        </ScrollView>
+        
+    </ContentPage.Content>
+</ContentPage>
