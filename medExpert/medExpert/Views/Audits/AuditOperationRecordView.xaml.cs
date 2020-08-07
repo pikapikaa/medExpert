@@ -1,4 +1,5 @@
-﻿using System;
+﻿using medExpert.ViewModels.Audits;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,10 @@ namespace medExpert.Views.Audits
         public AuditOperationRecordView()
         {
             InitializeComponent();
+            BindingContext = new AuditOperationRecordViewModel()
+            {
+                Navigation = this.Navigation
+            };
         }
     }
 }

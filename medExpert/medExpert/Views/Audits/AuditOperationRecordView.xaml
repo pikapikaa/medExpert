@@ -5,11 +5,82 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="medExpert.Views.Audits.AuditOperationRecordView">
+
+    <!-- Шапка -->
+    <NavigationPage.TitleView>
+        <Label Margin="70,0,0,0"
+               FontFamily="{StaticResource SemiBoldFont}"
+               FontSize="20"
+               Text="Проверки"
+               TextColor="Black"
+               VerticalOptions="Center"/>
+    </NavigationPage.TitleView>
+    
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to AuditOperationRecordView!"
-                   VerticalOptions="CenterAndExpand" 
-                   HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <AbsoluteLayout>
+
+            <Grid Padding="20"
+                  RowSpacing="15">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Label x:Name="checkListTitle"
+                   LineBreakMode="NoWrap"
+                   MaxLines="3"
+                   HorizontalOptions="FillAndExpand"
+                   Style="{StaticResource BoldText}">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Проверка №"/>
+                            <Span Text="{Binding Num}"/>
+                            <Span Text=" "/>
+                            <Span Text="{Binding CompanyName}"/>
+                            <Span Text=", "/>
+                            <Span Text="{Binding Address}"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Label Grid.Row="1"
+                       Text="{Binding TitleIndicator}"
+                       Style="{StaticResource GrayText}"/>
+
+                <Label Grid.Row="2"
+                       LineBreakMode="NoWrap"
+                       MaxLines="3"
+                       HorizontalOptions="FillAndExpand"
+                       Style="{StaticResource DarkGrayBoldText}">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="С "/>
+                            <Span Text="{Binding PeriodDateInText}"/>
+                            <Span Text=" по "/>
+                            <Span Text="{Binding PeriodDateOutText}"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <StackLayout>
+                    <Label Text="fdf"/>
+                    <Label Text="fdd"/>
+                </StackLayout>
+
+            </Grid>
+
+            <ImageButton Source="FAB_struct" 
+                         BackgroundColor="Transparent"
+                         AbsoluteLayout.LayoutFlags="PositionProportional"
+                         AbsoluteLayout.LayoutBounds=".97,.97,60,60"
+                         Command="{Binding OpenStructuralUnitsListView}"/>
+
+        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>
