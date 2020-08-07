@@ -73,6 +73,13 @@
             <Setter Property="FontAttributes" Value="Bold"/>
         </Style>
 
+        <Style x:Key="TitleSmall" TargetType="Label">
+            <Setter Property="FontFamily" Value="{StaticResource SemiBoldFont}" />
+            <Setter Property="FontSize" Value="17" />
+            <Setter Property="TextColor" Value="#2B3845"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+        </Style>
+
         <Style x:Key="Text" TargetType="Label">
             <Setter Property="FontFamily" Value="{StaticResource MediumFont}" />
             <Setter Property="FontSize" Value="18" />

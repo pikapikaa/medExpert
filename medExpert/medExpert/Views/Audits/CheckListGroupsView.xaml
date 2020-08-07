@@ -161,86 +161,22 @@
                        Text="{Binding TitleIndicator}"
                        Style="{StaticResource GrayText}"/>
 
-                <Grid Grid.Row="2">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-
-                    <StackLayout>
-                        <Label Text="Начало проверки"
-                           Style="{StaticResource DarkGrayBoldText}"/>
-                        <Label Text="23.09.2020"
-                           Style="{StaticResource Text}"/>
-                    </StackLayout>
-
-                    <StackLayout Grid.Column="1">
-                        <Label Text="Начало проверки"
-                           Style="{StaticResource DarkGrayBoldText}"/>
-                        <Label Text="23.09.2020"
-                           Style="{StaticResource Text}"/>
-                    </StackLayout>
-                </Grid>
-
-                <Grid Grid.Row="3">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <pancake:PancakeView HorizontalOptions="Center"
-                                         VerticalOptions="End"
-                                         BackgroundColor="White"
-                                         Elevation="4"
-                                         HasShadow="True"
-                                         CornerRadius="25"
-                                         HeightRequest="50"
-                                         WidthRequest="300"
-                                         Margin="0,0,0,1">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-
-                            <Label Text="Отозвать"
-                                   Style="{StaticResource TitleBlue}"
-                                   x:Name="AddAuditBtn"
-                                   VerticalOptions="Center"
-                                   HorizontalOptions="Center"/>
-                        </Grid>
-                        <pancake:PancakeView.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding OpenAddAuditPageCommand}"/>
-                        </pancake:PancakeView.GestureRecognizers>
-                    </pancake:PancakeView>
-
-                    <pancake:PancakeView Grid.Column="1" 
-                                         HorizontalOptions="Center"
-                                         VerticalOptions="End"
-                                         BackgroundColor="#3960E2"
-                                         Elevation="4"
-                                         HasShadow="True"
-                                         CornerRadius="25"
-                                         HeightRequest="50"
-                                         WidthRequest="300"
-                                         Margin="0,0,0,1">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-
-                            <Label Text="Завершить"
-                                   Style="{StaticResource TitleWhite}"
-                                   x:Name="hht"
-                                   VerticalOptions="Center"
-                                   HorizontalOptions="Center"/>
-                        </Grid>
-                        <pancake:PancakeView.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding OpenAddAuditPageCommand}"/>
-                        </pancake:PancakeView.GestureRecognizers>
-                    </pancake:PancakeView>
-                </Grid>
-
-                <syncfusion:SfTreeView Grid.Row="4"
+                <Label Grid.Row="2"
+                       LineBreakMode="NoWrap"
+                       MaxLines="3"
+                       HorizontalOptions="FillAndExpand"
+                       Style="{StaticResource DarkGrayBoldText}">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="С "/>
+                            <Span Text="{Binding PeriodDateInText}"/>
+                            <Span Text=" по "/>
+                            <Span Text="{Binding PeriodDateOutText}"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+             
+                <syncfusion:SfTreeView Grid.Row="3"
                                        x:Name="treeView"
                                        QueryNodeSize="treeView_QueryNodeSize"
                                        Indentation="5"
@@ -261,7 +197,8 @@
             <ImageButton Source="FAB_struct" 
                          BackgroundColor="Transparent"
                          AbsoluteLayout.LayoutFlags="PositionProportional"
-                         AbsoluteLayout.LayoutBounds=".97,.97,60,60" />
+                         AbsoluteLayout.LayoutBounds=".97,.97,60,60"
+                         Command="{Binding OpenStructuralUnitsListView}"/>
             
         </AbsoluteLayout>
     </ContentPage.Content>
