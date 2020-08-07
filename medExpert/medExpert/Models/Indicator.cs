@@ -47,6 +47,8 @@ namespace medExpert.Models
             }
         }
 
+        public AuditType AuditType { get; set; }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")

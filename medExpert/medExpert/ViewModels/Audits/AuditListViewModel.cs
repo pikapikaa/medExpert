@@ -46,7 +46,20 @@ namespace medExpert.ViewModels.Audits
         /// </summary>
         public ICommand OpenCheckListGroupCommand => new Command<object>(async (object list) =>
         {
-            await Navigation.PushAsync(new CheckListGroupsView());
+            var flag = (list as Indicator)?.AuditType;
+
+            switch (flag)
+            {
+                case AuditType.Employee:
+                case AuditType.StructuralUnit:
+                    await Navigation.PushAsync(new AuditOperationRecordView());
+                    return;
+                case AuditType.Default:
+                    await Navigation.PushAsync(new CheckListGroupsView());
+                    return;
+                default:
+                    return;
+            }
         });
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -74,21 +87,24 @@ namespace medExpert.ViewModels.Audits
                             Id=1,
                             Auditor=null,
                             IsChecked=false,
-                            Name="Соблюдение прав граждан"
+                            Name="Соблюдение прав граждан",
+                            AuditType = AuditType.Employee
                         },
                         new Indicator()
                         {
                             Id=2,
                             Auditor=null,
                             IsChecked=false,
-                            Name="Проверка кабинетов, в том числе соблюдение условий хранения ЛС и МИ"
+                            Name="Проверка кабинетов, в том числе соблюдение условий хранения ЛС и МИ",
+                            AuditType = AuditType.Default
                         },
                         new Indicator()
                         {
                             Id=3,
                             Auditor=null,
                             IsChecked=false,
-                            Name="Размещение информации на информационных стендах и сайте организации"
+                            Name="Размещение информации на информационных стендах и сайте организации",
+                            AuditType = AuditType.StructuralUnit
                         },
                     } },
                 new Audit(){
@@ -104,14 +120,16 @@ namespace medExpert.ViewModels.Audits
                             Id=1,
                             Auditor=null,
                             IsChecked=false,
-                            Name="Соблюдение прав граждан"
+                            Name="Соблюдение прав граждан",
+                            AuditType = AuditType.StructuralUnit
                         },
                         new Indicator()
                         {
                             Id=2,
                             Auditor=null,
                             IsChecked=false,
-                            Name="Соблюдение прав пациентов"
+                            Name="Соблюдение прав пациентов",
+                            AuditType = AuditType.StructuralUnit
                         },
                     } },
                  new Audit(){
@@ -127,21 +145,24 @@ namespace medExpert.ViewModels.Audits
                             Id=1,
                             Auditor=null,
                             IsChecked=false,
-                            Name="Соблюдение прав граждан"
+                            Name="Соблюдение прав граждан",
+                            AuditType = AuditType.Employee
                         },
                         new Indicator()
                         {
                             Id=2,
                             Auditor=null,
                             IsChecked=false,
-                            Name="Проверка кабинетов, в том числе соблюдение условий хранения ЛС и МИ"
+                            Name="Проверка кабинетов, в том числе соблюдение условий хранения ЛС и МИ",
+                            AuditType = AuditType.StructuralUnit
                         },
                         new Indicator()
                         {
                             Id=3,
                             Auditor=null,
                             IsChecked=false,
-                            Name="Размещение информации на информационных стендах и сайте организации"
+                            Name="Размещение информации на информационных стендах и сайте организации",
+                            AuditType = AuditType.Default
                         },
                     } },
                  new Audit(){
@@ -157,14 +178,16 @@ namespace medExpert.ViewModels.Audits
                             Id=1,
                             Auditor=null,
                             IsChecked=false,
-                            Name="Соблюдение прав граждан"
+                            Name="Соблюдение прав граждан",
+                            AuditType = AuditType.StructuralUnit
                         },
                         new Indicator()
                         {
                             Id=2,
                             Auditor=null,
                             IsChecked=false,
-                            Name="Соблюдение прав пациентов"
+                            Name="Соблюдение прав пациентов",
+                            AuditType = AuditType.Employee
                         },
                     } },
                 new Audit(){
@@ -180,21 +203,24 @@ namespace medExpert.ViewModels.Audits
                             Id=1,
                             Auditor=null,
                             IsChecked=false,
-                            Name="Соблюдение прав граждан"
+                            Name="Соблюдение прав граждан",
+                            AuditType = AuditType.Employee
                         },
                         new Indicator()
                         {
                             Id=2,
                             Auditor=null,
                             IsChecked=false,
-                            Name="Проверка кабинетов, в том числе соблюдение условий хранения ЛС и МИ"
+                            Name="Проверка кабинетов, в том числе соблюдение условий хранения ЛС и МИ",
+                            AuditType = AuditType.StructuralUnit
                         },
                         new Indicator()
                         {
                             Id=3,
                             Auditor=null,
                             IsChecked=false,
-                            Name="Размещение информации на информационных стендах и сайте организации"
+                            Name="Размещение информации на информационных стендах и сайте организации",
+                            AuditType = AuditType.Default
                         },
                     } }
 
