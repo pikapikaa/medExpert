@@ -9,18 +9,22 @@
     <!-- Шапка -->
     <NavigationPage.TitleView>
         <Label Margin="70,0,0,0"
-               FontFamily="{StaticResource SemiBoldFont}"
-               FontSize="20"
-               Text="Проверки"
-               TextColor="Black"
-               VerticalOptions="Center"/>
+               HorizontalOptions="FillAndExpand"
+               Style="{StaticResource Title}">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="Проверка №"/>
+                    <Span Text="{Binding Num}"/>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
     </NavigationPage.TitleView>
-    
+
+    <!-- Content -->
     <ContentPage.Content>
         <AbsoluteLayout>
 
-            <Grid Padding="20"
-                  RowSpacing="15">
+            <Grid RowSpacing="15">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
@@ -32,16 +36,13 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <Label x:Name="checkListTitle"
-                   LineBreakMode="NoWrap"
-                   MaxLines="3"
-                   HorizontalOptions="FillAndExpand"
-                   Style="{StaticResource BoldText}">
+                <Label LineBreakMode="NoWrap"
+                       Padding="10,10,10,0"
+                       MaxLines="3"
+                       HorizontalOptions="FillAndExpand"
+                       Style="{StaticResource BoldText}">
                     <Label.FormattedText>
                         <FormattedString>
-                            <Span Text="Проверка №"/>
-                            <Span Text="{Binding Num}"/>
-                            <Span Text=" "/>
                             <Span Text="{Binding CompanyName}"/>
                             <Span Text=", "/>
                             <Span Text="{Binding Address}"/>
@@ -50,10 +51,12 @@
                 </Label>
 
                 <Label Grid.Row="1"
+                       Padding="10,0,10,0"
                        Text="{Binding TitleIndicator}"
                        Style="{StaticResource GrayText}"/>
 
                 <Label Grid.Row="2"
+                       Padding="10,0,10,0"
                        LineBreakMode="NoWrap"
                        MaxLines="3"
                        HorizontalOptions="FillAndExpand"
@@ -68,10 +71,50 @@
                     </Label.FormattedText>
                 </Label>
 
-                <StackLayout>
-                    <Label Text="fdf"/>
-                    <Label Text="fdd"/>
-                </StackLayout>
+                <BoxView Grid.Row="3" 
+                         HorizontalOptions="FillAndExpand"
+                         HeightRequest="1"
+                         Color="#E3E3E3"/>
+
+                <ListView Grid.Row="4" 
+                          Margin="10,0,10,0"
+                          SeparatorVisibility="None"
+                          HasUnevenRows="True" 
+                          ItemsSource="{Binding StructuralUnits}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Label Text="{Binding Name}"
+                                           VerticalTextAlignment="Center"
+                                           Style="{StaticResource Text}"/>
+
+                                    <Label Grid.Column="1" 
+                                           Text="32/23/23"
+                                           VerticalTextAlignment="Center"
+                                           Style="{StaticResource Text}"/>
+
+                                    <BoxView Grid.ColumnSpan="2"
+                                             Grid.Row="1"
+                                             HorizontalOptions="FillAndExpand"
+                                             HeightRequest="1"
+                                             Margin="0,5,0,5"
+                                             Color="#E3E3E3"/>
+
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
 
             </Grid>
 
