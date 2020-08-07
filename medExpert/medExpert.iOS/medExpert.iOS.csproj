@@ -620,4 +620,13 @@
   <ItemGroup>
     <BundleResource Include="Resources\FAB_struct.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\close_filter%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\close_filter%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\close_filter.png" />
+  </ItemGroup>
 </Project>
