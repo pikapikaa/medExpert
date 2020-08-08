@@ -1,10 +1,12 @@
 ﻿using medExpert.Models;
+using medExpert.Views.Audits;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace medExpert.ViewModels.Audits
@@ -49,6 +51,14 @@ namespace medExpert.ViewModels.Audits
         {
             GenerateSource();
         }
+
+        /// <summary>
+        /// Команда открытия окна для выбора структурного подразделения
+        /// </summary>
+        public ICommand OpenStructuralUnitsListView => new Command<object>(async (object obj) =>
+        {
+            await Navigation.PushModalAsync(new NavigationPage(new StructuralUnitsListView()), true);
+        });
 
         public event PropertyChangedEventHandler PropertyChanged;
 
