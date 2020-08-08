@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:controls="clr-namespace:medExpert.Controls"
              mc:Ignorable="d"
              x:Class="medExpert.Views.Audits.AuditOperationRecordView">
 
@@ -22,108 +22,116 @@
 
     <!-- Content -->
     <ContentPage.Content>
-        <AbsoluteLayout>
+        <RelativeLayout>
+            
+            <ScrollView RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"  
+                        RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1}">
 
-            <Grid RowSpacing="15">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
+                <StackLayout>
+                    <Grid RowSpacing="15">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
 
-                <Label LineBreakMode="NoWrap"
+                        <Label LineBreakMode="NoWrap"
                        Padding="10,10,10,0"
                        MaxLines="3"
                        HorizontalOptions="FillAndExpand"
                        Style="{StaticResource BoldText}">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <Span Text="{Binding CompanyName}"/>
-                            <Span Text=", "/>
-                            <Span Text="{Binding Address}"/>
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{Binding CompanyName}"/>
+                                    <Span Text=", "/>
+                                    <Span Text="{Binding Address}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
 
-                <Label Grid.Row="1"
+                        <Label Grid.Row="1"
                        Padding="10,0,10,0"
                        Text="{Binding TitleIndicator}"
                        Style="{StaticResource GrayText}"/>
 
-                <Label Grid.Row="2"
+                        <Label Grid.Row="2"
                        Padding="10,0,10,0"
                        LineBreakMode="NoWrap"
                        MaxLines="3"
                        HorizontalOptions="FillAndExpand"
                        Style="{StaticResource DarkGrayBoldText}">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <Span Text="С "/>
-                            <Span Text="{Binding PeriodDateInText}"/>
-                            <Span Text=" по "/>
-                            <Span Text="{Binding PeriodDateOutText}"/>
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="С "/>
+                                    <Span Text="{Binding PeriodDateInText}"/>
+                                    <Span Text=" по "/>
+                                    <Span Text="{Binding PeriodDateOutText}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
 
-                <BoxView Grid.Row="3" 
+                        <BoxView Grid.Row="3" 
                          HorizontalOptions="FillAndExpand"
                          HeightRequest="1"
                          Color="#E3E3E3"/>
 
-                <ListView Grid.Row="4" 
-                          Margin="10,0,10,10"
-                          SeparatorVisibility="None"
-                          HasUnevenRows="True" 
-                          ItemsSource="{Binding StructuralUnits}">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="Auto"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                    </Grid.RowDefinitions>
+                        <controls:DynamicStackLayout Grid.Row="4" 
+                                             ItemsSource="{Binding StructuralUnits}"
+                                             Orientation="Vertical" 
+                                             Padding="10,0,10,10">
+                            <controls:DynamicStackLayout.ItemTemplate>
+                                <DataTemplate>
 
-                                    <Label Text="{Binding Name}"
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+
+                                        <Label Text="{Binding Name}"
                                            VerticalTextAlignment="Center"
                                            Style="{StaticResource Text}"/>
 
-                                    <Label Grid.Column="1" 
+                                        <Label Grid.Column="1" 
                                            Text="32/23/23"
                                            VerticalTextAlignment="Center"
                                            Style="{StaticResource Text}"/>
 
-                                    <BoxView Grid.ColumnSpan="2"
+                                        <BoxView Grid.ColumnSpan="2"
                                              Grid.Row="1"
                                              HorizontalOptions="FillAndExpand"
                                              HeightRequest="1"
                                              Margin="0,5,0,5"
                                              Color="#E3E3E3"/>
 
-                                </Grid>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                                    </Grid>
 
-            </Grid>
+                                </DataTemplate>
+                            </controls:DynamicStackLayout.ItemTemplate>
+                        </controls:DynamicStackLayout>
 
+                    </Grid>
+                </StackLayout>
+                
+            </ScrollView>
+            
             <ImageButton Source="FAB_struct" 
                          BackgroundColor="Transparent"
-                         AbsoluteLayout.LayoutFlags="PositionProportional"
-                         AbsoluteLayout.LayoutBounds=".97,.97,60,60"
+                         WidthRequest="60"
+                         HeightRequest="60"
+                         RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=-75}"  
+                         RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=-75}"
                          Command="{Binding OpenStructuralUnitsListView}"/>
-
-        </AbsoluteLayout>
+            
+        </RelativeLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -42,7 +42,7 @@ namespace medExpert.ViewModels.Audits
         });
 
         /// <summary>
-        /// Команда открытия отдельной проверки
+        /// Команда 
         /// </summary>
         public ICommand OpenCheckListGroupCommand => new Command<object>(async (object list) =>
         {

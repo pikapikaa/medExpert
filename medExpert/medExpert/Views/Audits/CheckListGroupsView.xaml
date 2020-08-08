@@ -175,7 +175,7 @@
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-             
+
                 <syncfusion:SfTreeView Grid.Row="3"
                                        x:Name="treeView"
                                        QueryNodeSize="treeView_QueryNodeSize"
@@ -191,15 +191,9 @@
                                        AutoExpandMode="AllNodesExpanded"
                                        ExpandActionTarget="Node">
                 </syncfusion:SfTreeView>
-                
+
             </Grid>
-            
-            <ImageButton Source="FAB_struct" 
-                         BackgroundColor="Transparent"
-                         AbsoluteLayout.LayoutFlags="PositionProportional"
-                         AbsoluteLayout.LayoutBounds=".97,.97,60,60"
-                         Command="{Binding OpenStructuralUnitsListView}"/>
-            
+
         </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>
