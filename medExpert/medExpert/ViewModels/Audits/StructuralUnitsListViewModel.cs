@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows.Input;
@@ -42,6 +43,31 @@ namespace medExpert.ViewModels.Audits
         public ICommand CloseStructuralUnitsListViewCommand => new Command<object>(async (object obj) =>
         {
             await Navigation.PopModalAsync();
+        });
+
+        /// <summary>
+        /// Команда добавления подразделения
+        /// </summary>
+        public ICommand AddStructuralUnitCommand => new Command<object>(async (object obj) =>
+        {
+            MessagingCenter.Send(this, MessageKeys.AddStructuralUnit);
+            await Navigation.PopModalAsync();
+        });
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ICommand ClickCheckBoxCommand => new Command<object>(async(object obj) =>
+        {
+            if (obj is StructuralUnit  structuralUnit)
+            {
+                var item = StructuralUnits.FirstOrDefault(i => i.Id == structuralUnit.Id);
+                if (item != null)
+                {
+                    item.IsChecked = !item.IsChecked;
+                }
+            }
+            OnPropertyChanged();
         });
 
         public event PropertyChangedEventHandler PropertyChanged;

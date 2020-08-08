@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows.Input;
@@ -50,6 +51,25 @@ namespace medExpert.ViewModels.Audits
         public AuditOperationRecordViewModel()
         {
             GenerateSource();
+            MessagingCenter.Subscribe<StructuralUnitsListViewModel>(this,
+            MessageKeys.AddStructuralUnit, sender =>
+            {
+
+                var t = new ObservableCollection<StructuralUnit>(sender.StructuralUnits
+                                    .Where(i => (i is StructuralUnit && (((StructuralUnit)i)
+                                    .IsChecked) && !IsExistInCurrentList(i))));
+                if (t.Count != 0)
+                {
+                    foreach (var item in t)
+                        StructuralUnits.Add(item);
+                }
+            });
+        }
+
+        private bool IsExistInCurrentList(StructuralUnit o)
+        {
+            var flag = StructuralUnits.Any(e => e.Id == o.Id);
+            return flag;
         }
 
         /// <summary>
@@ -77,7 +97,7 @@ namespace medExpert.ViewModels.Audits
             PeriodDateOut = new DateTime(2020, 5, 8);
 
             var _listOfItems = new DataStructuralUnitFactory().GetData();
-            StructuralUnits = new ObservableCollection<StructuralUnit>(_listOfItems);
+            StructuralUnits = new ObservableCollection<StructuralUnit>();
         }
     }
 

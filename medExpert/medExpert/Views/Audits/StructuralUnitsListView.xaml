@@ -58,33 +58,33 @@
                                 </Grid.RowDefinitions>
 
                                 <Label Grid.Column="0"
-                                   Grid.Row="0"
-                                   Text="{Binding Name}"
-                                   VerticalTextAlignment="Center"
-                                   Style="{StaticResource NormalText}">
+                                       Grid.Row="0"
+                                       Text="{Binding Name}"
+                                       VerticalTextAlignment="Center"
+                                       Style="{StaticResource NormalText}">
                                 </Label>
 
                                 <Image Source="check_box_inactive"
-                                   Grid.Column="1"
-                                   Grid.Row="0"
-                                   IsVisible="False"/>
+                                       Grid.Column="1"
+                                       Grid.Row="0"
+                                       IsVisible="{Binding IsChecked, Converter={StaticResource BoolToImageConverter}}"/>
 
                                 <Image Source="check_box_active"
-                                   Grid.Column="1"
-                                   Grid.Row="0"
-                                   IsVisible="True"/>
+                                       Grid.Column="1"
+                                       Grid.Row="0"
+                                       IsVisible="{Binding IsChecked}"/>
 
                                 <BoxView Grid.ColumnSpan="2"
-                                     Grid.Row="1"
-                                     HorizontalOptions="FillAndExpand"
-                                     HeightRequest="1"
-                                     Margin="0,15,0,15"
-                                     Color="#E3E3E3"/>
+                                         Grid.Row="1"
+                                         HorizontalOptions="FillAndExpand"
+                                         HeightRequest="1"
+                                         Margin="0,15,0,15"
+                                         Color="#E3E3E3"/>
 
                                 <Grid.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding Source={x:Reference structuralUnitsListView}, Path=BindingContext.ClickCheckBoxCommand}"
-                                                  CommandParameter="{Binding .}"
-                                                  NumberOfTapsRequired="1" />
+                                                          CommandParameter="{Binding .}"
+                                                          NumberOfTapsRequired="1" />
                                 </Grid.GestureRecognizers>
                             </Grid>
                         </ViewCell>
@@ -108,14 +108,14 @@
                     </Grid.ColumnDefinitions>
 
                     <Label Text="Добавить подразделение"
-                       Style="{StaticResource TitleWhite}"
-                       x:Name="AddAuditBtn"
-                       VerticalOptions="Center"
-                       HorizontalOptions="Center"/>
+                           Style="{StaticResource TitleWhite}"
+                           x:Name="AddAuditBtn"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"/>
                 </Grid>
 
                 <pancake:PancakeView.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding AddChairmanCommand}"/>
+                    <TapGestureRecognizer Command="{Binding AddStructuralUnitCommand}"/>
                 </pancake:PancakeView.GestureRecognizers>
 
             </pancake:PancakeView>

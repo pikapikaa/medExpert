@@ -12,6 +12,7 @@
         <converters:StatusToColorConverter x:Key="StatusToColorConverter"/>
         <converters:StatusToImageConverter x:Key="StatusToImageConverter"/>
         <converters:CheckBoxToImageConverter x:Key="CheckBoxToImageConverter"/>
+        <converters:BoolToImageConverter x:Key="BoolToImageConverter"/>
 
         <!--  Шрифты  -->
         <OnPlatform x:Key="BoldFont" x:TypeArguments="x:String">
