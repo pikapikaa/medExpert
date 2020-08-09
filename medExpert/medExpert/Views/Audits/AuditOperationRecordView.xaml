@@ -123,7 +123,7 @@
                 </StackLayout>
                 
             </ScrollView>
-            
+
             <ImageButton Source="FAB_struct" 
                          BackgroundColor="Transparent"
                          WidthRequest="60"
@@ -131,7 +131,17 @@
                          RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=-75}"  
                          RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=-75}"
                          Command="{Binding OpenStructuralUnitsListView}"/>
+
+            <!-- Кнопка для добавления сотрудников -->
             
+            <!--<ImageButton Source="FAB_employee" 
+                         BackgroundColor="Transparent"
+                         WidthRequest="60"
+                         HeightRequest="60"
+                         RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=-75}"  
+                         RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=-75}"
+                         Command="{Binding OpenStructuralUnitsListView}"/>-->
+
         </RelativeLayout>
     </ContentPage.Content>
 </ContentPage>
