@@ -13,6 +13,8 @@ namespace medExpert.ViewModels.Audits
 {
     class StructuralUnitsListViewModel : INotifyPropertyChanged
     {
+        private bool isEntryVisible = false;
+        private string searchText = "";
         public INavigation Navigation { get; set; }
         private ObservableCollection<StructuralUnit> structuralUnits =
            new ObservableCollection<StructuralUnit>();
@@ -27,6 +29,27 @@ namespace medExpert.ViewModels.Audits
             {
                 structuralUnits = value;
                 OnPropertyChanged();
+            }
+        }
+
+        public bool IsEntryVisible
+        {
+            get { return isEntryVisible; }
+            set
+            {
+                isEntryVisible = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string SearchText
+        {
+            get { return searchText; }
+            set
+            {
+                searchText = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(StructuralUnits));
             }
         }
 
@@ -68,6 +91,31 @@ namespace medExpert.ViewModels.Audits
                 }
             }
             OnPropertyChanged();
+        });
+
+        /// <summary>
+        /// Команда поиска структурного подразделения
+        /// </summary>
+        public ICommand SearchTextChangedCommand => new Command(() =>
+        {
+            if (string.IsNullOrWhiteSpace(SearchText))
+                StructuralUnits = _structuralUnitsUnfiltered;
+            else
+            {
+                _structuralUnitsFiltered = new ObservableCollection<StructuralUnit>(_structuralUnitsUnfiltered
+                                            .Where(i => (i is StructuralUnit && (((StructuralUnit)i)
+                                            .Name.ToLower()
+                                            .Contains(SearchText.ToLower())))));
+                StructuralUnits = _structuralUnitsFiltered;
+            }
+        });
+
+        /// <summary>
+        /// Команда показа строки поиска структурного подразделения
+        /// </summary>
+        public ICommand ShowSearchEntryCommand => new Command(() =>
+        {
+            IsEntryVisible = !IsEntryVisible;
         });
 
         public event PropertyChangedEventHandler PropertyChanged;
