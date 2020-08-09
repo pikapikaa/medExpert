@@ -1,4 +1,6 @@
 ﻿using medExpert.Models;
+using medExpert.Views.Audits.Popups;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -116,6 +118,15 @@ namespace medExpert.ViewModels.Audits
         public ICommand ShowSearchEntryCommand => new Command(() =>
         {
             IsEntryVisible = !IsEntryVisible;
+        });
+
+        /// <summary>
+        /// Команда открытия окна меню
+        /// </summary>
+        public ICommand OpenMenuPopupCommand => new Command(async () =>
+        {
+            IsEntryVisible = false;
+            await PopupNavigation.Instance.PushAsync(new MenuPopupView(), false);
         });
 
         public event PropertyChangedEventHandler PropertyChanged;
