@@ -2,10 +2,13 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:local="clr-namespace:medExpert.Renderers" 
+             xmlns:behaviors="clr-namespace:medExpert.Behaviors"
              mc:Ignorable="d"
              x:Class="medExpert.Views.Audits.NewStructuralUnitView">
-    
+
     <NavigationPage.TitleView>
         <StackLayout Orientation="Horizontal"
                      Margin="10"
@@ -17,7 +20,7 @@
                          Command="{Binding CloseNewStructuralUnitViewCommand}"
                          HeightRequest="15"
                          WidthRequest="15"/>
-            <Label Text="Создать подразделение" 
+            <Label Text="Новое подразделение" 
                    MaxLines="1"
                    Margin="20,0,0,0"
                    HorizontalTextAlignment="Start"
@@ -26,10 +29,63 @@
     </NavigationPage.TitleView>
 
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to NewStructuralUnit!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+
+        <AbsoluteLayout Padding="20">
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Label Text="Наименование подразделения"
+                       Style="{StaticResource DarkGrayText}"/>
+                <Frame Grid.Row="1"
+                       Margin="0" 
+                       BackgroundColor="#F2F2F2"
+                       Padding="0">
+                    <local:CustomEntryRenderer Text="{Binding NameStructuralUnit}"
+                                               HorizontalOptions="FillAndExpand"
+                                               BackgroundColor="#F2F2F2"
+                                               HorizontalTextAlignment="Start"
+                                               Placeholder="Введите наименование"
+                                               Margin="0"
+                                               Style="{StaticResource Text}">
+                        <local:CustomEntryRenderer.Behaviors>
+                            <behaviors:EventToCommandBehavior EventName="TextChanged"
+                                                              Command="{Binding SearchTextChangedCommand}"/>
+                        </local:CustomEntryRenderer.Behaviors>
+                    </local:CustomEntryRenderer>
+                </Frame>
+            </Grid>
+
+
+            <pancake:PancakeView AbsoluteLayout.LayoutBounds=".5, 1,350,50"
+                                 AbsoluteLayout.LayoutFlags="XProportional,YProportional"
+                                 BackgroundColor="#3960E2"
+                                 Elevation="4"
+                                 HasShadow="True"
+                                 CornerRadius="15">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Text="Создать подразделение"
+                           Style="{StaticResource TitleWhite}"
+                           x:Name="AddAuditBtn"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"/>
+                </Grid>
+
+                <pancake:PancakeView.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding AddNewStructuralUnitCommand}"/>
+                </pancake:PancakeView.GestureRecognizers>
+
+            </pancake:PancakeView>
+        </AbsoluteLayout>
+
     </ContentPage.Content>
 </ContentPage>
