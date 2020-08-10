@@ -12,12 +12,12 @@ using Xamarin.Forms.Xaml;
 namespace medExpert.Views.Audits.Popups
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MenuPopupView : PopupPage
+    public partial class SortPopupView : PopupPage
     {
-        public MenuPopupView()
+        public SortPopupView()
         {
             InitializeComponent();
-            BindingContext = new MenuPopupViewModel();
+            BindingContext = new SortPopupViewModel();
         }
     }
 }

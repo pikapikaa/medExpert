@@ -25,7 +25,7 @@
                          WidthRequest="15"/>
             <Label Text="Добавить подразделение" 
                    MaxLines="1"
-                   IsVisible="{Binding IsEntryVisible, Converter={StaticResource BoolToImageConverter}}"
+                   IsVisible="{Binding IsEntryVisible, Converter={StaticResource InverseBoolConverter}}"
                    Margin="20,0,0,0"
                    HorizontalTextAlignment="Start"
                    Style="{StaticResource TitleSmall}"/>
@@ -83,7 +83,7 @@
                                 <Image Source="check_box_inactive"
                                        Grid.Column="1"
                                        Grid.Row="0"
-                                       IsVisible="{Binding IsChecked, Converter={StaticResource BoolToImageConverter}}"/>
+                                       IsVisible="{Binding IsChecked, Converter={StaticResource InverseBoolConverter}}"/>
 
                                 <Image Source="check_box_active"
                                        Grid.Column="1"

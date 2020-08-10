@@ -60,6 +60,34 @@ namespace medExpert.ViewModels.Audits
             var _listOfItems = new DataFactory().GetStructuralUnits();
             StructuralUnits = new ObservableCollection<StructuralUnit>(_listOfItems);
             _structuralUnitsUnfiltered = new ObservableCollection<StructuralUnit>(_listOfItems);
+
+            MessagingCenter.Subscribe<SortPopupViewModel>(this,
+                 MessageKeys.AscendingSort, sender =>
+                 {
+                     _structuralUnitsFiltered = new ObservableCollection<StructuralUnit>(_structuralUnitsUnfiltered
+                                           .OrderBy(t => t.Name));
+                     StructuralUnits = _structuralUnitsFiltered;
+                 });
+
+            MessagingCenter.Subscribe<SortPopupViewModel>(this,
+               MessageKeys.DescendingSort, sender =>
+               {
+                   _structuralUnitsFiltered = new ObservableCollection<StructuralUnit>(_structuralUnitsUnfiltered
+                                         .OrderByDescending(t => t.Name));
+                   StructuralUnits = _structuralUnitsFiltered;
+               });
+
+            MessagingCenter.Subscribe<SortPopupViewModel>(this,
+               MessageKeys.DefaultSort, sender =>
+               {
+                   StructuralUnits = _structuralUnitsFiltered;
+               });
+
+            MessagingCenter.Subscribe<SortPopupViewModel>(this,
+             MessageKeys.DateSort, sender =>
+             {
+                 StructuralUnits = _structuralUnitsFiltered;
+             });
         }
 
         /// <summary>

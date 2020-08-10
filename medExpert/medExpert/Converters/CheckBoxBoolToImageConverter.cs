@@ -6,16 +6,24 @@ using Xamarin.Forms;
 
 namespace medExpert.Converters
 {
-    public class BoolToImageConverter : IValueConverter
+    public class CheckBoxBoolToImageConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return !(bool)value;
+            bool flag = (bool)value;
+            if (flag)
+            {
+                return "round_check_box_active";
+            }
+            else
+            {
+                return "round_check_box_inactive";
+            }
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return !(bool)value;
+            return null;
         }
     }
 }
