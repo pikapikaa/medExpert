@@ -1,5 +1,4 @@
 ﻿using medExpert.ViewModels.Audits;
-using Rg.Plugins.Popup.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,15 +8,15 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace medExpert.Views.Audits.Popups
+namespace medExpert.Views.Audits
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MenuPopupView : PopupPage
+    public partial class NewStructuralUnit : ContentPage
     {
-        public MenuPopupView()
+        public NewStructuralUnit()
         {
             InitializeComponent();
-            BindingContext = new MenuPopupViewModel()
+            BindingContext = new NewStructuralUnitViewModel()
             {
                 Navigation = this.Navigation
             };

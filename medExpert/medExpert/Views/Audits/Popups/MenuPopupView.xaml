@@ -27,7 +27,12 @@
                                               NumberOfTapsRequired="1"  />
                     </Label.GestureRecognizers>
                 </Label>
-                <Label Text="Создать подразделение" Style="{StaticResource Text}">
+                <Label Text="Создать подразделение" 
+                        Style="{StaticResource Text}">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OpenNewStructuralUnitCommand}"
+                                              NumberOfTapsRequired="1"  />
+                    </Label.GestureRecognizers>
                 </Label>
             </StackLayout>
 

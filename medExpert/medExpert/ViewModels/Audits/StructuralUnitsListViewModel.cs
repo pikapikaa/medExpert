@@ -157,6 +157,11 @@ namespace medExpert.ViewModels.Audits
             await PopupNavigation.Instance.PushAsync(new MenuPopupView(), false);
         });
 
+        /// <summary>
+        /// Команда открытия экрана создания структурного подразделения
+        /// </summary>
+        
+
         public event PropertyChangedEventHandler PropertyChanged;
         void OnPropertyChanged([CallerMemberName] string name = "")
         {
