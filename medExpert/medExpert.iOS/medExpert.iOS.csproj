@@ -134,6 +134,9 @@
     <PackageReference Include="Syncfusion.Xamarin.SfCalendar">
       <Version>18.2.0.48</Version>
     </PackageReference>
+    <PackageReference Include="Syncfusion.Xamarin.SfTabView">
+      <Version>18.2.0.48</Version>
+    </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfTreeView">
       <Version>18.2.0.48</Version>
     </PackageReference>
@@ -638,5 +641,23 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\FAB_employee.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\image_test%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\image_test%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\image_test.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\image_download%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\image_download%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\image_download.png" />
   </ItemGroup>
 </Project>

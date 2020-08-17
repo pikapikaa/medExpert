@@ -4,6 +4,7 @@ using System.Linq;
 
 using Foundation;
 using Syncfusion.SfCalendar.XForms.iOS;
+using Syncfusion.XForms.iOS.TabView;
 using Syncfusion.XForms.iOS.TreeView;
 using UIKit;
 
@@ -29,6 +30,7 @@ namespace medExpert.iOS
             global::Xamarin.Forms.Forms.Init();
             SfTreeViewRenderer.Init();
             SfCalendarRenderer.Init();
+            SfTabViewRenderer.Init();
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

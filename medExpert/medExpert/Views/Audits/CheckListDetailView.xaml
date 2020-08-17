@@ -3,13 +3,136 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms" 
+             xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              mc:Ignorable="d"
              x:Class="medExpert.Views.Audits.CheckListDetailView">
+
+    <!-- Шапка -->
+    <NavigationPage.TitleView>
+        <Label Margin="70,0,0,0"
+               FontFamily="{StaticResource SemiBoldFont}"
+               FontSize="20"
+               Text="Контроль"
+               TextColor="Black"
+               VerticalOptions="Center"/>
+    </NavigationPage.TitleView>
+
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to CheckListDetailView!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <tabView:SfTabView  VisibleHeaderCount="2">
+
+            <tabView:SfTabItem Title="Проверка" 
+                               TitleFontSize="18">
+                <tabView:SfTabItem.Content>
+                    <Grid Padding="10"
+                          RowSpacing="15">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Text="Пункт 2 - Правила отпуска"
+                               Style="{StaticResource Text}"/>
+
+                        <Label Grid.Row="1" 
+                               Style="{StaticResource GrayText}"
+                               Text="Отпуск и реализация лекарственных препаратов для медицинского применения в аптеке производственной (Приложение 23)"/>
+
+
+
+                        <ScrollView  Grid.Row="2"  
+                                     HorizontalScrollBarVisibility="Never"
+                                     Orientation="Horizontal">
+                            <StackLayout Orientation="Horizontal" Spacing="15">
+                                <pancake:PancakeView BackgroundColor="Transparent" 
+                                                     CornerRadius="10">
+                                    <pancake:PancakeView.Border>
+                                        <pancake:Border Thickness="2" 
+                                                        Color="#3960E2"
+                                                        DashPattern="{Binding BorderDashPattern, Mode=TwoWay}"/>
+                                    </pancake:PancakeView.Border>
+                                    <Grid HeightRequest="100"
+                                          WidthRequest="100">
+                                        <StackLayout VerticalOptions="Center">
+                                            <Image Source="image_download" 
+                                                   WidthRequest="40" 
+                                                   HeightRequest="40"/>
+                                        </StackLayout>
+                                    
+                                       
+                                    </Grid>
+                                </pancake:PancakeView>
+                                <pancake:PancakeView CornerRadius="10">
+                                    <Grid 
+                                            HeightRequest="100"
+                                            WidthRequest="100">
+                                        <Image Aspect="AspectFill" Source="image_test" />
+                                        <Frame
+                                            Margin="5"
+                                            Padding="10,5"
+                                            BackgroundColor="Transparent"
+                                            CornerRadius="15"
+                                            HasShadow="False"
+                                            HorizontalOptions="Start"
+                                            VerticalOptions="Start">
+                                           
+                                        </Frame>
+                                    </Grid>
+                                </pancake:PancakeView>
+                                <pancake:PancakeView CornerRadius="10">
+                                    <Grid
+                                        
+                                        HeightRequest="100"
+                                        WidthRequest="100">
+                                        <Image Aspect="AspectFill" Source="image_test" />
+                                        <Frame
+                                            Margin="5"
+                                            Padding="10,5"
+                                            BackgroundColor="Transparent"
+                                            CornerRadius="15"
+                                            HasShadow="False"
+                                            HorizontalOptions="Start"
+                                            VerticalOptions="Start">
+                                        </Frame>
+                                    </Grid>
+                                </pancake:PancakeView>
+                                <pancake:PancakeView CornerRadius="10">
+                                    <Grid
+                                        
+                                        HeightRequest="100"
+                                        WidthRequest="100">
+                                        <Image Aspect="AspectFill" Source="image_test" />
+                                        <Frame
+                                            Margin="5"
+                                            Padding="10,5"
+                                            BackgroundColor="Transparent"
+                                            CornerRadius="15"
+                                            HasShadow="False"
+                                            HorizontalOptions="Start"
+                                            VerticalOptions="Start">
+                                        </Frame>
+                                    </Grid>
+                                </pancake:PancakeView>
+                            </StackLayout>
+                        </ScrollView>
+
+                   
+                        
+                    </Grid>
+                    
+                </tabView:SfTabItem.Content>
+            </tabView:SfTabItem>
+
+            <tabView:SfTabItem Title="Нарушения" 
+                               TitleFontSize="18">
+                <tabView:SfTabItem.Content>
+                    <Grid x:Name="FavoritesGrid" />
+                </tabView:SfTabItem.Content>
+            </tabView:SfTabItem>
+           
+        </tabView:SfTabView>
     </ContentPage.Content>
 </ContentPage>
