@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Xamarin.Forms;
 
 namespace medExpert.Droid
 {
@@ -20,6 +21,8 @@ namespace medExpert.Droid
             base.OnCreate(savedInstanceState);
 
             Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
+
+            Forms.SetFlags("SwipeView_Experimental");
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);

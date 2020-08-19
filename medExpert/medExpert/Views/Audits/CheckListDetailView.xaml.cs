@@ -1,4 +1,5 @@
 ﻿using medExpert.ViewModels.Audits;
+using Plugin.Media;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,22 @@ namespace medExpert.Views.Audits
         {
             InitializeComponent();
             BindingContext = new CheckListDetailViewModel();
+        }
+
+        private void takePhoto_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void treeView1_QueryNodeSize(object sender, Syncfusion.XForms.TreeView.QueryNodeSizeEventArgs e)
+        {
+            e.Height = e.GetActualNodeHeight();
+            e.Handled = true;
+        }
+
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+
         }
     }
 }

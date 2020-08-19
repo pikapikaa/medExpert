@@ -33,11 +33,11 @@ namespace medExpert.Droid
 
             if (Build.VERSION.SdkInt >= BuildVersionCodes.Lollipop)
             {
-                Control.BackgroundTintList = ColorStateList.ValueOf(Xamarin.Forms.Color.White.ToAndroid());
+                Control.BackgroundTintList = ColorStateList.ValueOf(Xamarin.Forms.Color.Transparent.ToAndroid());
             }
             else
             {
-                Control.Background.SetColorFilter(Xamarin.Forms.Color.White.ToAndroid(), PorterDuff.Mode.SrcAtop);
+                Control.Background.SetColorFilter(Xamarin.Forms.Color.Transparent.ToAndroid(), PorterDuff.Mode.SrcAtop);
             }
         }
     }

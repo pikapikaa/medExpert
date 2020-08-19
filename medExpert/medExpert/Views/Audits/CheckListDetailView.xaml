@@ -5,9 +5,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms" 
              xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:accordion="clr-namespace:Syncfusion.XForms.Accordion;assembly=Syncfusion.Expander.XForms"           
              mc:Ignorable="d"
+             x:Name="checkListDetailView"
              x:Class="medExpert.Views.Audits.CheckListDetailView">
-
+    
     <!-- Шапка -->
     <NavigationPage.TitleView>
         <Label Margin="70,0,0,0"
@@ -30,7 +32,6 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
 
@@ -41,12 +42,11 @@
                                Style="{StaticResource GrayText}"
                                Text="Отпуск и реализация лекарственных препаратов для медицинского применения в аптеке производственной (Приложение 23)"/>
 
-
-
                         <ScrollView  Grid.Row="2"  
                                      HorizontalScrollBarVisibility="Never"
                                      Orientation="Horizontal">
-                            <StackLayout Orientation="Horizontal" Spacing="15">
+                            <StackLayout Orientation="Horizontal" 
+                                         Spacing="15">
                                 <pancake:PancakeView BackgroundColor="Transparent" 
                                                      CornerRadius="10">
                                     <pancake:PancakeView.Border>
@@ -58,11 +58,11 @@
                                           WidthRequest="100">
                                         <StackLayout VerticalOptions="Center">
                                             <Image Source="image_download" 
-                                                   WidthRequest="40" 
-                                                   HeightRequest="40"/>
+                                                   WidthRequest="25" 
+                                                   HeightRequest="25"/>
                                         </StackLayout>
-                                    
-                                       
+
+
                                     </Grid>
                                 </pancake:PancakeView>
                                 <pancake:PancakeView CornerRadius="10">
@@ -78,7 +78,7 @@
                                             HasShadow="False"
                                             HorizontalOptions="Start"
                                             VerticalOptions="Start">
-                                           
+
                                         </Frame>
                                     </Grid>
                                 </pancake:PancakeView>
@@ -119,20 +119,164 @@
                             </StackLayout>
                         </ScrollView>
 
-                   
-                        
+                        <StackLayout Grid.Row="3" 
+                                     Spacing="20"
+                                     VerticalOptions="EndAndExpand">
+                            
+                            <pancake:PancakeView HorizontalOptions="Center"
+                                                 VerticalOptions="End"
+                                                 BackgroundColor="White"
+                                                 Elevation="4"
+                                                 HasShadow="True"
+                                                 CornerRadius="10"
+                                                 HeightRequest="50"
+                                                 WidthRequest="370"
+                                                 Margin="0,0,0,1">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label Text="Не применимо"
+                                           Style="{StaticResource TitleBlue}"
+                                           x:Name="AddAuditBtn"
+                                           VerticalOptions="Center"
+                                           HorizontalOptions="Center"/>
+                                </Grid>
+                                <pancake:PancakeView.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OpenAddAuditPageCommand}"/>
+                                </pancake:PancakeView.GestureRecognizers>
+                                <pancake:PancakeView.Shadow>
+                                    <pancake:DropShadow Color="Black" Offset="10,10"/>
+                                </pancake:PancakeView.Shadow>
+                            </pancake:PancakeView>
+                            
+                            <pancake:PancakeView HorizontalOptions="Center"
+                                                 VerticalOptions="End"
+                                                 BackgroundColor="White"
+                                                 Elevation="4"
+                                                 HasShadow="True"
+                                                 CornerRadius="10"
+                                                 HeightRequest="50"
+                                                 WidthRequest="370"
+                                                 Margin="0,0,0,1">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label Text="Не соответствует"
+                                           Style="{StaticResource TitleBlue}"
+                                           VerticalOptions="Center"
+                                           HorizontalOptions="Center"/>
+                                </Grid>
+                                <pancake:PancakeView.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OpenAddAuditPageCommand}"/>
+                                </pancake:PancakeView.GestureRecognizers>
+                                <pancake:PancakeView.Shadow>
+                                    <pancake:DropShadow Color="Black" Offset="10,10"/>
+                                </pancake:PancakeView.Shadow>
+                            </pancake:PancakeView>
+
+
+                            <pancake:PancakeView HorizontalOptions="Center"
+                                                 VerticalOptions="End"
+                                                 BackgroundColor="White"
+                                                 Elevation="4"
+                                                 HasShadow="True"
+                                                 CornerRadius="10"
+                                                 HeightRequest="50"
+                                                 WidthRequest="370"
+                                                 Margin="0,0,0,1">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label Text="Соответствует"
+                                           Style="{StaticResource TitleBlue}"
+                                           VerticalOptions="Center"
+                                           HorizontalOptions="Center"/>
+                                </Grid>
+                                <pancake:PancakeView.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OpenAddAuditPageCommand}"/>
+                                </pancake:PancakeView.GestureRecognizers>
+                                <pancake:PancakeView.Shadow>
+                                    <pancake:DropShadow Color="Black" Offset="10,10"/>
+                                </pancake:PancakeView.Shadow>
+                            </pancake:PancakeView>
+                        </StackLayout>
+                       
                     </Grid>
-                    
+
                 </tabView:SfTabItem.Content>
             </tabView:SfTabItem>
 
+            <!-- Вкладка "Нарушения" -->
             <tabView:SfTabItem Title="Нарушения" 
                                TitleFontSize="18">
                 <tabView:SfTabItem.Content>
-                    <Grid x:Name="FavoritesGrid" />
+                    <Grid Padding="10">
+                        <accordion:SfAccordion x:Name="Accordion"
+                                               ItemSpacing="15"
+                                               ExpandMode="MultipleOrNone"
+                                               AnimationDuration="0"
+                                               BindableLayout.ItemsSource="{Binding Violations}">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <accordion:AccordionItem IsExpanded="{Binding IsExpand}">
+                                        <accordion:AccordionItem.Header>
+                                            <StackLayout>
+                                                <SwipeView x:Name="swipeView">
+                                                    <SwipeView.LeftItems>
+                                                        <SwipeItems>
+                                                            <SwipeItem Text="Редакт"
+                                                                       BackgroundColor="LightGreen"/>
+                                                            <SwipeItem Text="Удалить"
+                                                                       BackgroundColor="LightPink"/>
+                                                        </SwipeItems>
+                                                    </SwipeView.LeftItems>
+
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="Auto"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                        </Grid.ColumnDefinitions>
+
+                                                        <Image Source="check_box_active"/>
+
+                                                        <Label Grid.Column="1"
+                                                               Text="{Binding Text}"
+                                                               Style="{StaticResource Text}"/>
+                                                        
+                                                    </Grid>
+                                                    
+
+                                                    <SwipeView.GestureRecognizers>
+                                                        <TapGestureRecognizer Command="{Binding Path=BindingContext.InverseAccordion, Source={x:Reference Accordion}}"
+                                                                              CommandParameter="{x:Reference swipeView}"/>
+                                                    </SwipeView.GestureRecognizers>
+                                                </SwipeView>
+                                               
+                                            </StackLayout>
+                                       
+                                          
+                                        </accordion:AccordionItem.Header>
+                                        <accordion:AccordionItem.Content>
+                                            <Grid>
+                                                <Label Text="{Binding Text}"/>
+                                            </Grid>
+                                        </accordion:AccordionItem.Content>
+                                    </accordion:AccordionItem>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </accordion:SfAccordion>
+
+                    </Grid>
+                   
                 </tabView:SfTabItem.Content>
             </tabView:SfTabItem>
-           
+
         </tabView:SfTabView>
     </ContentPage.Content>
 </ContentPage>
