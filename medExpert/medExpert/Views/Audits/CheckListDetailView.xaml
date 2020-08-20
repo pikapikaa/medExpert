@@ -5,7 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms" 
              xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-             xmlns:accordion="clr-namespace:Syncfusion.XForms.Accordion;assembly=Syncfusion.Expander.XForms"           
+             xmlns:accordion="clr-namespace:Syncfusion.XForms.Accordion;assembly=Syncfusion.Expander.XForms"        
+             xmlns:controls="clr-namespace:medExpert.Controls" xmlns:local="clr-namespace:medExpert.Renderers" xmlns:behaviors="clr-namespace:medExpert.Behaviors"
              mc:Ignorable="d"
              x:Name="checkListDetailView"
              x:Class="medExpert.Views.Audits.CheckListDetailView">
@@ -23,6 +24,7 @@
     <ContentPage.Content>
         <tabView:SfTabView  VisibleHeaderCount="2">
 
+            <!-- Вкладка "Проверка" -->
             <tabView:SfTabItem Title="Проверка" 
                                TitleFontSize="18">
                 <tabView:SfTabItem.Content>
@@ -225,6 +227,11 @@
                                TitleFontSize="18">
                 <tabView:SfTabItem.Content>
                     <Grid Padding="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        
                         <accordion:SfAccordion x:Name="Accordion"
                                                ExpandMode="MultipleOrNone"
                                                ItemSpacing="15"
@@ -278,14 +285,123 @@
                                           
                                         </accordion:AccordionItem.Header>
                                         <accordion:AccordionItem.Content>
-                                            <Grid>
-                                                <Label Text="{Binding Text}"/>
+                                            <Grid BackgroundColor="#E5F3EC">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                </Grid.RowDefinitions>
+
+                                                <Label Text="Рекомендации"
+                                                       Padding="15,15,0,0"
+                                                       Style="{StaticResource BoldText}"/>
+
+                                                <BoxView Grid.Row="1"
+                                                         HorizontalOptions="FillAndExpand"
+                                                         HeightRequest="1"
+                                                         Margin="0,5,0,15"
+                                                         Color="#E3E3E3"/>
+
+                                                <controls:DynamicStackLayout Grid.Row="2"
+                                                                             ItemsSource="{Binding Recommendations}"
+                                                                             Orientation="Vertical" 
+                                                                             Margin="0">
+                                                    <controls:DynamicStackLayout.ItemTemplate>
+                                                        <DataTemplate>
+
+                                                            <Grid ColumnSpacing="15" 
+                                                                  Padding="15,0,15,0">
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="Auto"/>
+                                                                    <ColumnDefinition Width="*"/>
+                                                                </Grid.ColumnDefinitions>
+                                                                <Grid.RowDefinitions>
+                                                                    <RowDefinition Height="Auto"/>
+                                                                    <RowDefinition Height="Auto"/>
+                                                                </Grid.RowDefinitions>
+
+
+                                                                <Image Source="check_box_recommendation_active"/>
+
+                                                                <Label Grid.Column="1"
+                                                                       Text="{Binding Text}"
+                                                                       Style="{StaticResource Text}"/>
+
+                                                                <BoxView Grid.ColumnSpan="2"
+                                                                         Grid.Row="1"
+                                                                         HorizontalOptions="FillAndExpand"
+                                                                         HeightRequest="1"
+                                                                         Margin="0,5,0,5"
+                                                                         Color="#E3E3E3"/>
+                                                            </Grid>
+
+                                                        </DataTemplate>
+                                                    </controls:DynamicStackLayout.ItemTemplate>
+                                                </controls:DynamicStackLayout>
+
+                                                <Grid Grid.Row="3" 
+                                                      Padding="10,5,10,15">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <Image Source="recommendation_plus"/>
+
+                                                    <Frame Grid.Column="1" 
+                                                           BackgroundColor="#F2F2F2" 
+                                                           CornerRadius="4"
+                                                           HasShadow="False"
+                                                           Padding="5">
+                                                        <local:CustomEntryRenderer Margin="5,0,0,0" 
+                                                                                   HorizontalOptions="FillAndExpand"
+                                                                                   BackgroundColor="Transparent"
+                                                                                   HorizontalTextAlignment="Start"
+                                                                                   Placeholder="Добавить новое нарушение"
+                                                                                   Style="{StaticResource Text}">
+                                                            <local:CustomEntryRenderer.Behaviors>
+                                                                <behaviors:EventToCommandBehavior EventName="TextChanged"
+                                                                                                  Command="{Binding RecommendationTextChangedCommand}"/>
+                                                            </local:CustomEntryRenderer.Behaviors>
+                                                        </local:CustomEntryRenderer>
+                                                    </Frame>
+                                                </Grid>
+
                                             </Grid>
                                         </accordion:AccordionItem.Content>
                                     </accordion:AccordionItem>
                                 </DataTemplate>
                             </BindableLayout.ItemTemplate>
                         </accordion:SfAccordion>
+
+                        <Grid Grid.Row="1" 
+                              Padding="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Image Source="violation_plus"/>
+
+                            <Frame Grid.Column="1" 
+                                                           BackgroundColor="#F2F2F2" 
+                                                           CornerRadius="4"
+                                                           HasShadow="False"
+                                                           Padding="5">
+                                <local:CustomEntryRenderer Margin="5,0,0,0" 
+                                                           HorizontalOptions="FillAndExpand"
+                                                           BackgroundColor="Transparent"
+                                                                                   HorizontalTextAlignment="Start"
+                                                                                   Placeholder="Добавить новую рекомендацию"
+                                                                                   Style="{StaticResource Text}">
+                                    <local:CustomEntryRenderer.Behaviors>
+                                        <behaviors:EventToCommandBehavior EventName="TextChanged"
+                                                                                                  Command="{Binding RecommendationTextChangedCommand}"/>
+                                    </local:CustomEntryRenderer.Behaviors>
+                                </local:CustomEntryRenderer>
+                            </Frame>
+                        </Grid>
 
                     </Grid>
                    

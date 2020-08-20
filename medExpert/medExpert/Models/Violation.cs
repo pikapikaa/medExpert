@@ -9,7 +9,7 @@ namespace medExpert.Models
 {
     public class Violation : INotifyPropertyChanged
     {
-        private ObservableCollection<Violation> subViolations;
+        private ObservableCollection<Recommendation> recommendations;
         private bool isExpand;
         private bool isChecked;
        
@@ -39,12 +39,12 @@ namespace medExpert.Models
 
         public string Text { get; set; }
 
-        public ObservableCollection<Violation> SubViolations
+        public ObservableCollection<Recommendation> Recommendations
         {
-            get { return subViolations; }
+            get { return recommendations; }
             set
             {
-                subViolations = value;
+                recommendations = value;
                 OnPropertyChanged();
             }
         }
