@@ -125,7 +125,7 @@
                             
                             <pancake:PancakeView HorizontalOptions="Center"
                                                  VerticalOptions="End"
-                                                 BackgroundColor="White"
+                                                 BackgroundColor="{Binding UnworkableButtonBackground}"
                                                  Elevation="4"
                                                  HasShadow="True"
                                                  CornerRadius="10"
@@ -138,22 +138,25 @@
                                     </Grid.ColumnDefinitions>
 
                                     <Label Text="Не применимо"
-                                           Style="{StaticResource TitleBlue}"
+                                           FontFamily="{StaticResource SemiBoldFont}"
+                                           FontSize="20"
+                                           TextColor="{Binding UnworkableButtonTextColor}"
+                                           FontAttributes="Bold"
                                            x:Name="AddAuditBtn"
                                            VerticalOptions="Center"
                                            HorizontalOptions="Center"/>
                                 </Grid>
                                 <pancake:PancakeView.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding OpenAddAuditPageCommand}"/>
+                                    <TapGestureRecognizer Command="{Binding UnworkableButtonCommand}"/>
                                 </pancake:PancakeView.GestureRecognizers>
                                 <pancake:PancakeView.Shadow>
                                     <pancake:DropShadow Color="Black" Offset="10,10"/>
                                 </pancake:PancakeView.Shadow>
                             </pancake:PancakeView>
-                            
+
                             <pancake:PancakeView HorizontalOptions="Center"
                                                  VerticalOptions="End"
-                                                 BackgroundColor="White"
+                                                 BackgroundColor="{Binding PreventButtonBackground}"
                                                  Elevation="4"
                                                  HasShadow="True"
                                                  CornerRadius="10"
@@ -166,22 +169,24 @@
                                     </Grid.ColumnDefinitions>
 
                                     <Label Text="Не соответствует"
-                                           Style="{StaticResource TitleBlue}"
+                                           FontFamily="{StaticResource SemiBoldFont}"
+                                           FontSize="20"
+                                           TextColor="{Binding PreventButtonTextColor}"
+                                           FontAttributes="Bold"
                                            VerticalOptions="Center"
                                            HorizontalOptions="Center"/>
                                 </Grid>
                                 <pancake:PancakeView.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding OpenAddAuditPageCommand}"/>
+                                    <TapGestureRecognizer Command="{Binding PreventButtonCommand}"/>
                                 </pancake:PancakeView.GestureRecognizers>
                                 <pancake:PancakeView.Shadow>
                                     <pancake:DropShadow Color="Black" Offset="10,10"/>
                                 </pancake:PancakeView.Shadow>
                             </pancake:PancakeView>
 
-
                             <pancake:PancakeView HorizontalOptions="Center"
                                                  VerticalOptions="End"
-                                                 BackgroundColor="White"
+                                                 BackgroundColor="{Binding AllowButtonBackground}"
                                                  Elevation="4"
                                                  HasShadow="True"
                                                  CornerRadius="10"
@@ -194,12 +199,15 @@
                                     </Grid.ColumnDefinitions>
 
                                     <Label Text="Соответствует"
-                                           Style="{StaticResource TitleBlue}"
+                                            FontFamily="{StaticResource SemiBoldFont}"
+                                           FontSize="20"
+                                           TextColor="{Binding AllowButtonTextColor}"
+                                           FontAttributes="Bold"
                                            VerticalOptions="Center"
                                            HorizontalOptions="Center"/>
                                 </Grid>
                                 <pancake:PancakeView.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding OpenAddAuditPageCommand}"/>
+                                    <TapGestureRecognizer Command="{Binding AllowButtonCommand}"/>
                                 </pancake:PancakeView.GestureRecognizers>
                                 <pancake:PancakeView.Shadow>
                                     <pancake:DropShadow Color="Black" Offset="10,10"/>

@@ -16,6 +16,91 @@ namespace medExpert.ViewModels.Audits
 {
     public class CheckListDetailViewModel : INotifyPropertyChanged
     {
+        private string allowButtonBackground = "White";
+        private string preventButtonBackground = "White";
+        private string unworkableButtonBackground = "White";
+        private string allowButtonTextColor = "#0F74E5";
+        private string preventButtonTextColor = "#0F74E5";
+        private string unworkableButtonTextColor = "#0F74E5";
+
+        /// <summary>
+        /// Цвет кнопки "Соответствует"
+        /// </summary>
+        public string AllowButtonBackground
+        {
+            get { return allowButtonBackground; }
+            set
+            {
+                allowButtonBackground = value;
+                OnPropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// Цвет кнопки "Не соответствует"
+        /// </summary>
+        public string PreventButtonBackground
+        {
+            get { return preventButtonBackground; }
+            set
+            {
+                preventButtonBackground = value;
+                OnPropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// Цвет кнопки "Не применимо"
+        /// </summary>
+        public string UnworkableButtonBackground
+        {
+            get { return unworkableButtonBackground; }
+            set
+            {
+                unworkableButtonBackground = value;
+                OnPropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// Цвет текста кнопки "Соответствует"
+        /// </summary>
+        public string AllowButtonTextColor
+        {
+            get { return allowButtonTextColor; }
+            set
+            {
+                allowButtonTextColor = value;
+                OnPropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// Цвет текста кнопки "Не соответствует"
+        /// </summary>
+        public string PreventButtonTextColor
+        {
+            get { return preventButtonTextColor; }
+            set
+            {
+                preventButtonTextColor = value;
+                OnPropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// Цвет текста кнопки "Не применимо"
+        /// </summary>
+        public string UnworkableButtonTextColor
+        {
+            get { return unworkableButtonTextColor; }
+            set
+            {
+                unworkableButtonTextColor = value;
+                OnPropertyChanged();
+            }
+        }
+
         private ObservableCollection<Violation> violations;
         public ObservableCollection<Violation> Violations
         {
@@ -45,7 +130,7 @@ namespace medExpert.ViewModels.Audits
         });
 
         /// <summary>
-        /// 
+        /// Команда выбора нарушения 
         /// </summary>
         public ICommand CheckViolationCommand => new Command<object>((object obj) =>
         {
@@ -62,7 +147,49 @@ namespace medExpert.ViewModels.Audits
         });
 
         /// <summary>
-        /// Команда быстрого ответа на чек-лист
+        /// Нажатие кнопки "Соответствует"
+        /// </summary>
+        public ICommand AllowButtonCommand => new Command<object>((object obj) =>
+        {
+            AllowButtonBackground = "#3CBB78";
+            PreventButtonBackground = "White";
+            UnworkableButtonBackground = "White";
+
+            AllowButtonTextColor = "White";
+            PreventButtonTextColor = "#0F74E5";
+            UnworkableButtonTextColor = "#0F74E5";
+        });
+
+        /// <summary>
+        /// Нажатие кнопки "Не соответствует"
+        /// </summary>
+        public ICommand PreventButtonCommand => new Command<object>((object obj) =>
+        {
+            AllowButtonBackground = "White";
+            PreventButtonBackground = "#F82463";
+            UnworkableButtonBackground = "White";
+
+            AllowButtonTextColor = "#0F74E5";
+            PreventButtonTextColor = "White";
+            UnworkableButtonTextColor = "#0F74E5";
+        });
+
+        /// <summary>
+        /// Нажатие кнопки "Не прменимо"
+        /// </summary>
+        public ICommand UnworkableButtonCommand => new Command<object>((object obj) =>
+        {
+            AllowButtonBackground = "White";
+            PreventButtonBackground = "White";
+            UnworkableButtonBackground = "#989BA8";
+
+            AllowButtonTextColor = "#0F74E5";
+            PreventButtonTextColor = "#0F74E5";
+            UnworkableButtonTextColor = "White";
+        });
+
+        /// <summary>
+        /// Команда раскрытия аккордеона
         /// </summary>
         public ICommand InverseAccordion => new Command<object>((object obj) =>
         {
