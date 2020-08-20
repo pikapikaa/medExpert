@@ -218,8 +218,8 @@
                 <tabView:SfTabItem.Content>
                     <Grid Padding="10">
                         <accordion:SfAccordion x:Name="Accordion"
-                                               ItemSpacing="15"
                                                ExpandMode="MultipleOrNone"
+                                               ItemSpacing="15"
                                                AnimationDuration="0"
                                                BindableLayout.ItemsSource="{Binding Violations}">
                             <BindableLayout.ItemTemplate>
@@ -237,14 +237,21 @@
                                                         </SwipeItems>
                                                     </SwipeView.LeftItems>
 
-                                                    <Grid>
+                                                    <Grid ColumnSpacing="15" 
+                                                          Padding="15,0,15,0">
                                                         <Grid.ColumnDefinitions>
                                                             <ColumnDefinition Width="Auto"/>
                                                             <ColumnDefinition Width="*"/>
                                                         </Grid.ColumnDefinitions>
 
-                                                        <Image Source="check_box_active"/>
-
+                                                        <Image Source="{Binding IsChecked, Converter={StaticResource CheckBoxViolationBoolToImageConverter}}"
+                                                               x:Name="check_box_image">
+                                                            <Image.GestureRecognizers>
+                                                                <TapGestureRecognizer Command="{Binding Path=BindingContext.CheckViolationCommand, Source={x:Reference Accordion}}"
+                                                                                      CommandParameter="{x:Reference check_box_image}"/>
+                                                            </Image.GestureRecognizers>
+                                                        </Image>
+                                                        
                                                         <Label Grid.Column="1"
                                                                Text="{Binding Text}"
                                                                Style="{StaticResource Text}"/>

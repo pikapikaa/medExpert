@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows.Input;
@@ -48,7 +49,16 @@ namespace medExpert.ViewModels.Audits
         /// </summary>
         public ICommand CheckViolationCommand => new Command<object>((object obj) =>
         {
-
+            var item = (obj as Image).BindingContext as Violation;
+            if (item is Violation structuralUnit)
+            {
+                var res = Violations.FirstOrDefault(i => i.Id == structuralUnit.Id);
+                if (res != null)
+                {
+                    res.IsChecked = !res.IsChecked;
+                }
+                OnPropertyChanged(nameof(Violations));
+            }
         });
 
         /// <summary>

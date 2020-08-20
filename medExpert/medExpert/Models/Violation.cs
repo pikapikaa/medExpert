@@ -11,7 +11,21 @@ namespace medExpert.Models
     {
         private ObservableCollection<Violation> subViolations;
         private bool isExpand;
-      
+        private bool isChecked;
+       
+        public bool IsChecked
+        {
+            get { return isChecked; }
+            set
+            {
+                if (value != this.isChecked)
+                {
+                    this.isChecked = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
         public bool IsExpand
         {
             get { return isExpand; }

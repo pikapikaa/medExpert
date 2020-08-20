@@ -676,4 +676,22 @@
   <ItemGroup>
     <BundleResource Include="Resources\recommendation_plus.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\check_box_violation_active%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\check_box_violation_active%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\check_box_violation_active.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\check_box_violation_inactive%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\check_box_violation_inactive%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\check_box_violation_inactive.png" />
+  </ItemGroup>
 </Project>
