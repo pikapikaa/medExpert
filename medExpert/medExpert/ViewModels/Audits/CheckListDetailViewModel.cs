@@ -1,4 +1,5 @@
 ﻿using medExpert.Models;
+using medExpert.Views.Audits;
 using medExpert.Views.Audits.Popups;
 using Rg.Plugins.Popup.Services;
 using System;
@@ -16,6 +17,8 @@ namespace medExpert.ViewModels.Audits
 {
     public class CheckListDetailViewModel : INotifyPropertyChanged
     {
+        public INavigation Navigation { get; set; }
+
         private string allowButtonBackground = "White";
         private string preventButtonBackground = "White";
         private string unworkableButtonBackground = "White";
@@ -194,6 +197,22 @@ namespace medExpert.ViewModels.Audits
         {
             var item = (obj as SwipeView).BindingContext as Violation;
             item.IsExpand = !item.IsExpand;
+        });
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ICommand ShowMediaButton => new Command<object>(async (object obj) =>
+        {
+            await PopupNavigation.Instance.PushAsync(new MediaSelectionPopupView(), false);
+        });
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ICommand OpenPhotoCommand => new Command<object>(async (object obj) =>
+        {
+            await Navigation.PushAsync(new CarouselImageView(), true);
         });
 
         public event PropertyChangedEventHandler PropertyChanged;

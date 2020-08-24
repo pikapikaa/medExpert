@@ -6,7 +6,10 @@
              xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms" 
              xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              xmlns:accordion="clr-namespace:Syncfusion.XForms.Accordion;assembly=Syncfusion.Expander.XForms"        
-             xmlns:controls="clr-namespace:medExpert.Controls" xmlns:local="clr-namespace:medExpert.Renderers" xmlns:behaviors="clr-namespace:medExpert.Behaviors"
+             xmlns:controls="clr-namespace:medExpert.Controls" 
+             xmlns:local="clr-namespace:medExpert.Renderers" 
+             xmlns:behaviors="clr-namespace:medExpert.Behaviors" 
+             xmlns:imgcrop="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.ImageCropView"
              mc:Ignorable="d"
              x:Name="checkListDetailView"
              x:Class="medExpert.Views.Audits.CheckListDetailView">
@@ -33,7 +36,7 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="100"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
 
@@ -44,7 +47,7 @@
                                Style="{StaticResource GrayText}"
                                Text="Отпуск и реализация лекарственных препаратов для медицинского применения в аптеке производственной (Приложение 23)"/>
 
-                        <ScrollView  Grid.Row="2"  
+                        <!--<ScrollView  Grid.Row="2"  
                                      HorizontalScrollBarVisibility="Never"
                                      Orientation="Horizontal">
                             <StackLayout Orientation="Horizontal" 
@@ -56,6 +59,10 @@
                                                         Color="#3960E2"
                                                         DashPattern="{Binding BorderDashPattern, Mode=TwoWay}"/>
                                     </pancake:PancakeView.Border>
+                                    <pancake:PancakeView.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={x:Reference checkListDetailView}, Path=BindingContext.ShowMediaButton}"
+                                                              CommandParameter="{Binding .}"/>
+                                    </pancake:PancakeView.GestureRecognizers>
                                     <Grid HeightRequest="100"
                                           WidthRequest="100">
                                         <StackLayout VerticalOptions="Center">
@@ -63,8 +70,6 @@
                                                    WidthRequest="25" 
                                                    HeightRequest="25"/>
                                         </StackLayout>
-
-
                                     </Grid>
                                 </pancake:PancakeView>
                                 <pancake:PancakeView CornerRadius="10">
@@ -119,7 +124,64 @@
                                     </Grid>
                                 </pancake:PancakeView>
                             </StackLayout>
-                        </ScrollView>
+                        </ScrollView>-->
+
+                        <Grid Grid.Row="2" 
+                              Padding="5"
+                              BackgroundColor="AliceBlue">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <imgcrop:ImageCropView x:Name="cropView1" 
+                                                   Grid.Column="0" 
+                                                   Source="https://loremflickr.com/cache/resized/65535_49921549793_f4e41d492e_b_600_600_nofilter.jpg" >
+                                <imgcrop:ImageCropView.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OpenPhotoCommand}" 
+                                                          NumberOfTapsRequired="1" />
+                                </imgcrop:ImageCropView.GestureRecognizers>
+                            </imgcrop:ImageCropView>
+                            <imgcrop:ImageCropView x:Name="cropView2" 
+                                                   Grid.Column="1" 
+                                                   Source="https://loremflickr.com/cache/resized/65535_49921549793_f4e41d492e_b_600_600_nofilter.jpg" >
+                                <imgcrop:ImageCropView.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OpenPhotoCommand}" 
+                                                          NumberOfTapsRequired="1" />
+                                </imgcrop:ImageCropView.GestureRecognizers>
+                            </imgcrop:ImageCropView>
+                            <imgcrop:ImageCropView x:Name="cropView3" 
+                                                   Grid.Column="2" 
+                                                   Source="https://loremflickr.com/cache/resized/65535_49921549793_f4e41d492e_b_600_600_nofilter.jpg" >
+                                <imgcrop:ImageCropView.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OpenPhotoCommand}" 
+                                                          NumberOfTapsRequired="1" />
+                                </imgcrop:ImageCropView.GestureRecognizers>
+                            </imgcrop:ImageCropView>
+                            <imgcrop:ImageCropView x:Name="cropView4" 
+                                                   Grid.Column="3" 
+                                                   Opacity="0.4"
+                                                   Source="https://loremflickr.com/cache/resized/65535_49921549793_f4e41d492e_b_600_600_nofilter.jpg" >
+                                <imgcrop:ImageCropView.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OpenPhotoCommand}"
+                                                          NumberOfTapsRequired="1" />
+                                </imgcrop:ImageCropView.GestureRecognizers>
+                            </imgcrop:ImageCropView>
+
+                            <Label HorizontalOptions="Center" 
+                               Text="+10" 
+                               VerticalOptions="Center" 
+                               Grid.Column="3" 
+                               FontAttributes="Bold" 
+                               FontSize="Large"
+                               TextColor="Black">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OpenPhotoCommand}" NumberOfTapsRequired="1" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </Grid>
 
                         <StackLayout Grid.Row="3" 
                                      Spacing="20"
@@ -226,184 +288,187 @@
             <tabView:SfTabItem Title="Нарушения" 
                                TitleFontSize="18">
                 <tabView:SfTabItem.Content>
-                    <Grid Padding="10">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        
-                        <accordion:SfAccordion x:Name="Accordion"
+                    <ScrollView>
+                        <Grid Padding="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <accordion:SfAccordion x:Name="Accordion"
                                                ExpandMode="MultipleOrNone"
                                                ItemSpacing="15"
                                                AnimationDuration="0"
                                                BindableLayout.ItemsSource="{Binding Violations}">
-                            <BindableLayout.ItemTemplate>
-                                <DataTemplate>
-                                    <accordion:AccordionItem IsExpanded="{Binding IsExpand}">
-                                        <accordion:AccordionItem.Header>
-                                            <StackLayout>
-                                                <SwipeView x:Name="swipeView">
-                                                    <SwipeView.LeftItems>
-                                                        <SwipeItems>
-                                                            <SwipeItem Text="Редакт"
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <accordion:AccordionItem IsExpanded="{Binding IsExpand}">
+                                            <accordion:AccordionItem.Header>
+                                                <StackLayout>
+                                                    <SwipeView x:Name="swipeView">
+                                                        <SwipeView.LeftItems>
+                                                            <SwipeItems>
+                                                                <SwipeItem Text="Редакт"
                                                                        BackgroundColor="LightGreen"/>
-                                                            <SwipeItem Text="Удалить"
+                                                                <SwipeItem Text="Удалить"
                                                                        BackgroundColor="LightPink"/>
-                                                        </SwipeItems>
-                                                    </SwipeView.LeftItems>
+                                                            </SwipeItems>
+                                                        </SwipeView.LeftItems>
 
-                                                    <Grid ColumnSpacing="15" 
+                                                        <Grid ColumnSpacing="15" 
                                                           Padding="15,0,15,0">
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="Auto"/>
-                                                            <ColumnDefinition Width="*"/>
-                                                        </Grid.ColumnDefinitions>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="Auto"/>
+                                                                <ColumnDefinition Width="*"/>
+                                                            </Grid.ColumnDefinitions>
 
-                                                        <Image Source="{Binding IsChecked, Converter={StaticResource CheckBoxViolationBoolToImageConverter}}"
+                                                            <Image Source="{Binding IsChecked, Converter={StaticResource CheckBoxViolationBoolToImageConverter}}"
                                                                x:Name="check_box_image">
-                                                            <Image.GestureRecognizers>
-                                                                <TapGestureRecognizer Command="{Binding Path=BindingContext.CheckViolationCommand, Source={x:Reference Accordion}}"
+                                                                <Image.GestureRecognizers>
+                                                                    <TapGestureRecognizer Command="{Binding Path=BindingContext.CheckViolationCommand, Source={x:Reference Accordion}}"
                                                                                       CommandParameter="{x:Reference check_box_image}"/>
-                                                            </Image.GestureRecognizers>
-                                                        </Image>
-                                                        
-                                                        <Label Grid.Column="1"
+                                                                </Image.GestureRecognizers>
+                                                            </Image>
+
+                                                            <Label Grid.Column="1"
                                                                Text="{Binding Text}"
                                                                Style="{StaticResource Text}"/>
-                                                        
-                                                    </Grid>
-                                                    
 
-                                                    <SwipeView.GestureRecognizers>
-                                                        <TapGestureRecognizer Command="{Binding Path=BindingContext.InverseAccordion, Source={x:Reference Accordion}}"
+                                                        </Grid>
+
+
+                                                        <SwipeView.GestureRecognizers>
+                                                            <TapGestureRecognizer Command="{Binding Path=BindingContext.InverseAccordion, Source={x:Reference Accordion}}"
                                                                               CommandParameter="{x:Reference swipeView}"/>
-                                                    </SwipeView.GestureRecognizers>
-                                                </SwipeView>
-                                               
-                                            </StackLayout>
-                                       
-                                          
-                                        </accordion:AccordionItem.Header>
-                                        <accordion:AccordionItem.Content>
-                                            <Grid BackgroundColor="#E5F3EC">
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="Auto"/>
-                                                    <RowDefinition Height="Auto"/>
-                                                    <RowDefinition Height="Auto"/>
-                                                    <RowDefinition Height="Auto"/>
-                                                </Grid.RowDefinitions>
+                                                        </SwipeView.GestureRecognizers>
+                                                    </SwipeView>
 
-                                                <Label Text="Рекомендации"
+                                                </StackLayout>
+
+
+                                            </accordion:AccordionItem.Header>
+                                            <accordion:AccordionItem.Content>
+                                                <Grid BackgroundColor="#E5F3EC">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="Auto"/>
+                                                        <RowDefinition Height="Auto"/>
+                                                        <RowDefinition Height="Auto"/>
+                                                        <RowDefinition Height="Auto"/>
+                                                    </Grid.RowDefinitions>
+
+                                                    <Label Text="Рекомендации"
                                                        Padding="15,15,0,0"
                                                        Style="{StaticResource BoldText}"/>
 
-                                                <BoxView Grid.Row="1"
+                                                    <BoxView Grid.Row="1"
                                                          HorizontalOptions="FillAndExpand"
                                                          HeightRequest="1"
                                                          Margin="0,5,0,15"
                                                          Color="#E3E3E3"/>
 
-                                                <controls:DynamicStackLayout Grid.Row="2"
+                                                    <controls:DynamicStackLayout Grid.Row="2"
                                                                              ItemsSource="{Binding Recommendations}"
                                                                              Orientation="Vertical" 
                                                                              Margin="0">
-                                                    <controls:DynamicStackLayout.ItemTemplate>
-                                                        <DataTemplate>
+                                                        <controls:DynamicStackLayout.ItemTemplate>
+                                                            <DataTemplate>
 
-                                                            <Grid ColumnSpacing="15" 
+                                                                <Grid ColumnSpacing="15" 
                                                                   Padding="15,0,15,0">
-                                                                <Grid.ColumnDefinitions>
-                                                                    <ColumnDefinition Width="Auto"/>
-                                                                    <ColumnDefinition Width="*"/>
-                                                                </Grid.ColumnDefinitions>
-                                                                <Grid.RowDefinitions>
-                                                                    <RowDefinition Height="Auto"/>
-                                                                    <RowDefinition Height="Auto"/>
-                                                                </Grid.RowDefinitions>
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="Auto"/>
+                                                                        <ColumnDefinition Width="*"/>
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <Grid.RowDefinitions>
+                                                                        <RowDefinition Height="Auto"/>
+                                                                        <RowDefinition Height="Auto"/>
+                                                                    </Grid.RowDefinitions>
 
 
-                                                                <Image Source="check_box_recommendation_active"/>
+                                                                    <Image Source="check_box_recommendation_active"/>
 
-                                                                <Label Grid.Column="1"
+                                                                    <Label Grid.Column="1"
                                                                        Text="{Binding Text}"
                                                                        Style="{StaticResource Text}"/>
 
-                                                                <BoxView Grid.ColumnSpan="2"
+                                                                    <BoxView Grid.ColumnSpan="2"
                                                                          Grid.Row="1"
                                                                          HorizontalOptions="FillAndExpand"
                                                                          HeightRequest="1"
                                                                          Margin="0,5,0,5"
                                                                          Color="#E3E3E3"/>
-                                                            </Grid>
+                                                                </Grid>
 
-                                                        </DataTemplate>
-                                                    </controls:DynamicStackLayout.ItemTemplate>
-                                                </controls:DynamicStackLayout>
+                                                            </DataTemplate>
+                                                        </controls:DynamicStackLayout.ItemTemplate>
+                                                    </controls:DynamicStackLayout>
 
-                                                <Grid Grid.Row="3" 
+                                                    <Grid Grid.Row="3" 
                                                       Padding="10,5,10,15">
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                        <ColumnDefinition Width="*"/>
-                                                    </Grid.ColumnDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="Auto"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                        </Grid.ColumnDefinitions>
 
-                                                    <Image Source="recommendation_plus"/>
+                                                        <Image Source="recommendation_plus"/>
 
-                                                    <Frame Grid.Column="1" 
+                                                        <Frame Grid.Column="1" 
                                                            BackgroundColor="#F2F2F2" 
                                                            CornerRadius="4"
                                                            HasShadow="False"
                                                            Padding="5">
-                                                        <local:CustomEntryRenderer Margin="5,0,0,0" 
+                                                            <local:CustomEntryRenderer Margin="5,0,0,0" 
                                                                                    HorizontalOptions="FillAndExpand"
                                                                                    BackgroundColor="Transparent"
                                                                                    HorizontalTextAlignment="Start"
                                                                                    Placeholder="Добавить новое нарушение"
                                                                                    Style="{StaticResource Text}">
-                                                            <local:CustomEntryRenderer.Behaviors>
-                                                                <behaviors:EventToCommandBehavior EventName="TextChanged"
+                                                                <local:CustomEntryRenderer.Behaviors>
+                                                                    <behaviors:EventToCommandBehavior EventName="TextChanged"
                                                                                                   Command="{Binding RecommendationTextChangedCommand}"/>
-                                                            </local:CustomEntryRenderer.Behaviors>
-                                                        </local:CustomEntryRenderer>
-                                                    </Frame>
+                                                                </local:CustomEntryRenderer.Behaviors>
+                                                            </local:CustomEntryRenderer>
+                                                        </Frame>
+                                                    </Grid>
+
                                                 </Grid>
+                                            </accordion:AccordionItem.Content>
+                                        </accordion:AccordionItem>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </accordion:SfAccordion>
 
-                                            </Grid>
-                                        </accordion:AccordionItem.Content>
-                                    </accordion:AccordionItem>
-                                </DataTemplate>
-                            </BindableLayout.ItemTemplate>
-                        </accordion:SfAccordion>
-
-                        <Grid Grid.Row="1" 
+                            <Grid Grid.Row="1" 
                               Padding="10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
 
-                            <Image Source="violation_plus"/>
+                                <Image Source="violation_plus"/>
 
-                            <Frame Grid.Column="1" 
+                                <Frame Grid.Column="1" 
                                                            BackgroundColor="#F2F2F2" 
                                                            CornerRadius="4"
                                                            HasShadow="False"
                                                            Padding="5">
-                                <local:CustomEntryRenderer Margin="5,0,0,0" 
+                                    <local:CustomEntryRenderer Margin="5,0,0,0" 
                                                            HorizontalOptions="FillAndExpand"
                                                            BackgroundColor="Transparent"
                                                                                    HorizontalTextAlignment="Start"
                                                                                    Placeholder="Добавить новую рекомендацию"
                                                                                    Style="{StaticResource Text}">
-                                    <local:CustomEntryRenderer.Behaviors>
-                                        <behaviors:EventToCommandBehavior EventName="TextChanged"
+                                        <local:CustomEntryRenderer.Behaviors>
+                                            <behaviors:EventToCommandBehavior EventName="TextChanged"
                                                                                                   Command="{Binding RecommendationTextChangedCommand}"/>
-                                    </local:CustomEntryRenderer.Behaviors>
-                                </local:CustomEntryRenderer>
-                            </Frame>
-                        </Grid>
+                                        </local:CustomEntryRenderer.Behaviors>
+                                    </local:CustomEntryRenderer>
+                                </Frame>
+                            </Grid>
 
-                    </Grid>
+                        </Grid>
+                    </ScrollView>
+                   
                    
                 </tabView:SfTabItem.Content>
             </tabView:SfTabItem>

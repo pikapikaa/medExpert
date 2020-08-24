@@ -17,7 +17,10 @@ namespace medExpert.Views.Audits
         public CheckListDetailView()
         {
             InitializeComponent();
-            BindingContext = new CheckListDetailViewModel();
+            BindingContext = new CheckListDetailViewModel()
+            {
+                Navigation = this.Navigation
+            };
         }
 
         private void takePhoto_Clicked(object sender, EventArgs e)
