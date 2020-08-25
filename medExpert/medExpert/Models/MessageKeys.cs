@@ -33,5 +33,20 @@ namespace medExpert.Models
         /// Сообщение события сортировки по умолчанию
         /// </summary>
         public const string DefaultSort = nameof(DefaultSort);
+
+        /// <summary>
+        /// Сообщение события выбора фото из галереи
+        /// </summary>
+        public const string PickPhoto = nameof(PickPhoto);
+
+        /// <summary>
+        /// Сообщение события удаления фото
+        /// </summary>
+        public const string DeletePhoto = nameof(DeletePhoto);
+
+        /// <summary>
+        /// Сообщение события обновления списка изображений на детальном представлении
+        /// </summary>
+        public const string RefreshImageList = nameof(RefreshImageList); 
     }
 }

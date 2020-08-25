@@ -1,6 +1,7 @@
 ﻿using medExpert.Models;
 using medExpert.Views.Audits;
 using medExpert.Views.Audits.Popups;
+using Plugin.Media.Abstractions;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,88 @@ namespace medExpert.ViewModels.Audits
     public class CheckListDetailViewModel : INotifyPropertyChanged
     {
         public INavigation Navigation { get; set; }
+
+        private int imagesScreenOverCount;
+        private int imagesCount;
+
+        private ObservableCollection<ViolationImage> _violationImageFiltered;
+        private ObservableCollection<ViolationImage> _violationImageUnfiltered;
+
+        private ObservableCollection<ViolationImage> images;
+        private ViolationImage image1;
+        private ViolationImage image2;
+        private ViolationImage image3;
+        public ViolationImage Image1
+        {
+            get { return image1; }
+            set
+            {
+                image1 = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public ViolationImage Image2
+        {
+            get { return image2; }
+            set
+            {
+                image2 = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public ViolationImage Image3
+        {
+            get { return image3; }
+            set
+            {
+                image3 = value;
+                OnPropertyChanged();
+            }
+        }
+        public ObservableCollection<ViolationImage> Images
+        {
+            get { return images; }
+            set
+            {
+                images = value;
+                OnPropertyChanged(nameof(Images));
+            }
+        }
+
+        /// <summary>
+        /// Количество изображений
+        /// </summary>
+        public int ImagesCount
+        {
+            get { return imagesCount; }
+            set
+            {
+                imagesCount = value;
+                OnPropertyChanged(nameof(ImagesCount));
+                SetImagesScreenOverCount();
+            }
+        }
+
+        /// <summary>
+        /// Количество изображений не вместившихся в экран
+        /// </summary>
+        public int ImagesScreenOverCount
+        {
+            get { return imagesScreenOverCount; }
+            set
+            {
+                imagesScreenOverCount = value;
+                OnPropertyChanged(nameof(ImagesScreenOverCount));
+            }
+        }
+
+        private void SetImagesScreenOverCount()
+        {
+            ImagesScreenOverCount = imagesCount > 3 ?
+              imagesCount - 3 : 0;
+        }
 
         private string allowButtonBackground = "White";
         private string preventButtonBackground = "White";
@@ -105,6 +188,7 @@ namespace medExpert.ViewModels.Audits
         }
 
         private ObservableCollection<Violation> violations;
+      
         public ObservableCollection<Violation> Violations
         {
             get { return violations; }
@@ -119,6 +203,64 @@ namespace medExpert.ViewModels.Audits
         {
             var _listOfItems = new DataViolationFactory().GetViolations();
             Violations = new ObservableCollection<Violation>(_listOfItems);
+
+            var _listOfImages = new DataFactoryImage().GetImages();
+            Images = new ObservableCollection<ViolationImage>(_listOfImages);
+            ImagesCount = Images.Count;
+
+            if (Images.Count >= 3)
+            {
+                Image1 = Images[0];
+                Image2 = Images[1];
+                Image3 = Images[2];
+            }
+            else if (Images.Count == 2)
+            {
+                Image1 = Images[0];
+                Image2 = Images[1];
+            }
+            else if (Images.Count == 1)
+            {
+                Image1 = Images[0];
+            }
+
+            MessagingCenter.Subscribe<MediaSelectionPopupViewModel>(this,
+              MessageKeys.PickPhoto, sender =>
+              {
+                  if (sender is MediaSelectionPopupViewModel mediaSelectionPopupViewModel)
+                  {
+                      foreach(var temp in mediaSelectionPopupViewModel.ListSelectedImages)
+                      {
+                          Images.Add(new ViolationImage() { ImageUrl = temp});
+                          ImagesCount = Images.Count;
+                          if (Images.Count >= 3)
+                          {
+                              Image1 = Images[0];
+                              Image2 = Images[1];
+                              Image3 = Images[2];
+                          }
+                          else if (Images.Count == 2)
+                          {
+                              Image1 = Images[0];
+                              Image2 = Images[1];
+                          }
+                          else if (Images.Count == 1)
+                          {
+                              Image1 = Images[0];
+                          }
+                      }
+                  }
+              });
+
+            MessagingCenter.Subscribe<CarouselImageViewModel>(this,
+             MessageKeys.RefreshImageList, sender =>
+             {
+                 if (sender is CarouselImageViewModel carouselImageViewModel)
+                 {
+                    
+                     Images = carouselImageViewModel.Images;
+                 }
+             });
         }
 
         public DashPattern BorderDashPattern { get; set; } = new DashPattern(10, 5, 2, 5);
@@ -212,7 +354,14 @@ namespace medExpert.ViewModels.Audits
         /// </summary>
         public ICommand OpenPhotoCommand => new Command<object>(async (object obj) =>
         {
-            await Navigation.PushAsync(new CarouselImageView(), true);
+            await Navigation.PushModalAsync(new NavigationPage(new CarouselImageView()
+            {
+                BindingContext = new CarouselImageViewModel()
+                {
+                    Images = this.Images,
+                    Navigation = this.Navigation
+                }
+            }), true) ;
         });
 
         public event PropertyChangedEventHandler PropertyChanged;

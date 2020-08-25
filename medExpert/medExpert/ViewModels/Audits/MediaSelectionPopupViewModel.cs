@@ -1,7 +1,9 @@
-﻿using Plugin.Media;
+﻿using medExpert.Models;
+using Plugin.Media;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -12,13 +14,25 @@ namespace medExpert.ViewModels.Audits
 {
     public class MediaSelectionPopupViewModel : INotifyPropertyChanged
     {
+        public ObservableCollection<string> listSelectedImages;
+        public ObservableCollection<string> ListSelectedImages
+        {
+            get { return listSelectedImages; }
+            set
+            {
+                listSelectedImages = value;
+                OnPropertyChanged();
+            }
+        }
+
         /// <summary>
-        /// 
+        /// Показать камеру
         /// </summary>
         public ICommand ShowCamera => new Command<object>(async (object obj) =>
         {
             await PopupNavigation.Instance.PopAsync(false);
             await CrossMedia.Current.Initialize();
+            ListSelectedImages = new ObservableCollection<string>();
 
             if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
             {
@@ -31,25 +45,41 @@ namespace medExpert.ViewModels.Audits
             });
 
             if (file == null)
+            {
                 return;
-            else _ = file;
+            }
+            else
+            {
+                ListSelectedImages.Add(file.Path);
+                MessagingCenter.Send(this, MessageKeys.PickPhoto);
+            }
         });
 
         /// <summary>
-        /// 
+        /// Показать галерею
         /// </summary>
         public ICommand ShowGallery => new Command<object>(async (object obj) =>
         {
-            await PopupNavigation.Instance.PopAsync(false);
+            ListSelectedImages = new ObservableCollection<string>();
+
             await CrossMedia.Current.Initialize();
 
             if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
             {
                 return;
             }
-            await CrossMedia.Current.PickPhotoAsync();
+            var selectedPhotos = await CrossMedia.Current.PickPhotosAsync();
+            
+            if (selectedPhotos?.Count >= 1)
+            {
+                foreach(var temp in selectedPhotos)
+                {
+                    ListSelectedImages.Add(temp.Path);
+                }
 
-
+                MessagingCenter.Send(this, MessageKeys.PickPhoto);
+            }
+            await PopupNavigation.Instance.PopAsync(false);
         });
 
         public event PropertyChangedEventHandler PropertyChanged;

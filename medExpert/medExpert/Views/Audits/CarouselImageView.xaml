@@ -5,11 +5,59 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="medExpert.Views.Audits.CarouselImageView">
+
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal"
+                     Margin="10"
+                     VerticalOptions="CenterAndExpand">
+            <ImageButton Source="close_page_icon"
+                         BackgroundColor="Transparent"
+                         VerticalOptions="Center"
+                         HorizontalOptions="Start"
+                         Command="{Binding CloseCarouselImageViewCommand}"
+                         HeightRequest="15"
+                         WidthRequest="15"/>
+            <Label Text="Изображения" 
+                   MaxLines="1"
+                   Margin="20,0,0,0"
+                   HorizontalTextAlignment="Start"
+                   Style="{StaticResource TitleSmall}"/>
+        </StackLayout>
+    </NavigationPage.TitleView>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="three_dots_icon" Command="{Binding OpenMenuPopupCommand}" />
+    </ContentPage.ToolbarItems>
+
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+     
+        <StackLayout Padding="10">
+            <CarouselView ItemsSource="{Binding Images}"
+                          IndicatorView="indicatorView"
+                          CurrentItemChangedCommand="{Binding ItemChangedCommand}"
+                          CurrentItemChangedCommandParameter="{Binding Source={RelativeSource Self}, Path=CurrentItem}">
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout  HorizontalOptions="CenterAndExpand"
+                                      VerticalOptions="CenterAndExpand">
+                            <Image Source="{Binding ImageUrl}" 
+                                   Aspect="AspectFill"
+                                   HeightRequest="300"
+                                   WidthRequest="300"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="CenterAndExpand"/>
+                        </StackLayout>
+                           
+                        
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+            <IndicatorView x:Name="indicatorView"
+                       IndicatorsShape="Square"
+                       IndicatorColor="LightGray"
+                       SelectedIndicatorColor="DarkGray"
+                       HorizontalOptions="Center"
+                       Margin="0,0,0,40" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

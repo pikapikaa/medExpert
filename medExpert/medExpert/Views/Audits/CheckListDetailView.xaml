@@ -127,8 +127,7 @@
                         </ScrollView>-->
 
                         <Grid Grid.Row="2" 
-                              Padding="5"
-                              BackgroundColor="AliceBlue">
+                              Padding="5">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
@@ -136,17 +135,34 @@
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
 
-                            <imgcrop:ImageCropView x:Name="cropView1" 
-                                                   Grid.Column="0" 
-                                                   Source="https://loremflickr.com/cache/resized/65535_49921549793_f4e41d492e_b_600_600_nofilter.jpg" >
-                                <imgcrop:ImageCropView.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding OpenPhotoCommand}" 
-                                                          NumberOfTapsRequired="1" />
-                                </imgcrop:ImageCropView.GestureRecognizers>
+                            <imgcrop:ImageCropView  x:Name="cropView1">
+                                <pancake:PancakeView BackgroundColor="Transparent"
+                                                     CornerRadius="10">
+                                    <pancake:PancakeView.Border>
+                                        <pancake:Border Thickness="2" 
+                                                        Color="#3960E2"
+                                                        DashPattern="{Binding BorderDashPattern, Mode=TwoWay}"/>
+                                    </pancake:PancakeView.Border>
+                                    <pancake:PancakeView.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={x:Reference checkListDetailView}, Path=BindingContext.ShowMediaButton}"
+                                                              CommandParameter="{Binding .}"/>
+                                    </pancake:PancakeView.GestureRecognizers>
+                                    <Grid HeightRequest="100"
+                                          WidthRequest="100">
+                                        <StackLayout VerticalOptions="Center">
+                                            <Image Source="image_download" 
+                                               Aspect="AspectFit"
+                                               WidthRequest="25" 
+                                               HeightRequest="25"/>
+                                        </StackLayout>
+                                    </Grid>
+                                </pancake:PancakeView>
                             </imgcrop:ImageCropView>
-                            <imgcrop:ImageCropView x:Name="cropView2" 
+                        
+                            
+                            <imgcrop:ImageCropView x:Name="cropView2"
                                                    Grid.Column="1" 
-                                                   Source="https://loremflickr.com/cache/resized/65535_49921549793_f4e41d492e_b_600_600_nofilter.jpg" >
+                                                   Source="{Binding Image1.ImageUrl}" >
                                 <imgcrop:ImageCropView.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding OpenPhotoCommand}" 
                                                           NumberOfTapsRequired="1" />
@@ -154,7 +170,7 @@
                             </imgcrop:ImageCropView>
                             <imgcrop:ImageCropView x:Name="cropView3" 
                                                    Grid.Column="2" 
-                                                   Source="https://loremflickr.com/cache/resized/65535_49921549793_f4e41d492e_b_600_600_nofilter.jpg" >
+                                                   Source="{Binding Image2.ImageUrl}" >
                                 <imgcrop:ImageCropView.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding OpenPhotoCommand}" 
                                                           NumberOfTapsRequired="1" />
@@ -163,7 +179,7 @@
                             <imgcrop:ImageCropView x:Name="cropView4" 
                                                    Grid.Column="3" 
                                                    Opacity="0.4"
-                                                   Source="https://loremflickr.com/cache/resized/65535_49921549793_f4e41d492e_b_600_600_nofilter.jpg" >
+                                                   Source="{Binding Image3.ImageUrl}" >
                                 <imgcrop:ImageCropView.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding OpenPhotoCommand}"
                                                           NumberOfTapsRequired="1" />
@@ -171,7 +187,7 @@
                             </imgcrop:ImageCropView>
 
                             <Label HorizontalOptions="Center" 
-                               Text="+10" 
+                               Text="{Binding ImagesScreenOverCount, StringFormat='+{0}'}" 
                                VerticalOptions="Center" 
                                Grid.Column="3" 
                                FontAttributes="Bold" 
