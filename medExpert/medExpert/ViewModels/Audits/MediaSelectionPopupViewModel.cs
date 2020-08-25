@@ -1,5 +1,6 @@
 ﻿using medExpert.Models;
 using Plugin.Media;
+using Plugin.Media.Abstractions;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
@@ -40,8 +41,10 @@ namespace medExpert.ViewModels.Audits
             }
             var file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
             {
-                Directory = "Sample",
-                Name = "test.jpg"
+                PhotoSize = PhotoSize.Small,
+                DefaultCamera = CameraDevice.Rear,
+                SaveToAlbum = true,
+                Directory = "MedExpert"
             });
 
             if (file == null)

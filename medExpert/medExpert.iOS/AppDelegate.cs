@@ -8,6 +8,7 @@ using Syncfusion.XForms.iOS.Accordion;
 using Syncfusion.XForms.iOS.TabView;
 using Syncfusion.XForms.iOS.TreeView;
 using UIKit;
+using Xamarin.Forms;
 
 namespace medExpert.iOS
 {
@@ -27,6 +28,7 @@ namespace medExpert.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             Rg.Plugins.Popup.Popup.Init();
+            Forms.SetFlags("SwipeView_Experimental");
 
             global::Xamarin.Forms.Forms.Init();
             SfTreeViewRenderer.Init();
@@ -34,6 +36,8 @@ namespace medExpert.iOS
             SfTabViewRenderer.Init();
             SfAccordionRenderer.Init();
             LoadApplication(new App());
+
+            FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
 
             return base.FinishedLaunching(app, options);
         }
