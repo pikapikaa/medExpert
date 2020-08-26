@@ -64,10 +64,10 @@ namespace medExpert.ViewModels.Audits
         public ICommand ShowGallery => new Command<object>(async (object obj) =>
         {
             ListSelectedImages = new ObservableCollection<string>();
-
+            await PopupNavigation.Instance.PopAsync(false);
             await CrossMedia.Current.Initialize();
 
-            if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
+            if (!CrossMedia.Current.IsTakePhotoSupported)
             {
                 return;
             }
@@ -82,7 +82,7 @@ namespace medExpert.ViewModels.Audits
 
                 MessagingCenter.Send(this, MessageKeys.PickPhoto);
             }
-            await PopupNavigation.Instance.PopAsync(false);
+            
         });
 
         public event PropertyChangedEventHandler PropertyChanged;
