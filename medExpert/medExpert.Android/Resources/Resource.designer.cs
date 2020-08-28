@@ -11452,52 +11452,58 @@ namespace medExpert.Droid
 			public const int project_menu_item_inactive = 2131165385;
 			
 			// aapt resource value: 0x7F0700CA
-			public const int recommendation_plus = 2131165386;
+			public const int quality_rating_indicator = 2131165386;
 			
 			// aapt resource value: 0x7F0700CB
-			public const int right_arrow_calendar = 2131165387;
+			public const int quality_rating_indicator2 = 2131165387;
 			
 			// aapt resource value: 0x7F0700CC
-			public const int round_check_box_active = 2131165388;
+			public const int recommendation_plus = 2131165388;
 			
 			// aapt resource value: 0x7F0700CD
-			public const int round_check_box_inactive = 2131165389;
+			public const int right_arrow_calendar = 2131165389;
 			
 			// aapt resource value: 0x7F0700CE
-			public const int running_audits = 2131165390;
+			public const int round_check_box_active = 2131165390;
 			
 			// aapt resource value: 0x7F0700CF
-			public const int search_icon = 2131165391;
+			public const int round_check_box_inactive = 2131165391;
 			
 			// aapt resource value: 0x7F0700D0
-			public const int setting_menu_item_inactive = 2131165392;
+			public const int running_audits = 2131165392;
 			
 			// aapt resource value: 0x7F0700D1
-			public const int structural_unit = 2131165393;
+			public const int search_icon = 2131165393;
 			
 			// aapt resource value: 0x7F0700D2
-			public const int subject_new_audit = 2131165394;
+			public const int setting_menu_item_inactive = 2131165394;
 			
 			// aapt resource value: 0x7F0700D3
-			public const int sun_new_audit = 2131165395;
+			public const int structural_unit = 2131165395;
 			
 			// aapt resource value: 0x7F0700D4
-			public const int tasks_menu_item_inactive = 2131165396;
+			public const int subject_new_audit = 2131165396;
 			
 			// aapt resource value: 0x7F0700D5
-			public const int three_dots_icon = 2131165397;
+			public const int sun_new_audit = 2131165397;
 			
 			// aapt resource value: 0x7F0700D6
-			public const int tooltip_frame_dark = 2131165398;
+			public const int tasks_menu_item_inactive = 2131165398;
 			
 			// aapt resource value: 0x7F0700D7
-			public const int tooltip_frame_light = 2131165399;
+			public const int three_dots_icon = 2131165399;
 			
 			// aapt resource value: 0x7F0700D8
-			public const int type_new_audit = 2131165400;
+			public const int tooltip_frame_dark = 2131165400;
 			
 			// aapt resource value: 0x7F0700D9
-			public const int violation_plus = 2131165401;
+			public const int tooltip_frame_light = 2131165401;
+			
+			// aapt resource value: 0x7F0700DA
+			public const int type_new_audit = 2131165402;
+			
+			// aapt resource value: 0x7F0700DB
+			public const int violation_plus = 2131165403;
 			
 			static Drawable()
 			{

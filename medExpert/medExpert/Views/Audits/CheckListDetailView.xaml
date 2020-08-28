@@ -332,11 +332,15 @@
                                                         </SwipeView.LeftItems>
 
                                                         <Grid ColumnSpacing="15" 
-                                                          Padding="15,0,15,0">
+                                                          Padding="15,10,15,10">
                                                             <Grid.ColumnDefinitions>
                                                                 <ColumnDefinition Width="Auto"/>
                                                                 <ColumnDefinition Width="*"/>
                                                             </Grid.ColumnDefinitions>
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="Auto"/>
+                                                                <!--<RowDefinition Height="Auto"/>-->
+                                                            </Grid.RowDefinitions>
 
                                                             <Image Source="{Binding IsChecked, Converter={StaticResource CheckBoxViolationBoolToImageConverter}}"
                                                                x:Name="check_box_image">
@@ -349,6 +353,13 @@
                                                             <Label Grid.Column="1"
                                                                Text="{Binding Text}"
                                                                Style="{StaticResource Text}"/>
+
+                                                            <!--<BoxView Grid.ColumnSpan="2"
+                                                                         Grid.Row="1"
+                                                                         HorizontalOptions="FillAndExpand"
+                                                                         HeightRequest="1"
+                                                                         Margin="0,15,0,0"
+                                                                         Color="#E3E3E3"/>-->
 
                                                         </Grid>
 

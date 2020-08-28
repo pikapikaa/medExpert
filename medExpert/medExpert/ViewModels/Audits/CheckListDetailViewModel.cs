@@ -381,7 +381,7 @@ namespace medExpert.ViewModels.Audits
                 new Recommendation
                 {
                     Id = 1,
-                    Text = "Не отпускаются наркотические и психотропные препараты по рецептам"
+                    Text = "Не отпускаются"
                 },
                 new Recommendation
                 {
@@ -397,13 +397,13 @@ namespace medExpert.ViewModels.Audits
                     new Violation()
                     {
                         Id = 1,
-                        Text = "Не отпускаются наркотические и психотропные препараты по рецептам",
+                        Text = "Не отпускают",
                         Recommendations = new ObservableCollection<Recommendation>(GetRecommendations())
                     },
                      new Violation()
                     {
                         Id = 2,
-                        Text = "Не отпускаются наркотические и психотропные препараты по рецептам2",
+                        Text = "Не отпускаются2",
                         Recommendations = new ObservableCollection<Recommendation>(GetRecommendations())
                     },
                       new Violation()
