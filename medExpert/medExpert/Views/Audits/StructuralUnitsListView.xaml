@@ -13,23 +13,36 @@
              x:Class="medExpert.Views.Audits.StructuralUnitsListView">
 
     <NavigationPage.TitleView>
-        <StackLayout Orientation="Horizontal"
-                     Margin="10"
-                     VerticalOptions="CenterAndExpand">
-            <ImageButton Source="close_page_icon"
+        <Grid Margin="5,0,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackLayout VerticalOptions="CenterAndExpand" 
+                         Padding="3"
+                         HorizontalOptions="CenterAndExpand">
+                <Image Source="close_page_icon"
                          BackgroundColor="Transparent"
                          VerticalOptions="Center"
-                         HorizontalOptions="Start"
-                         Command="{Binding CloseStructuralUnitsListViewCommand}"
+                         HorizontalOptions="Center"
                          HeightRequest="15"
                          WidthRequest="15"/>
-            <Label Text="Добавить подразделение" 
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding CloseStructuralUnitsListViewCommand}"
+                                          CommandParameter="{Binding .}"/>
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+
+            <Label Grid.Column="1" 
+                   Text="Добавить подразделение" 
                    MaxLines="1"
                    IsVisible="{Binding IsEntryVisible, Converter={StaticResource InverseBoolConverter}}"
                    Margin="20,0,0,0"
                    HorizontalTextAlignment="Start"
                    Style="{StaticResource TitleSmall}"/>
-            <local:CustomEntryRenderer Margin="5,0,0,0" 
+            <local:CustomEntryRenderer  Grid.Column="1"
+                                        Margin="5,0,0,0" 
                                        Text="{Binding SearchText}"
                                        HorizontalOptions="FillAndExpand"
                                        BackgroundColor="Transparent"
@@ -42,7 +55,9 @@
                                                       Command="{Binding SearchTextChangedCommand}"/>
                 </local:CustomEntryRenderer.Behaviors>
             </local:CustomEntryRenderer>
-        </StackLayout>
+
+        </Grid>
+       
     </NavigationPage.TitleView>
 
     <ContentPage.ToolbarItems>

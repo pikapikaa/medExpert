@@ -724,4 +724,22 @@
   <ItemGroup>
     <BundleResource Include="Resources\violation_plus.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\quality_rating_indicator%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\quality_rating_indicator%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\quality_rating_indicator.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\quality_rating_indicator2%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\quality_rating_indicator2%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\quality_rating_indicator2.png" />
+  </ItemGroup>
 </Project>
