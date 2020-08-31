@@ -16,185 +16,211 @@
 
     <ContentPage.Content>
 
-        <Grid Margin="12"
-              ColumnSpacing="12"
-              RowSpacing="12">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
 
-            <!-- Новые проверки -->
-            <pancake:PancakeView Elevation="3"
-                                 Grid.Row="0"
-                                 Grid.Column="0"
-                                 BackgroundColor="White"
-                                 CornerRadius="8">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
+        <ScrollView>
+            <Grid Margin="12" 
+                  ColumnSpacing="12" 
+                  RowSpacing="12">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
 
-                    <StackLayout HeightRequest="5"
-                                 BackgroundColor="#3960E2"/>
+                <!-- Новые проверки -->
+                <Frame HasShadow="True"
+                       Grid.Row="0"
+                       BackgroundColor="White"
+                       Padding="0" 
+                       CornerRadius="8">
 
-                    <StackLayout Grid.Row="1"
-                                 Margin="0,16,0,16"
-                                 VerticalOptions="Center"
-                                 HorizontalOptions="Center">
-                        <Image Source="new_audits"
-                               WidthRequest="25"
-                               HeightRequest="25"/>
-                        <Label Text="Новые"
-                               HorizontalOptions="Center"
-                               Margin="0,15,0,0"
-                               Style="{StaticResource Title}"/>
-                        <Label Text="Всего 123"
-                               HorizontalOptions="Center"
-                               Style="{StaticResource GrayText}"/>
-                    </StackLayout>
-                </Grid>
-            </pancake:PancakeView>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OpenNewAuditRecordsCommand}"
+                                              NumberOfTapsRequired="1" />
+                    </Frame.GestureRecognizers>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
 
-            <!-- Проверки в работе -->
-            <pancake:PancakeView Elevation="3"
-                                 Grid.Row="0"
-                                 Grid.Column="1"
-                                 BackgroundColor="White"
-                                 CornerRadius="8">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
+                        <StackLayout WidthRequest="5"
+                                     BackgroundColor="#3960E2"/>
 
-                    <StackLayout HeightRequest="5"
-                                 BackgroundColor="#3CBB78"/>
+                        <StackLayout Grid.Column="1"
+                                     Margin="16,16,0,16"
+                                     VerticalOptions="Center">
+                            <Label Text="Новые"
+                                   Margin="0,0,0,0" 
+                                   Style="{StaticResource Title}"/>
+                            <Label Text="Всего 123"      
+                                   Style="{StaticResource GrayText}"/>
+                        </StackLayout>
+                        <StackLayout Grid.Column="2"
+                                     VerticalOptions="Center"
+                                     Margin="0,0,16,0">
+                            <Image Source="new_audits"
+                                   WidthRequest="30" 
+                                   HeightRequest="30"
+                                   Aspect="AspectFit"/>
+                        </StackLayout>
+                    </Grid>
+                </Frame>
 
-                    <StackLayout Grid.Row="1"
-                                 Margin="0,16,0,16"
-                                 VerticalOptions="Center"
-                                 HorizontalOptions="Center">
-                        <Image Source="running_audits"
-                               WidthRequest="25"
-                               HeightRequest="25"/>
-                        <Label Text="Выполняются"
-                               HorizontalOptions="Center"
-                               Margin="0,15,0,0"
-                               Style="{StaticResource Title}"/>
-                        <Label Text="Всего 3113"
-                               HorizontalOptions="Center"
-                               Style="{StaticResource GrayText}"/>
-                    </StackLayout>
-                </Grid>
-            </pancake:PancakeView>
+                <!-- Проверки в работе -->
+                <Frame HasShadow="True"
+                       Grid.Row="1"
+                       BackgroundColor="White"
+                       Padding="0" 
+                       CornerRadius="8">
 
-            <!-- Завершенные -->
-            <pancake:PancakeView Elevation="3"
-                                 Grid.Row="1"
-                                 Grid.Column="0"
-                                 BackgroundColor="White"
-                                 CornerRadius="8">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OpenNewAuditRecordsCommand}"
+                                              NumberOfTapsRequired="1" />
+                    </Frame.GestureRecognizers>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
 
-                    <StackLayout HeightRequest="5"
-                                 BackgroundColor="#834EA0"/>
+                        <StackLayout WidthRequest="5"
+                                     BackgroundColor="#3CBB78"/>
 
-                    <StackLayout Grid.Row="1"
-                                 Margin="0,16,0,16"
-                                 VerticalOptions="Center"
-                                 HorizontalOptions="Center">
-                        <Image Source="finished_audits"
-                               WidthRequest="25"
-                               HeightRequest="25"/>
-                        <Label Text="Завершенные"
-                               HorizontalOptions="Center"
-                               Margin="0,15,0,0"
-                               Style="{StaticResource Title}"/>
-                        <Label Text="Всего 3113"
-                               HorizontalOptions="Center"
-                               Style="{StaticResource GrayText}"/>
-                    </StackLayout>
-                </Grid>
-            </pancake:PancakeView>
+                        <StackLayout Grid.Column="1"
+                                     Margin="16,16,0,16"
+                                     VerticalOptions="Center">
+                            <Label Text="Выполняются"
+                                   Margin="0,0,0,0" 
+                                   Style="{StaticResource Title}"/>
+                            <Label Text="Всего 123"      
+                                   Style="{StaticResource GrayText}"/>
+                        </StackLayout>
+                        <StackLayout Grid.Column="2"
+                                     VerticalOptions="Center"
+                                     Margin="0,0,16,0">
+                            <Image Source="running_audits"
+                                   WidthRequest="30" 
+                                   HeightRequest="30"
+                                   Aspect="AspectFit"/>
+                        </StackLayout>
+                    </Grid>
+                </Frame>
 
-            <!-- Все проверки -->
-            <pancake:PancakeView Elevation="3"
-                                 Grid.Row="1"
-                                 Grid.Column="1"
-                                 BackgroundColor="White"
-                                 CornerRadius="8">
-                <pancake:PancakeView.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding OpenAllAuditsPageCommand}"
-                                          NumberOfTapsRequired="1" />
-                </pancake:PancakeView.GestureRecognizers>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
+                <!-- Завершенные -->
+                <Frame HasShadow="True"
+                       Grid.Row="2"
+                       BackgroundColor="White"
+                       Padding="0" 
+                       CornerRadius="8">
 
-                    <StackLayout HeightRequest="5"
-                                 BackgroundColor="#4858A5"/>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OpenNewAuditRecordsCommand}"
+                                              NumberOfTapsRequired="1" />
+                    </Frame.GestureRecognizers>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
 
-                    <StackLayout Grid.Row="1"
-                                 Margin="0,16,0,16"
-                                 VerticalOptions="Center"
-                                 HorizontalOptions="Center">
-                        <Image Source="all_audits"
-                               WidthRequest="25"
-                               HeightRequest="25"/>
-                        <Label Text="Все"
-                               HorizontalOptions="Center"
-                               Margin="0,15,0,0"
-                               Style="{StaticResource Title}"/>
-                        <Label Text="Всего 3113"
-                               HorizontalOptions="Center"
-                               Style="{StaticResource GrayText}"/>
-                    </StackLayout>
-                </Grid>
-            </pancake:PancakeView>
+                        <StackLayout WidthRequest="5"
+                                     BackgroundColor="#834EA0"/>
 
-            <!--  Кнопка добавления проверки -->
-            <pancake:PancakeView Grid.Row="2"
-                                 Grid.ColumnSpan="2"
-                                 x:Name="SwapPanel"
-                                 HorizontalOptions="Center"
-                                 VerticalOptions="End"
-                                 BackgroundColor="#3960E2"
-                                 Elevation="4"
-                                 HasShadow="True"
-                                 CornerRadius="25"
-                                 HeightRequest="50"
-                                 WidthRequest="300"
-                                 Margin="0,0,0,1">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
+                        <StackLayout Grid.Column="1"
+                                     Margin="16,16,0,16"
+                                     VerticalOptions="Center">
+                            <Label Text="Завершенные"
+                                   Margin="0,0,0,0" 
+                                   Style="{StaticResource Title}"/>
+                            <Label Text="Всего 123"      
+                                   Style="{StaticResource GrayText}"/>
+                        </StackLayout>
+                        <StackLayout Grid.Column="2"
+                                     VerticalOptions="Center"
+                                     Margin="0,0,16,0">
+                            <Image Source="finished_audits"
+                                   WidthRequest="30" 
+                                   HeightRequest="30"
+                                   Aspect="AspectFit"/>
+                        </StackLayout>
+                    </Grid>
+                </Frame>
 
-                    <Label Text="Добавить проверку"
-                           Style="{StaticResource TitleWhite}"
-                           x:Name="AddAuditBtn"
-                           VerticalOptions="Center"
-                           HorizontalOptions="Center"/>
-                </Grid>
-                <pancake:PancakeView.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding OpenAddAuditPageCommand}"/>
-                </pancake:PancakeView.GestureRecognizers>
-            </pancake:PancakeView>
 
-        </Grid>
+                <!-- Все проверки -->
+                <Frame HasShadow="True"
+                       Grid.Row="3"
+                       BackgroundColor="White"
+                       Padding="0" 
+                       CornerRadius="8">
+
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OpenAllAuditsPageCommand}"
+                                              NumberOfTapsRequired="1" />
+                    </Frame.GestureRecognizers>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackLayout WidthRequest="5"
+                                     BackgroundColor="#4858A5"/>
+
+                        <StackLayout Grid.Column="1"
+                                     Margin="16,16,0,16"
+                                     VerticalOptions="Center">
+                            <Label Text="Все"
+                                   Margin="0,0,0,0" 
+                                   Style="{StaticResource Title}"/>
+                            <Label Text="Всего 123"      
+                                   Style="{StaticResource GrayText}"/>
+                        </StackLayout>
+                        <StackLayout Grid.Column="2"
+                                     VerticalOptions="Center"
+                                     Margin="0,0,16,0">
+                            <Image Source="all_audits"
+                                   WidthRequest="32" 
+                                   HeightRequest="32"
+                                   Aspect="AspectFit"/>
+                        </StackLayout>
+                    </Grid>
+                </Frame>
+
+                <!--  Кнопка добавления проверки -->
+                <Frame Grid.Row="4"
+                       x:Name="SwapPanel"
+                       HorizontalOptions="FillAndExpand"
+                       VerticalOptions="End"
+                       Margin="30,0,30,0" 
+                       Padding="15"
+                       BackgroundColor="#3960E2"
+                       HasShadow="True"
+                       CornerRadius="25">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OpenNewAuditOperationCommand}"
+                                              NumberOfTapsRequired="1" />
+                    </Frame.GestureRecognizers>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Text="Добавить проверку"
+                               Style="{StaticResource TitleWhite}"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"/>
+                    </Grid>
+                </Frame>
+            </Grid>
+        </ScrollView>
 
     </ContentPage.Content>
 </ContentPage>
