@@ -89,7 +89,7 @@
                         </Grid.ColumnDefinitions>
 
                         <StackLayout WidthRequest="5"
-                                     BackgroundColor="#3CBB78"/>
+                                     BackgroundColor="#FFB800"/>
 
                         <StackLayout Grid.Column="1"
                                      Margin="16,16,0,16"
@@ -103,7 +103,7 @@
                         <StackLayout Grid.Column="2"
                                      VerticalOptions="Center"
                                      Margin="0,0,16,0">
-                            <Image Source="running_audits"
+                            <Image Source="audit_running_yellow"
                                    WidthRequest="30" 
                                    HeightRequest="30"
                                    Aspect="AspectFit"/>
@@ -130,7 +130,7 @@
                         </Grid.ColumnDefinitions>
 
                         <StackLayout WidthRequest="5"
-                                     BackgroundColor="#834EA0"/>
+                                     BackgroundColor="#00C395"/>
 
                         <StackLayout Grid.Column="1"
                                      Margin="16,16,0,16"
@@ -144,7 +144,7 @@
                         <StackLayout Grid.Column="2"
                                      VerticalOptions="Center"
                                      Margin="0,0,16,0">
-                            <Image Source="finished_audits"
+                            <Image Source="audit_finished_green"
                                    WidthRequest="30" 
                                    HeightRequest="30"
                                    Aspect="AspectFit"/>
@@ -172,7 +172,7 @@
                         </Grid.ColumnDefinitions>
 
                         <StackLayout WidthRequest="5"
-                                     BackgroundColor="#4858A5"/>
+                                     BackgroundColor="#c8a2c8"/>
 
                         <StackLayout Grid.Column="1"
                                      Margin="16,16,0,16"
@@ -186,7 +186,7 @@
                         <StackLayout Grid.Column="2"
                                      VerticalOptions="Center"
                                      Margin="0,0,16,0">
-                            <Image Source="all_audits"
+                            <Image Source="all_audits_lilac"
                                    WidthRequest="32" 
                                    HeightRequest="32"
                                    Aspect="AspectFit"/>

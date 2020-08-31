@@ -15,15 +15,15 @@ namespace medExpert.Converters
             switch (flag)
             {
                 case AuditOperationStatus.Created:
-                    return "#00A3FF";
+                    return "#3960E2";
                 case AuditOperationStatus.Executed:
-                    return "#6E758D";
-                case AuditOperationStatus.Running:
                     return "#00C395";
+                case AuditOperationStatus.Running:
+                    return "#FFB800";
                 case AuditOperationStatus.Signed:
                     return "#FFB800";
                 case AuditOperationStatus.Signing:
-                    return "#F82463";
+                    return "#FFB800";
                 default:
                     return "white";
             }

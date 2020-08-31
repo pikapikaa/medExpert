@@ -15,15 +15,15 @@ namespace medExpert.Converters
             switch (flag)
             {
                 case AuditOperationStatus.Created:
-                    return "audit_new";
+                    return "new_audits";
                 case AuditOperationStatus.Executed:
-                    return "audit_finished";
+                    return "audit_finished_green";
                 case AuditOperationStatus.Running:
-                    return "audit_running";
+                    return "audit_running_yellow";
                 case AuditOperationStatus.Signed:
-                    return "audit_signed";
+                    return "audit_running_yellow";
                 case AuditOperationStatus.Signing:
-                    return "audit_signing";
+                    return "audit_running_yellow";
                 default:
                     return "audit_new";
             }

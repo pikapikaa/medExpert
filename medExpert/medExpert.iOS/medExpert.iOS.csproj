@@ -760,4 +760,31 @@
   <ItemGroup>
     <BundleResource Include="Resources\edit_swipe_icon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\audit_running_yellow%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\audit_running_yellow%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\audit_running_yellow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\audit_finished_green%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\audit_finished_green%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\audit_finished_green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\all_audits_lilac%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\all_audits_lilac%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\all_audits_lilac.png" />
+  </ItemGroup>
 </Project>
