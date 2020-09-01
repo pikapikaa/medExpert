@@ -141,49 +141,23 @@
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <Label x:Name="checkListTitle"
-                   LineBreakMode="NoWrap"
-                   MaxLines="3"
-                   HorizontalOptions="FillAndExpand"
-                   Style="{StaticResource BoldText}">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <Span Text="Проверка №"/>
-                            <Span Text="{Binding Num}"/>
-                            <Span Text=" "/>
-                            <Span Text="{Binding CompanyName}"/>
-                            <Span Text=", "/>
-                            <Span Text="{Binding Address}"/>
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
+                <Grid ColumnSpacing="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Text="{Binding TitleIndicator}"
+                           Style="{StaticResource GrayText}"/>
+                    <Label Grid.Column="1" 
+                           Text="11/11/11" 
+                           VerticalTextAlignment="Center"
+                           Style="{StaticResource GrayText}" />
+                </Grid>
 
-                <Label Grid.Row="1"
-                       Text="{Binding TitleIndicator}"
-                       Style="{StaticResource GrayText}"/>
-
-                <Label Grid.Row="2"
-                       LineBreakMode="NoWrap"
-                       MaxLines="3"
-                       HorizontalOptions="FillAndExpand"
-                       Style="{StaticResource DarkGrayBoldText}">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <Span Text="С "/>
-                            <Span Text="{Binding PeriodDateInText}"/>
-                            <Span Text=" по "/>
-                            <Span Text="{Binding PeriodDateOutText}"/>
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
-
-                <syncfusion:SfTreeView Grid.Row="3"
+                <syncfusion:SfTreeView Grid.Row="1"
                                        x:Name="treeView"
                                        QueryNodeSize="treeView_QueryNodeSize"
                                        Indentation="5"
