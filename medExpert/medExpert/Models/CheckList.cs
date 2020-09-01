@@ -12,6 +12,7 @@ namespace medExpert.Models
         private AnswerType answerType;
         private ObservableCollection<CheckList> subCheckLists;
 
+        public bool IsLast { get; set; }
         public int Id { get; set; }
         public string Name { get; set; }
         private Employee auditor;

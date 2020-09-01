@@ -155,6 +155,7 @@ namespace medExpert.ViewModels.Audits
             var check2 = new CheckList()
             {
                 Name = "Уровень 1: ОРГАНИЗАЦИЯ ПРОФИЛАКТИЧЕСКОЙ РАБОТЫ. ФОРМИРОВАНИЕ ЗДОРОВОГО ОБРАЗА ЖИЗНИ СРЕДИ НАСЕЛЕНИЯ",
+                IsLast = true
             };
 
             var check2_level2 = new CheckList()
