@@ -1,6 +1,7 @@
 ﻿using medExpert.Models;
 using medExpert.Views.Audits;
 using medExpert.Views.Mock;
+using medExpert.Views.Tasks;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -34,6 +35,8 @@ namespace medExpert.Navigation
                     page = new AuditOperationGroupsView();
                     break;
                 case PageType.Tasks:
+                    page = new TasksView();
+                    break;
                 case PageType.Projects:
                 case PageType.Profile:
                 case PageType.Settings:

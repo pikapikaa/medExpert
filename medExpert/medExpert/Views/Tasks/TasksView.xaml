@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms" 
+             xmlns:templates="clr-namespace:medExpert.Views.Templates;assembly=medExpert"
+             xmlns:controls="clr-namespace:medExpert.Controls;assembly=medExpert"
+             mc:Ignorable="d"
+             x:Class="medExpert.Views.Tasks.TasksView"
+             x:Name="tasksPage">
+
+    <!-- Шапка -->
+    <NavigationPage.TitleView>
+        <Label Margin="70,0,0,0"
+               FontFamily="{StaticResource SemiBoldFont}"
+               FontSize="20"
+               Text="Задачи"
+               TextColor="Black"
+               VerticalOptions="Center"/>
+    </NavigationPage.TitleView>
+
+    <!-- Тулбар -->
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="three_dots_icon" 
+                     Command="{Binding OpenMenuTaskPopupCommand}" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <tabView:SfTabView  VisibleHeaderCount="3">
+
+            <!-- Вкладка "Все" -->
+            <tabView:SfTabItem Title="Все" 
+                               TitleFontSize="18">
+                <tabView:SfTabItem.Content>
+                    <RelativeLayout>
+
+                        <Grid Padding="15">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Frame BackgroundColor="#F2F2F2" 
+                                       Padding="10" 
+                                       Margin="5" 
+                                       CornerRadius="5"
+                                       HasShadow="True" 
+                                       HorizontalOptions="FillAndExpand">
+                                    <StackLayout Padding="0" VerticalOptions="CenterAndExpand">
+                                        <Label Text="Сегодня" 
+                                           Style="{StaticResource BlueText}"
+                                           HorizontalTextAlignment="Center"/>
+                                        <Label Text="23" 
+                                           Style="{StaticResource BlueText}"
+                                           HorizontalTextAlignment="Center"/>
+                                    </StackLayout>
+                                </Frame>
+
+                                <Frame Grid.Column="1"
+                                       BackgroundColor="#F8F8F8" 
+                                       Padding="10" 
+                                       Margin="5" 
+                                       CornerRadius="5"
+                                       HasShadow="True" 
+                                       HorizontalOptions="FillAndExpand">
+                                    <StackLayout Padding="0" VerticalOptions="CenterAndExpand">
+                                        <Label Text="Неделя" 
+                                           Style="{StaticResource GrayText}"
+                                           HorizontalTextAlignment="Center"/>
+                                        <Label Text="23" 
+                                           Style="{StaticResource DarkGrayBoldText}"
+                                           HorizontalTextAlignment="Center"/>
+                                    </StackLayout>
+                                </Frame>
+
+                                <Frame Grid.Column="2"
+                                       BackgroundColor="#F8F8F8" 
+                                       Padding="10" 
+                                       Margin="5" 
+                                       CornerRadius="5"
+                                       HasShadow="True" 
+                                       HorizontalOptions="FillAndExpand">
+                                    <StackLayout Padding="0" VerticalOptions="CenterAndExpand">
+                                        <Label Text="Все" 
+                                           Style="{StaticResource GrayText}"
+                                           HorizontalTextAlignment="Center"/>
+                                        <Label Text="23" 
+                                           Style="{StaticResource DarkGrayBoldText}"
+                                           HorizontalTextAlignment="Center"/>
+                                    </StackLayout>
+                                </Frame>
+
+                            </Grid>
+
+                            <ScrollView Grid.Row="1" Padding="4,4,4,60">
+                                <controls:DynamicStackLayout ItemsSource="{Binding Tasks}"
+                                                             Spacing="10"
+                                                             Orientation="Vertical">
+                                    <controls:DynamicStackLayout.ItemTemplate>
+                                        <DataTemplate>
+                                            <templates:TaskContentView ParentContext="{Binding BindingContext, Source={x:Reference tasksPage}}" />
+                                        </DataTemplate>
+                                    </controls:DynamicStackLayout.ItemTemplate>
+                                </controls:DynamicStackLayout>
+                            </ScrollView>
+
+                        </Grid>
+
+                        <ImageButton Source="FAB_struct" 
+                                     BackgroundColor="Transparent"
+                                     WidthRequest="60"
+                                     HeightRequest="60"
+                                     RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=-75}"  
+                                     RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=-75}"
+                                     Command="{Binding OpenStructuralUnitsListView}"/>
+
+                    </RelativeLayout>
+                </tabView:SfTabItem.Content>
+            </tabView:SfTabItem>
+
+            <!-- Вкладка "Мой" -->
+            <tabView:SfTabItem Title="Мой" 
+                               TitleFontSize="18">
+                <tabView:SfTabItem.Content>
+                    <Label Text="dfdddf"/>
+                </tabView:SfTabItem.Content>
+            </tabView:SfTabItem>
+
+            <!-- Вкладка "Завершено" -->
+            <tabView:SfTabItem Title="Завершено" 
+                               TitleFontSize="18">
+                <tabView:SfTabItem.Content>
+                    <Label Text="dfdddf"/>
+                </tabView:SfTabItem.Content>
+            </tabView:SfTabItem>
+
+        </tabView:SfTabView>
+    </ContentPage.Content>
+</ContentPage>

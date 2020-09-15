@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="medExpert.Views.Templates.TaskContentView">
+  <ContentView.Content>
+        <Frame BackgroundColor="White"
+               HorizontalOptions="FillAndExpand"
+               VerticalOptions="Center"
+               Margin="0" 
+               Padding="0"
+               CornerRadius="10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid RowSpacing="10"
+                      Margin="7">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Image Source="check_box_inactive"
+                           VerticalOptions="Start"
+                           Margin="0,5,7,0"/>
+
+                    <Label Grid.Column="1"
+                           VerticalTextAlignment="Start"
+                           FontFamily="{StaticResource SemiBoldFont}"
+                           TextColor="#2B3845"
+                           Text="{Binding Location}"
+                           FontSize="17" />
+
+                    <Label Grid.Row="1" 
+                           Grid.ColumnSpan="2"
+                           Style="{StaticResource GrayText}"
+                           Text="Проверка кабинетов, в том числе соблюдение условий хранения ЛС и МИ"/>
+                </Grid>
+                
+                <BoxView Grid.Column="1" 
+                         WidthRequest="5"
+                         BackgroundColor="{Binding Status, Converter={StaticResource StatusToColorConverter}}" />
+
+                
+            </Grid>
+        </Frame>
+  </ContentView.Content>
+</ContentView>
