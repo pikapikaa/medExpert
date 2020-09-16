@@ -787,4 +787,13 @@
   <ItemGroup>
     <BundleResource Include="Resources\all_audits_lilac.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\add_task_icon%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\add_task_icon%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\add_task_icon.png" />
+  </ItemGroup>
 </Project>

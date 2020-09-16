@@ -114,7 +114,7 @@
 
                         </Grid>
 
-                        <ImageButton Source="FAB_struct" 
+                        <ImageButton Source="add_task_icon" 
                                      BackgroundColor="Transparent"
                                      WidthRequest="60"
                                      HeightRequest="60"
