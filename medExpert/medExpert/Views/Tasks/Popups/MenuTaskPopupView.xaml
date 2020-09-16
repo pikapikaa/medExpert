@@ -20,20 +20,30 @@
                     </Label.GestureRecognizers>
                 </Label>
 
-                <Label Text="Сортировать" Style="{StaticResource Text}">
+                <Label Text="Сортировать" 
+                       Style="{StaticResource Text}">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding SortTasksCommand}"
                                               NumberOfTapsRequired="1" />
                     </Label.GestureRecognizers>
                 </Label>
 
-                <Label Text="Обновить" Style="{StaticResource Text}">
+                <Label Text="Поиск" 
+                       Style="{StaticResource Text}">
                     <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding RefreshTasksCommand}"
+                        <TapGestureRecognizer Command="{Binding SearchTasksCommand}"
                                               NumberOfTapsRequired="1" />
                     </Label.GestureRecognizers>
                 </Label>
-                
+
+                <Label Text="Поиск по дате" 
+                       Style="{StaticResource Text}">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SearchDateTasksCommand}"
+                                              NumberOfTapsRequired="1" />
+                    </Label.GestureRecognizers>
+                </Label>
+
             </StackLayout>
         </Frame>
     </pages:PopupPage.Content>

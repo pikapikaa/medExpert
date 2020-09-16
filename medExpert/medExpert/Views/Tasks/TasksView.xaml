@@ -5,12 +5,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms" 
              xmlns:templates="clr-namespace:medExpert.Views.Templates;assembly=medExpert"
-             xmlns:controls="clr-namespace:medExpert.Controls;assembly=medExpert"
+             xmlns:controls="clr-namespace:medExpert.Controls;assembly=medExpert" xmlns:local="clr-namespace:medExpert.Renderers"
              mc:Ignorable="d"
              x:Class="medExpert.Views.Tasks.TasksView"
              x:Name="tasksPage">
 
-    <!-- Шапка -->
+     <!--Шапка-->
     <NavigationPage.TitleView>
         <Label Margin="70,0,0,0"
                FontFamily="{StaticResource SemiBoldFont}"

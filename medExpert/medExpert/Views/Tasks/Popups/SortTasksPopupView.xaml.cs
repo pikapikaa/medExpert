@@ -1,5 +1,4 @@
-﻿using medExpert.ViewModels.Tasks;
-using Rg.Plugins.Popup.Pages;
+﻿using Rg.Plugins.Popup.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,12 +11,11 @@ using Xamarin.Forms.Xaml;
 namespace medExpert.Views.Tasks.Popups
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MenuTaskPopupView : PopupPage
+    public partial class SortTasksPopupView : PopupPage
     {
-        public MenuTaskPopupView()
+        public SortTasksPopupView()
         {
             InitializeComponent();
-            BindingContext = new MenuTaskPopupViewModel();
         }
     }
 }
