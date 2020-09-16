@@ -1,12 +1,80 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms" 
+             xmlns:behaviors="clr-namespace:medExpert.Behaviors"
+             xmlns:local="clr-namespace:medExpert.Renderers"
              x:Class="medExpert.Views.Tasks.TaskDetailView">
+
+    <!--Шапка-->
+    <NavigationPage.TitleView>
+        <Label Margin="70,0,0,0"
+               FontFamily="{StaticResource SemiBoldFont}"
+               FontSize="20"
+               Text="Задача №134"
+               TextColor="Black"
+               VerticalOptions="Center"/>
+    </NavigationPage.TitleView>
+    
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <tabView:SfTabView  VisibleHeaderCount="2">
+
+            <!-- Вкладка "Обеспечить" -->
+            <tabView:SfTabItem Title="Обеспечить" 
+                               TitleFontSize="18">
+                <tabView:SfTabItem.Content>
+
+                    <ScrollView>
+                        
+                        <StackLayout Margin="20">
+
+                            <Label Margin="10,0,0,0" 
+                                   Text="Задача" 
+                                   Style="{StaticResource GrayText}" />
+                            <Frame BackgroundColor="#F2F2F2" 
+                                   CornerRadius="6" 
+                                   HasShadow="False" 
+                                   Margin="0"
+                                   Padding="0">
+                                <StackLayout>
+                                    <local:CustomEditorRenderer Text="Проверка №4 , с 07.05.2020 до 17.05.2020, ВА ул. Ясная"
+                                                                VerticalOptions="FillAndExpand"
+                                                                HorizontalOptions="FillAndExpand"
+                                                                AutoSize="TextChanges"
+                                                                Style="{StaticResource NormalText}"/>
+                                </StackLayout>
+                            </Frame>
+
+                            <Label Margin="10,10,0,0" 
+                                   Text="Описание задачи" 
+                                   Style="{StaticResource GrayText}" />
+                            <Frame BackgroundColor="#F2F2F2" 
+                                   CornerRadius="6"
+                                   Margin="0"
+                                   Padding="0"
+                                   HasShadow="False">
+                                <StackLayout>
+                                    <local:CustomEditorRenderer Text="Проверить наличие необходимых препаратов по требованию государственных стандартов"
+                                            VerticalOptions="FillAndExpand"
+                                            HorizontalOptions="FillAndExpand"
+                                            AutoSize="TextChanges"
+                                            Style="{StaticResource NormalText}"/>
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                    </ScrollView>
+                    
+                </tabView:SfTabItem.Content>
+            </tabView:SfTabItem>
+
+            <!-- Вкладка "История" -->
+            <tabView:SfTabItem Title="История" 
+                               TitleFontSize="18">
+                <tabView:SfTabItem.Content>
+                    <Label Text="dfdddf"/>
+                </tabView:SfTabItem.Content>
+            </tabView:SfTabItem>
+            
+        </tabView:SfTabView>
     </ContentPage.Content>
 </ContentPage>
