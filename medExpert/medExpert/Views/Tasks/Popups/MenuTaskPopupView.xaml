@@ -39,7 +39,7 @@
                 <Label Text="Поиск по дате" 
                        Style="{StaticResource Text}">
                     <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding SearchDateTasksCommand}"
+                        <TapGestureRecognizer Command="{Binding OpenRangeCalendarTasksPopupViewCommand}"
                                               NumberOfTapsRequired="1" />
                     </Label.GestureRecognizers>
                 </Label>

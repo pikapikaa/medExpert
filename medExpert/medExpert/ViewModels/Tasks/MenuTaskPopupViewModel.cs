@@ -30,6 +30,15 @@ namespace medExpert.ViewModels.Tasks
             await PopupNavigation.Instance.PushAsync(new FilterTasksPopupView());
         });
 
+        /// <summary>
+        /// Команда для открытия календаря
+        /// </summary>
+        public ICommand OpenRangeCalendarTasksPopupViewCommand => new Command(async () =>
+        {
+            await PopupNavigation.Instance.PopAsync();
+            await PopupNavigation.Instance.PushAsync(new RangeCalendarTasksPopupView());
+        });
+
         void OnPropertyChanged([CallerMemberName] string name = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));

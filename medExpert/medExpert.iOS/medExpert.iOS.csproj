@@ -139,7 +139,7 @@
       <Version>18.2.0.48</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfCalendar">
-      <Version>18.2.0.48</Version>
+      <Version>18.2.0.58</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfTabView">
       <Version>18.2.0.48</Version>
