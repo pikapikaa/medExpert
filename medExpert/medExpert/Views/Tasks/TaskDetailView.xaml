@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms" 
              xmlns:behaviors="clr-namespace:medExpert.Behaviors"
-             xmlns:local="clr-namespace:medExpert.Renderers"
+             xmlns:local="clr-namespace:medExpert.Renderers" xmlns:imgcrop="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.ImageCropView" xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              x:Class="medExpert.Views.Tasks.TaskDetailView">
 
     <!--Шапка-->
@@ -28,6 +28,7 @@
                         
                         <StackLayout Margin="20">
 
+                            <!-- Задача -->
                             <Label Margin="10,0,0,0" 
                                    Text="Задача" 
                                    Style="{StaticResource GrayText}" />
@@ -45,6 +46,7 @@
                                 </StackLayout>
                             </Frame>
 
+                            <!-- Описание задачи -->
                             <Label Margin="10,10,0,0" 
                                    Text="Описание задачи" 
                                    Style="{StaticResource GrayText}" />
@@ -55,12 +57,150 @@
                                    HasShadow="False">
                                 <StackLayout>
                                     <local:CustomEditorRenderer Text="Проверить наличие необходимых препаратов по требованию государственных стандартов"
-                                            VerticalOptions="FillAndExpand"
-                                            HorizontalOptions="FillAndExpand"
-                                            AutoSize="TextChanges"
-                                            Style="{StaticResource NormalText}"/>
+                                                                VerticalOptions="FillAndExpand"
+                                                                HorizontalOptions="FillAndExpand"
+                                                                AutoSize="TextChanges"
+                                                                Style="{StaticResource NormalText}"/>
                                 </StackLayout>
                             </Frame>
+
+                            <!-- Исполнитель -->
+                            <Label Margin="10,10,0,0" 
+                                   Text="Исполнитель" 
+                                   Style="{StaticResource GrayText}" />
+                            <Frame BackgroundColor="#F2F2F2" 
+                                   CornerRadius="6"
+                                   Margin="0"
+                                   Padding="10"
+                                   HasShadow="False">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label Text="Баиров Баир Баирович"
+                                           Style="{StaticResource Text}"
+                                           VerticalOptions="Center"
+                                           HorizontalOptions="Start"/>
+
+                                    <Image Grid.Column="1" 
+                                           Source="dropdown" 
+                                           WidthRequest="10" 
+                                           HeightRequest="10"/>
+                                </Grid>
+                            </Frame>
+
+                            <!-- Срок -->
+                            <Label Margin="10,10,0,0" 
+                                   Text="Срок" 
+                                   Style="{StaticResource GrayText}" />
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <Frame BackgroundColor="#F2F2F2" 
+                                       CornerRadius="6"
+                                       Margin="0"
+                                       Padding="10"
+                                       HasShadow="False">
+                                    <Label Text="23.09.2020"
+                                           Style="{StaticResource Text}"
+                                           VerticalOptions="Center"
+                                           HorizontalOptions="Start"/>
+                                </Frame>
+                            </Grid>
+
+                            <!-- Напоминание -->
+                            <Label Margin="10,10,0,0" 
+                                   Text="Напоминание" 
+                                   Style="{StaticResource GrayText}" />
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <Frame BackgroundColor="#F2F2F2" 
+                                       CornerRadius="6"
+                                       Margin="0"
+                                       Padding="10"
+                                       HasShadow="False">
+                                    <Label Text="23.09.2020"
+                                           Style="{StaticResource Text}"
+                                           VerticalOptions="Center"
+                                           HorizontalOptions="Start"/>
+                                </Frame>
+
+                                <Frame Grid.Column="1"
+                                       BackgroundColor="#F2F2F2" 
+                                       CornerRadius="6"
+                                       Margin="0"
+                                       Padding="10"
+                                       HasShadow="False">
+                                    <Label Text="09:00"
+                                           Style="{StaticResource Text}"
+                                           VerticalOptions="Center"
+                                           HorizontalOptions="Start"/>
+                                </Frame>
+                            </Grid>
+
+                            <!-- Приоритет -->
+                            <Label Margin="10,10,0,0" 
+                                   Text="Приоритет" 
+                                   Style="{StaticResource GrayText}" />
+                            <Frame BackgroundColor="#F2F2F2" 
+                                   CornerRadius="6"
+                                   Margin="0"
+                                   Padding="10"
+                                   HasShadow="False">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label Text="Низкий"
+                                           Style="{StaticResource Text}"
+                                           VerticalOptions="Center"
+                                           HorizontalOptions="Start"/>
+
+                                    <Image Grid.Column="1" 
+                                           Source="dropdown" 
+                                           WidthRequest="10" 
+                                           HeightRequest="10"/>
+                                </Grid>
+                            </Frame>
+
+                            <!-- Повтор задачи -->
+                            <Label Margin="10,10,0,0" 
+                                   Text="Повтор задачи" 
+                                   Style="{StaticResource GrayText}" />
+                            <Frame BackgroundColor="#F2F2F2" 
+                                   CornerRadius="6"
+                                   Margin="0"
+                                   Padding="10"
+                                   HasShadow="False">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label Text="Ежедневно"
+                                           Style="{StaticResource Text}"
+                                           VerticalOptions="Center"
+                                           HorizontalOptions="Start"/>
+
+                                    <Image Grid.Column="1" 
+                                           Source="dropdown" 
+                                           WidthRequest="10" 
+                                           HeightRequest="10"/>
+                                </Grid>
+                            </Frame>
+                            
+                       
                         </StackLayout>
                     </ScrollView>
                     
