@@ -1,4 +1,5 @@
 ﻿using medExpert.Models;
+using medExpert.Views.Tasks;
 using medExpert.Views.Tasks.Popups;
 using Rg.Plugins.Popup.Services;
 using System;
@@ -15,6 +16,8 @@ namespace medExpert.ViewModels.Tasks
 {
     public class TasksViewModel : INotifyPropertyChanged
     {
+        public INavigation Navigation { get; set; }
+
         private ObservableCollection<Audit> audits;
         public ObservableCollection<Audit> Tasks
         {
@@ -38,6 +41,14 @@ namespace medExpert.ViewModels.Tasks
         public ICommand OpenMenuTaskPopupCommand => new Command(async () =>
         {
             await PopupNavigation.Instance.PushAsync(new MenuTaskPopupView(), false);
+        });
+
+        /// <summary>
+        /// Команда открытия детального представления задачи
+        /// </summary>
+        public ICommand OpenTaskDetailCommand => new Command(async () =>
+        {
+            await Navigation.PushAsync(new TaskDetailView());
         });
 
         void OnPropertyChanged([CallerMemberName] string name = "")

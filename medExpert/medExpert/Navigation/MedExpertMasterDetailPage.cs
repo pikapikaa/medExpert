@@ -23,7 +23,7 @@ namespace medExpert.Navigation
             this.Master = master;
             this.MasterBehavior = MasterBehavior.Popover;
 
-            OnPageSelected(null, PageType.Audits);
+            OnPageSelected(null, PageType.Tasks);
         }
         private void OnPageSelected(object e, PageType pageType)
         {

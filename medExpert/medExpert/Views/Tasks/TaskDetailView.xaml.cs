@@ -1,5 +1,4 @@
-﻿using medExpert.ViewModels.Tasks;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,15 +10,11 @@ using Xamarin.Forms.Xaml;
 namespace medExpert.Views.Tasks
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class TasksView : ContentPage
+    public partial class TaskDetailView : ContentPage
     {
-        public TasksView()
+        public TaskDetailView()
         {
             InitializeComponent();
-            BindingContext = new TasksViewModel()
-            {
-                Navigation = this.Navigation
-            };
         }
     }
 }

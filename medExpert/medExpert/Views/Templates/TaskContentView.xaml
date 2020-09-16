@@ -4,7 +4,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="medExpert.Views.Templates.TaskContentView">
+             x:Class="medExpert.Views.Templates.TaskContentView"
+             x:Name="taskContentViewTemplate">
   <ContentView.Content>
         <Frame BackgroundColor="White"
                HorizontalOptions="FillAndExpand"
@@ -50,13 +51,18 @@
                            Style="{StaticResource GrayText}"
                            Text="Проверка кабинетов, в том числе соблюдение условий хранения ЛС и МИ"/>
                 </Grid>
-                
+
                 <BoxView Grid.Column="1" 
                          WidthRequest="5"
                          BackgroundColor="{Binding Status, Converter={StaticResource StatusToColorConverter}}" />
-
-                
             </Grid>
+
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding ParentContext.OpenTaskDetailCommand, 
+                                                    Source={x:Reference taskContentViewTemplate}}"
+                                      CommandParameter="{Binding .}"/>
+            </Frame.GestureRecognizers>
         </Frame>
+      
   </ContentView.Content>
 </ContentView>
