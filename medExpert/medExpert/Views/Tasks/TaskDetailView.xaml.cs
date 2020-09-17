@@ -15,6 +15,16 @@ namespace medExpert.Views.Tasks
         public TaskDetailView()
         {
             InitializeComponent();
+            SizeChanged += CheckListDetailView_SizeChanged;
+        }
+
+        private void CheckListDetailView_SizeChanged(object sender, EventArgs e)
+        {
+            double width = Width / 4.2;
+            cropView1.HeightRequest = cropView1.WidthRequest = width;
+            cropView2.HeightRequest = cropView2.WidthRequest = width;
+            cropView3.HeightRequest = cropView3.WidthRequest = width;
+            cropView4.HeightRequest = cropView4.WidthRequest = width;
         }
     }
 }
