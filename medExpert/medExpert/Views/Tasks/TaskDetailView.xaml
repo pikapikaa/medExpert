@@ -89,6 +89,11 @@
                                            WidthRequest="10" 
                                            HeightRequest="10"/>
                                 </Grid>
+
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OpenResponsibleListView}"
+                                                          CommandParameter="{Binding .}" />
+                                </Frame.GestureRecognizers>
                             </Frame>
 
                             <!-- Срок -->

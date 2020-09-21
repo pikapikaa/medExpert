@@ -1,8 +1,14 @@
-﻿using System;
+﻿using medExpert.Models;
+using medExpert.Views.Tasks;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace medExpert.ViewModels.Tasks
 {
@@ -12,6 +18,8 @@ namespace medExpert.ViewModels.Tasks
         private string text;
         private string responsible;
         private string expiration;
+
+        public INavigation Navigation { get; set; }
 
         /// <summary>
         /// Название задачи
@@ -63,6 +71,23 @@ namespace medExpert.ViewModels.Tasks
                 expiration = value;
                 OnPropertyChanged(nameof(Expiration));
             }
+        }
+
+        /// <summary>
+        /// Команда открытия списка ответственных лиц
+        /// </summary>
+        public ICommand OpenResponsibleListView => new Command(async item =>
+        {
+            await Navigation.PushModalAsync(new NavigationPage(new ResponsibleListView()), true);
+        });
+
+        public TaskDetailViewModel()
+        {
+            MessagingCenter.Subscribe<Employee>(this,
+               MessageKeys.AddResponsible, sender =>
+               {
+                   Responsible = sender.FullName;
+               });
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

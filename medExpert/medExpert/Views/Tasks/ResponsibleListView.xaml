@@ -1,17 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-             xmlns:behaviors="clr-namespace:medExpert.Behaviors"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:local="clr-namespace:medExpert.Renderers"
-             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-             ios:Page.UseSafeArea="True"
-             mc:Ignorable="d"
-             x:Name="structuralUnitsListView"
-             x:Class="medExpert.Views.Audits.StructuralUnitsListView">
-
+             xmlns:behaviors="clr-namespace:medExpert.Behaviors"
+             x:Name="responsibleListView"
+             x:Class="medExpert.Views.Tasks.ResponsibleListView">
     <NavigationPage.TitleView>
         <Grid Margin="5,0,0,0">
             <Grid.ColumnDefinitions>
@@ -23,19 +16,19 @@
                          Padding="3"
                          HorizontalOptions="CenterAndExpand">
                 <Image Source="close_page_icon"
-                         BackgroundColor="Transparent"
-                         VerticalOptions="Center"
-                         HorizontalOptions="Center"
-                         HeightRequest="15"
-                         WidthRequest="15"/>
+                       BackgroundColor="Transparent"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"
+                       HeightRequest="15"
+                       WidthRequest="15"/>
                 <StackLayout.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding CloseStructuralUnitsListViewCommand}"
+                    <TapGestureRecognizer Command="{Binding ClosePopupCommand}"
                                           CommandParameter="{Binding .}"/>
                 </StackLayout.GestureRecognizers>
             </StackLayout>
 
             <Label Grid.Column="1" 
-                   Text="Добавить подразделение" 
+                   Text="Добавить ответственного" 
                    MaxLines="1"
                    IsVisible="{Binding IsEntryVisible, Converter={StaticResource InverseBoolConverter}}"
                    Margin="20,0,0,0"
@@ -57,7 +50,7 @@
             </local:CustomEntryRenderer>
 
         </Grid>
-       
+
     </NavigationPage.TitleView>
 
     <ContentPage.ToolbarItems>
@@ -71,7 +64,7 @@
 
             <ListView AbsoluteLayout.LayoutBounds="0,0,1,1"
                       AbsoluteLayout.LayoutFlags="WidthProportional,HeightProportional"
-                      ItemsSource="{Binding StructuralUnits}"
+                      ItemsSource="{Binding Employees}"
                       SeparatorVisibility="None"
                       HasUnevenRows="True">
                 <ListView.ItemTemplate>
@@ -90,7 +83,7 @@
 
                                 <Label Grid.Column="0"
                                        Grid.Row="0"
-                                       Text="{Binding Name}"
+                                       Text="{Binding FullName}"
                                        VerticalTextAlignment="Center"
                                        Style="{StaticResource NormalText}">
                                 </Label>
@@ -113,7 +106,7 @@
                                          Color="#E3E3E3"/>
 
                                 <Grid.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding Source={x:Reference structuralUnitsListView}, Path=BindingContext.ClickCheckBoxCommand}"
+                                    <TapGestureRecognizer Command="{Binding Source={x:Reference responsibleListView}, Path=BindingContext.ClickCheckBoxCommand}"
                                                           CommandParameter="{Binding .}"
                                                           NumberOfTapsRequired="1" />
                                 </Grid.GestureRecognizers>
@@ -127,7 +120,7 @@
                 </ListView.Footer>
             </ListView>
 
-            <pancake:PancakeView AbsoluteLayout.LayoutBounds=".5, 1,300,50"
+            <!--<pancake:PancakeView AbsoluteLayout.LayoutBounds=".5, 1,300,50"
                                  AbsoluteLayout.LayoutFlags="XProportional,YProportional"
                                  BackgroundColor="#3960E2"
                                  Elevation="4"
@@ -138,7 +131,7 @@
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
 
-                    <Label Text="Добавить подразделение"
+                    <Label Text="Добавить ответственного"
                            Style="{StaticResource TitleWhite}"
                            x:Name="AddAuditBtn"
                            VerticalOptions="Center"
@@ -149,7 +142,31 @@
                     <TapGestureRecognizer Command="{Binding AddStructuralUnitCommand}"/>
                 </pancake:PancakeView.GestureRecognizers>
 
-            </pancake:PancakeView>
+            </pancake:PancakeView>-->
+            
+            <Frame Padding="0" 
+                   Margin="0"
+                   AbsoluteLayout.LayoutBounds=".5, 1,300,50"
+                   AbsoluteLayout.LayoutFlags="XProportional,YProportional"
+                   BackgroundColor="#3960E2"
+                   HasShadow="True"
+                   CornerRadius="25">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Text="Добавить ответственного"
+                           Style="{StaticResource TitleWhite}"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"/>
+                </Grid>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding AddEmployeeCommand}"
+                                          CommandParameter="{Binding .}"/>
+                </Frame.GestureRecognizers>
+            </Frame>
+            
         </AbsoluteLayout>
 
     </ContentPage.Content>

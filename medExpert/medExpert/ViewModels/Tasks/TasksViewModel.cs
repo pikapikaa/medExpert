@@ -57,7 +57,8 @@ namespace medExpert.ViewModels.Tasks
                 Title = task.Title,
                 Text = task.Text,
                 Expiration = task.PeriodDateOutText,
-                Responsible = task.Responsible
+                Responsible = task.Responsible,
+                Navigation = this.Navigation
             };
 
             await Navigation.PushAsync(new TaskDetailView() 

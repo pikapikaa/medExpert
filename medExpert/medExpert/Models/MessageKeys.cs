@@ -47,6 +47,11 @@ namespace medExpert.Models
         /// <summary>
         /// Сообщение события обновления списка изображений на детальном представлении
         /// </summary>
-        public const string RefreshImageList = nameof(RefreshImageList); 
+        public const string RefreshImageList = nameof(RefreshImageList);
+
+        /// <summary>
+        /// Сообщение события добавления ответственного в задаче
+        /// </summary>
+        public const string AddResponsible = nameof(AddResponsible);
     }
 }
