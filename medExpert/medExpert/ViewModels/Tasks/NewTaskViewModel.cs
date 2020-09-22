@@ -19,6 +19,7 @@ namespace medExpert.ViewModels.Tasks
         private string responsiblePerson;
         private string expiration;
         private Priority priorityTask;
+        private Regularity regularityTask;
 
         public INavigation Navigation { get; set; }
 
@@ -75,7 +76,7 @@ namespace medExpert.ViewModels.Tasks
         }
 
         /// <summary>
-        /// Вид проверки
+        /// Приоритет
         /// </summary>
         public Priority PriorityTask
         {
@@ -83,6 +84,19 @@ namespace medExpert.ViewModels.Tasks
             set
             {
                 priorityTask = value;
+                OnPropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// Повторяемость задачи
+        /// </summary>
+        public Regularity RegularityTask
+        {
+            get => regularityTask;
+            set
+            {
+                regularityTask = value;
                 OnPropertyChanged();
             }
         }
@@ -118,6 +132,14 @@ namespace medExpert.ViewModels.Tasks
         public ICommand OpenPriorityPopupView => new Command(async item =>
         {
             await PopupNavigation.Instance.PushAsync(new PriorityPopupView());
+        });
+
+        /// <summary>
+        /// Команда выбора повтора задачи
+        /// </summary>
+        public ICommand OpenRegularityTaskPopupView => new Command(async item =>
+        {
+            await PopupNavigation.Instance.PushAsync(new RegularityTaskPopupView());
         }); 
 
         public NewTaskViewModel()
@@ -142,6 +164,12 @@ namespace medExpert.ViewModels.Tasks
                {
                    PriorityTask = sender.SelectPriority;
                });
+
+            MessagingCenter.Subscribe<RegularityTaskPopupViewModel>(this,
+             MessageKeys.AddRegularityToNewTask, sender =>
+             {
+                 RegularityTask = sender.SelectRegularity;
+             });
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

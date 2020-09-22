@@ -67,7 +67,7 @@ namespace medExpert.ViewModels.Tasks
         public PriorityPopupViewModel()
         {
             var count = Priorities?.Count;
-            PrioritiesListViewHeight = (int)(count * 45);
+            PrioritiesListViewHeight = (int)(count * 42);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -195,7 +195,8 @@
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
 
-                        <Label Text="Ежедневно"
+                        <Label Text="{Binding RegularityTask, 
+                                       Converter = {StaticResource RegularityTaskToStringConverter}, TargetNullValue='Выбрать'}"
                                Style="{StaticResource Text}"
                                VerticalOptions="Center"
                                HorizontalOptions="Start"/>
@@ -205,6 +206,11 @@
                                WidthRequest="10" 
                                HeightRequest="10"/>
                     </Grid>
+
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OpenRegularityTaskPopupView}"
+                                              CommandParameter="{Binding .}" />
+                    </Frame.GestureRecognizers>
                 </Frame>
 
                 <!-- Изображения -->
