@@ -129,7 +129,7 @@
                                      HeightRequest="60"
                                      RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=-75}"  
                                      RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=-75}"
-                                     Command="{Binding OpenStructuralUnitsListView}"/>
+                                     Command="{Binding OpenNewTaskView}"/>
 
                     </RelativeLayout>
                 </tabView:SfTabItem.Content>

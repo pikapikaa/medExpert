@@ -16,6 +16,7 @@ namespace medExpert.ViewModels.Tasks
     {
         private bool isEntryVisible = false;
         private string searchText = "";
+        private bool isNewTask = false;
         public INavigation Navigation { get; set; }
         private ObservableCollection<Employee> employees =
            new ObservableCollection<Employee>();
@@ -39,6 +40,16 @@ namespace medExpert.ViewModels.Tasks
             set
             {
                 isEntryVisible = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public bool IsNewTask
+        {
+            get { return isNewTask; }
+            set
+            {
+                isNewTask = value;
                 OnPropertyChanged();
             }
         }
@@ -114,9 +125,6 @@ namespace medExpert.ViewModels.Tasks
             }
         });
 
-        /// <summary>
-        /// 
-        /// </summary>
         public ICommand ClickCheckBoxCommand => new Command<object>((object obj) =>
         {
             if (obj is Employee structuralUnit)
@@ -147,8 +155,14 @@ namespace medExpert.ViewModels.Tasks
             var item = Employees.FirstOrDefault(i => i.IsChecked);
             if (item != null)
             {
-                MessagingCenter.Send(item, MessageKeys.AddResponsible);
-                await Navigation.PopModalAsync();
+                if (!IsNewTask)
+                {
+                    MessagingCenter.Send(item, MessageKeys.AddResponsible);
+                }
+                else
+                {
+                    MessagingCenter.Send(item, MessageKeys.AddResponsibleToNewTask);
+                }
             }
             await Navigation.PopModalAsync();
         });

@@ -1,4 +1,5 @@
 ﻿using medExpert.ViewModels.Tasks;
+using Rg.Plugins.Popup.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,18 +9,15 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace medExpert.Views.Tasks
+namespace medExpert.Views.Tasks.Popups
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class NewTaskView : ContentPage
+    public partial class CalendarPopupView : PopupPage
     {
-        public NewTaskView()
+        public CalendarPopupView()
         {
             InitializeComponent();
-            BindingContext = new NewTaskViewModel()
-            {
-                Navigation = this.Navigation
-            };
+            BindingContext = new CalendarPopupViewModel();
         }
     }
 }

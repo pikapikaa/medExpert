@@ -1,12 +1,297 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:local="clr-namespace:medExpert.Renderers" 
+             xmlns:imgcrop="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.ImageCropView"
              x:Class="medExpert.Views.Tasks.NewTaskView">
+
+    <!--Шапка-->
+    <NavigationPage.TitleView>
+        <Label Margin="70,0,0,0"
+               FontFamily="{StaticResource SemiBoldFont}"
+               FontSize="20"
+               Text="Создать задачу"
+               TextColor="Black"
+               VerticalOptions="Center"/>
+    </NavigationPage.TitleView>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView Padding="20">
+
+            <StackLayout>
+
+                <!-- Задача -->
+                <Label Margin="10,0,0,0" 
+                       Text="Задача" 
+                       Style="{StaticResource GrayText}" />
+                <Frame BackgroundColor="#F2F2F2" 
+                       CornerRadius="6" 
+                       HasShadow="False" 
+                       Margin="0"
+                       Padding="0">
+                    <StackLayout>
+                        <local:CustomEditorRenderer Text="{Binding Title}"
+                                                    VerticalOptions="FillAndExpand"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    AutoSize="TextChanges"
+                                                    Style="{StaticResource NormalText}"/>
+                    </StackLayout>
+                </Frame>
+
+                <!-- Описание задачи -->
+                <Label Margin="10,10,0,0" 
+                       Text="Описание задачи" 
+                       Style="{StaticResource GrayText}" />
+                <Frame BackgroundColor="#F2F2F2" 
+                       CornerRadius="6"
+                       Margin="0"
+                       Padding="0"
+                       HasShadow="False">
+                    <StackLayout>
+                        <local:CustomEditorRenderer Text="{Binding Text}"
+                                                    Placeholder="Введите содержимое задачи"
+                                                    VerticalOptions="FillAndExpand"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    AutoSize="TextChanges"
+                                                    Style="{StaticResource NormalText}"/>
+                    </StackLayout>
+                </Frame>
+
+                <!-- Исполнитель -->
+                <Label Margin="10,10,0,0" 
+                       Text="Исполнитель" 
+                       Style="{StaticResource GrayText}" />
+                <Frame BackgroundColor="#F2F2F2" 
+                       CornerRadius="6"
+                       Margin="0"
+                       Padding="10"
+                       HasShadow="False">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Text="{Binding ResponsiblePerson}"
+                               Style="{StaticResource Text}"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Start"/>
+
+                        <Image Grid.Column="1" 
+                               Source="dropdown" 
+                               WidthRequest="10" 
+                               HeightRequest="10"/>
+                    </Grid>
+
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OpenResponsibleListView}"
+                                              CommandParameter="{Binding .}" />
+                    </Frame.GestureRecognizers>
+                </Frame>
+
+                <!-- Срок -->
+                <Label Margin="10,10,0,0" 
+                       Text="Срок" 
+                       Style="{StaticResource GrayText}" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <Frame BackgroundColor="#F2F2F2" 
+                           CornerRadius="6"
+                           Margin="0"
+                           Padding="10"
+                           HasShadow="False">
+                        <Label Text="{Binding Expiration}"
+                               Style="{StaticResource Text}"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Start"/>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OpenCalendarPopupView}"
+                                                  CommandParameter="{Binding .}" />
+                        </Frame.GestureRecognizers> 
+                    </Frame>
+                </Grid>
+
+                <!-- Напоминание -->
+                <Label Margin="10,10,0,0" 
+                       Text="Напоминание" 
+                       Style="{StaticResource GrayText}" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <Frame BackgroundColor="#F2F2F2" 
+                           CornerRadius="6"
+                           Margin="0"
+                           Padding="10"
+                           HasShadow="False">
+                        <Label Text="23.09.2020"
+                               Style="{StaticResource Text}"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Start"/>
+                    </Frame>
+
+                    <Frame Grid.Column="1"
+                           BackgroundColor="#F2F2F2" 
+                           CornerRadius="6"
+                           Margin="0"
+                           Padding="10"
+                           HasShadow="False">
+                        <Label Text="09:00"
+                               Style="{StaticResource Text}"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Start"/>
+                    </Frame>
+                </Grid>
+
+                <!-- Приоритет -->
+                <Label Margin="10,10,0,0" 
+                       Text="Приоритет" 
+                       Style="{StaticResource GrayText}" />
+                <Frame BackgroundColor="#F2F2F2" 
+                       CornerRadius="6"
+                       Margin="0"
+                       Padding="10"
+                       HasShadow="False">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Text="Низкий"
+                               Style="{StaticResource Text}"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Start"/>
+
+                        <Image Grid.Column="1" 
+                               Source="dropdown" 
+                               WidthRequest="10" 
+                               HeightRequest="10"/>
+                    </Grid>
+                </Frame>
+
+                <!-- Повтор задачи -->
+                <Label Margin="10,10,0,0" 
+                       Text="Повтор задачи" 
+                       Style="{StaticResource GrayText}" />
+                <Frame BackgroundColor="#F2F2F2" 
+                       CornerRadius="6"
+                       Margin="0,0,0,5"
+                       Padding="10"
+                       HasShadow="False">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Text="Ежедневно"
+                               Style="{StaticResource Text}"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Start"/>
+
+                        <Image Grid.Column="1" 
+                               Source="dropdown" 
+                               WidthRequest="10" 
+                               HeightRequest="10"/>
+                    </Grid>
+                </Frame>
+
+                <!-- Изображения -->
+                <Grid Padding="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <imgcrop:ImageCropView x:Name="cropView1">
+                        <Frame BackgroundColor="Transparent"
+                               BorderColor="#3960E2"
+                               HasShadow="False"
+                               CornerRadius="10">
+                            <!--<Frame.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding Source={x:Reference checkListDetailPage},
+                                                                Path=BindingContext.ShowMediaMenuCommand}" />
+                                        </Frame.GestureRecognizers>-->
+                            <Image Source="image_download"
+                                   VerticalOptions="Center"
+                                   Aspect="AspectFit"/>
+                        </Frame>
+                    </imgcrop:ImageCropView>
+
+
+                    <imgcrop:ImageCropView x:Name="cropView2"
+                                           Grid.Column="1"
+                                           Source="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Papio_anubis_%28Serengeti%2C_2009%29.jpg/200px-Papio_anubis_%28Serengeti%2C_2009%29.jpg" >
+                        <imgcrop:ImageCropView.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OpenPhotoCommand}"
+                                                  CommandParameter="0" />
+                        </imgcrop:ImageCropView.GestureRecognizers>
+                    </imgcrop:ImageCropView>
+
+
+
+                    <imgcrop:ImageCropView x:Name="cropView3" 
+                                           Grid.Column="2" 
+                                           Source="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Papio_anubis_%28Serengeti%2C_2009%29.jpg/200px-Papio_anubis_%28Serengeti%2C_2009%29.jpg" >
+                        <imgcrop:ImageCropView.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OpenPhotoCommand}"
+                                                  CommandParameter="1" />
+                        </imgcrop:ImageCropView.GestureRecognizers>
+                    </imgcrop:ImageCropView>
+
+                    <imgcrop:ImageCropView x:Name="cropView4" 
+                                           Grid.Column="3" 
+                                           Opacity="0.4"
+                                           Source="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Papio_anubis_%28Serengeti%2C_2009%29.jpg/200px-Papio_anubis_%28Serengeti%2C_2009%29.jpg" >
+                        <imgcrop:ImageCropView.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OpenPhotoCommand}"
+                                                  CommandParameter="2" />
+                        </imgcrop:ImageCropView.GestureRecognizers>
+                    </imgcrop:ImageCropView>
+
+                    <Label HorizontalOptions="Center" 
+                           Text="+78" 
+                           VerticalOptions="Center" 
+                           Grid.Column="3" 
+                           FontAttributes="Bold" 
+                           FontSize="Large"
+                           TextColor="Black">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OpenPhotoCommand}"
+                                                  CommandParameter="2" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Grid>
+
+                <!-- Кнопка -->
+                <Frame HorizontalOptions="Center"
+                       VerticalOptions="EndAndExpand"
+                       BackgroundColor="#3960E2"
+                       Padding="10"
+                       CornerRadius="5"
+                       Margin="0,10,0,0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Text="Начать выполнение"
+                               Style="{StaticResource TitleWhite}"
+                               VerticalOptions="Center" HorizontalOptions="Center"/>
+                    </Grid>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding AddAuditRecordCommand}"/>
+                    </Frame.GestureRecognizers>
+                </Frame>
+
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

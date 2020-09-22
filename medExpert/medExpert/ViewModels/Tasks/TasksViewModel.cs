@@ -76,6 +76,14 @@ namespace medExpert.ViewModels.Tasks
             Tasks.Remove(item);
         });
 
+        /// <summary>
+        /// Команда открытия экрана для создания новой задачи
+        /// </summary>
+        public ICommand OpenNewTaskView => new Command<Task>(async item =>
+        {
+            await Navigation.PushAsync(new NewTaskView());
+        }); 
+
         void OnPropertyChanged([CallerMemberName] string name = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));

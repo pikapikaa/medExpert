@@ -53,5 +53,15 @@ namespace medExpert.Models
         /// Сообщение события добавления ответственного в задаче
         /// </summary>
         public const string AddResponsible = nameof(AddResponsible);
+
+        /// <summary>
+        /// Сообщение события добавления ответственного в новой задаче
+        /// </summary>
+        public const string AddResponsibleToNewTask = nameof(AddResponsibleToNewTask);
+
+        /// <summary>
+        /// Сообщение события добавления срока в новой задаче
+        /// </summary>
+        public const string AddDateToNewTask = nameof(AddDateToNewTask);
     }
 }
