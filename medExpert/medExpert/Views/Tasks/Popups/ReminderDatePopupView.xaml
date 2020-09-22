@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:calendar="clr-namespace:Syncfusion.SfCalendar.XForms;assembly=Syncfusion.SfCalendar.XForms"
              x:Class="medExpert.Views.Tasks.Popups.ReminderDatePopupView">
     <pages:PopupPage.Content>
         <StackLayout VerticalOptions="Center"
@@ -11,8 +11,25 @@
                    CornerRadius="20">
                 <StackLayout BackgroundColor="White" 
                              Padding="0,10,0,10">
-                    
-                    <Label Text="ReminderDatePopupView"/>
+
+                    <!-- Календарь -->
+                    <calendar:SfCalendar x:Name="calendarReminder"
+                                         FirstDayofWeek="1"
+                                         Locale="{Binding Culture}"
+                                         SelectionMode="SingleSelection"
+                                         SelectedDate="{Binding SelectedDate, Mode=TwoWay}">
+                        <calendar:SfCalendar.MonthViewSettings>
+                            <calendar:MonthViewSettings DateSelectionColor="#3960E2" 
+                                                        DayHeaderFontAttributes="Bold"
+                                                        DayHeaderFontSize="Medium">
+                                <calendar:MonthViewSettings.HeaderFontFamily>
+                                    <OnPlatform x:TypeArguments="x:String"
+                                                iOS="Gilroy-SemiBold"
+                                                Android="Gilroy-SemiBold.ttf#Gilroy-SemiBold"/>
+                                </calendar:MonthViewSettings.HeaderFontFamily>
+                            </calendar:MonthViewSettings>
+                        </calendar:SfCalendar.MonthViewSettings>
+                    </calendar:SfCalendar>
 
                     <Button Text="Выбрать"
                             Style="{StaticResource TitleWhite}"

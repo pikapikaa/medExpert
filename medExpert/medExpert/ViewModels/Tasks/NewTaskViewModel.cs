@@ -20,6 +20,8 @@ namespace medExpert.ViewModels.Tasks
         private string expiration;
         private Priority priorityTask;
         private Regularity regularityTask;
+        private DateTime reminderDate;
+        private string reminderDateText;
 
         public INavigation Navigation { get; set; }
 
@@ -59,6 +61,32 @@ namespace medExpert.ViewModels.Tasks
             {
                 responsiblePerson = value;
                 OnPropertyChanged(nameof(ResponsiblePerson));
+            }
+        }
+
+        /// <summary>
+        /// Время напоминания задачи
+        /// </summary>
+        public DateTime ReminderDate 
+        {
+            get => reminderDate;
+            set
+            {
+                reminderDate = value;
+                OnPropertyChanged(nameof(ReminderDate));
+            }
+        }
+
+        /// <summary>
+        /// Текстовое представление даты напоминания
+        /// </summary>
+        public string ReminderDateText
+        {
+            get => $"{ReminderDate:dd.MM.yyyy} г.";
+            set
+            {
+                reminderDateText = value;
+                OnPropertyChanged();
             }
         }
 
@@ -187,6 +215,13 @@ namespace medExpert.ViewModels.Tasks
              {
                  RegularityTask = sender.SelectRegularity;
              });
+
+            MessagingCenter.Subscribe<ReminderDatePopupViewModel>(this,
+            MessageKeys.AddReminderDateToNewTask, sender =>
+            {
+                ReminderDate = (DateTime)sender.SelectedDate;
+                OnPropertyChanged(nameof(ReminderDateText));
+            });
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

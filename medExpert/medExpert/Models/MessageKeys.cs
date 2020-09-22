@@ -73,5 +73,10 @@ namespace medExpert.Models
         /// Сообщение события добавления повторяемости в новой задаче
         /// </summary>
         public const string AddRegularityToNewTask = nameof(AddRegularityToNewTask);
+
+        /// <summary>
+        /// Сообщение события добавления даты напоминания в новой задаче
+        /// </summary>
+        public const string AddReminderDateToNewTask = nameof(AddReminderDateToNewTask); 
     }
 }

@@ -129,7 +129,7 @@
                            Margin="0"
                            Padding="10"
                            HasShadow="False">
-                        <Label Text="23.09.2020"
+                        <Label Text="{Binding ReminderDateText}"
                                Style="{StaticResource Text}"
                                VerticalOptions="Center"
                                HorizontalOptions="Start"/>
