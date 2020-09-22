@@ -63,5 +63,10 @@ namespace medExpert.Models
         /// Сообщение события добавления срока в новой задаче
         /// </summary>
         public const string AddDateToNewTask = nameof(AddDateToNewTask);
+
+        /// <summary>
+        /// Сообщение события добавления приоритета в новой задаче
+        /// </summary>
+        public const string AddPriorityToNewTask = nameof(AddPriorityToNewTask);
     }
 }

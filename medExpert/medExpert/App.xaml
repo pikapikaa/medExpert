@@ -15,7 +15,8 @@
         <converters:InverseBoolConverter x:Key="InverseBoolConverter"/>
         <converters:CheckBoxBoolToImageConverter x:Key="CheckBoxBoolToImageConverter"/>
         <converters:CheckBoxViolationBoolToImageConverter x:Key="CheckBoxViolationBoolToImageConverter"/>
-        
+        <converters:TaskPriorityToStringConverter x:Key="TaskPriorityToStringConverter"/>
+
 
         <!--  Шрифты  -->
         <OnPlatform x:Key="BoldFont" x:TypeArguments="x:String">

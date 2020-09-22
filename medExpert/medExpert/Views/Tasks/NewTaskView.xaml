@@ -162,7 +162,8 @@
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
 
-                        <Label Text="Низкий"
+                        <Label Text="{Binding PriorityTask, 
+                                            Converter = {StaticResource TaskPriorityToStringConverter}, TargetNullValue='Выбрать'}"
                                Style="{StaticResource Text}"
                                VerticalOptions="Center"
                                HorizontalOptions="Start"/>
@@ -172,6 +173,11 @@
                                WidthRequest="10" 
                                HeightRequest="10"/>
                     </Grid>
+
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OpenPriorityPopupView}"
+                                              CommandParameter="{Binding .}" />
+                    </Frame.GestureRecognizers>
                 </Frame>
 
                 <!-- Повтор задачи -->

@@ -18,6 +18,7 @@ namespace medExpert.ViewModels.Tasks
         private string text;
         private string responsiblePerson;
         private string expiration;
+        private Priority priorityTask;
 
         public INavigation Navigation { get; set; }
 
@@ -74,6 +75,19 @@ namespace medExpert.ViewModels.Tasks
         }
 
         /// <summary>
+        /// Вид проверки
+        /// </summary>
+        public Priority PriorityTask
+        {
+            get => priorityTask;
+            set
+            {
+                priorityTask = value;
+                OnPropertyChanged();
+            }
+        }
+
+        /// <summary>
         /// Команда открытия списка ответственных лиц
         /// </summary>
         public ICommand OpenResponsibleListView => new Command(async item =>
@@ -98,10 +112,19 @@ namespace medExpert.ViewModels.Tasks
             await PopupNavigation.Instance.PushAsync(new CalendarPopupView());
         });
 
+        /// <summary>
+        /// Команда выбора приоритета задачи
+        /// </summary>
+        public ICommand OpenPriorityPopupView => new Command(async item =>
+        {
+            await PopupNavigation.Instance.PushAsync(new PriorityPopupView());
+        }); 
+
         public NewTaskViewModel()
         {
             ResponsiblePerson = "Введите сотрудника";
             Expiration = "Введите дату";
+
             MessagingCenter.Subscribe<Employee>(this,
              MessageKeys.AddResponsibleToNewTask, sender =>
              {
@@ -112,7 +135,13 @@ namespace medExpert.ViewModels.Tasks
              MessageKeys.AddDateToNewTask, sender =>
              {
                  Expiration = $"{sender.SelectedDate:dd.MM.yyyy} г.";
-             }); 
+             });
+
+            MessagingCenter.Subscribe<PriorityPopupViewModel>(this,
+               MessageKeys.AddPriorityToNewTask, sender =>
+               {
+                   PriorityTask = sender.SelectPriority;
+               });
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
