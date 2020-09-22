@@ -30,6 +30,7 @@
                        Padding="0">
                     <StackLayout>
                         <local:CustomEditorRenderer Text="{Binding Title}"
+                                                    Placeholder="Введите заголовок"
                                                     VerticalOptions="FillAndExpand"
                                                     HorizontalOptions="FillAndExpand"
                                                     AutoSize="TextChanges"
@@ -132,6 +133,10 @@
                                Style="{StaticResource Text}"
                                VerticalOptions="Center"
                                HorizontalOptions="Start"/>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OpenReminderDatePopupView}"
+                                                  CommandParameter="{Binding .}" />
+                        </Frame.GestureRecognizers>
                     </Frame>
 
                     <Frame Grid.Column="1"
@@ -144,6 +149,10 @@
                                Style="{StaticResource Text}"
                                VerticalOptions="Center"
                                HorizontalOptions="Start"/>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OpenReminderTimePopupView}"
+                                                  CommandParameter="{Binding .}" />
+                        </Frame.GestureRecognizers>
                     </Frame>
                 </Grid>
 

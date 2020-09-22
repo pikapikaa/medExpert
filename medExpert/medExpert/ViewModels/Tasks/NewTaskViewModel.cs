@@ -140,7 +140,24 @@ namespace medExpert.ViewModels.Tasks
         public ICommand OpenRegularityTaskPopupView => new Command(async item =>
         {
             await PopupNavigation.Instance.PushAsync(new RegularityTaskPopupView());
-        }); 
+        });
+
+
+        /// <summary>
+        /// Команда выбора даты напоминания задачи
+        /// </summary>
+        public ICommand OpenReminderDatePopupView => new Command(async item =>
+        {
+            await PopupNavigation.Instance.PushAsync(new ReminderDatePopupView());
+        });
+
+        /// <summary>
+        /// Команда выбора даты(в часах и минутах) напоминания задачи
+        /// </summary>
+        public ICommand OpenReminderTimePopupView => new Command(async item =>
+        {
+            await PopupNavigation.Instance.PushAsync(new ReminderTimePickerPopupView());
+        });
 
         public NewTaskViewModel()
         {
