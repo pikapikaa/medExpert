@@ -11,19 +11,19 @@ namespace medExpert.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            AuditOperationStatus flag = (AuditOperationStatus)value;
-            switch (flag)
+           Priority priority = (Priority)value;
+            switch (priority)
             {
-                case AuditOperationStatus.Created:
-                    return "#3C63E7";
-                case AuditOperationStatus.Executed:
-                    return "#834EA0";
-                case AuditOperationStatus.Running:
-                    return "#3CBB78";
-                case AuditOperationStatus.Signed:
-                    return "#834EA0";
-                case AuditOperationStatus.Signing:
-                    return "#834EA0";
+                case Priority.Low:
+                    return "gray";
+                case Priority.Medium:
+                    return "green";
+                case Priority.High:
+                    return "red";
+                case Priority.Urgent:
+                    return "red";
+                case Priority.Critical:
+                    return "red";
                 default:
                     return "white";
             }
