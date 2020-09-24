@@ -17,6 +17,7 @@
         <converters:CheckBoxViolationBoolToImageConverter x:Key="CheckBoxViolationBoolToImageConverter"/>
         <converters:TaskPriorityToStringConverter x:Key="TaskPriorityToStringConverter"/>
         <converters:RegularityTaskToStringConverter x:Key="RegularityTaskToStringConverter"/>
+        <converters:TaskPriorityToColorConverter x:Key="TaskPriorityToColorConverter"/>
 
 
         <!--  Шрифты  -->

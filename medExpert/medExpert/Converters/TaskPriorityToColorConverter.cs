@@ -7,7 +7,7 @@ using Xamarin.Forms;
 
 namespace medExpert.Converters
 {
-    class TaskPriorityToColorConverter : IValueConverter
+    public class TaskPriorityToColorConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
