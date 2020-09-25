@@ -1,4 +1,5 @@
-﻿using Rg.Plugins.Popup.Pages;
+﻿using medExpert.ViewModels.Audits;
+using Rg.Plugins.Popup.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,7 @@ namespace medExpert.Views.Tasks.Popups
         public SortTasksPopupView()
         {
             InitializeComponent();
+            BindingContext = new SortTasksPopupViewModel();
         }
     }
 }
